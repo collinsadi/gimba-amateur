@@ -1,0 +1,247 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header{
+
+    margin-bottom: 20px;
+}
+
+.nav-items{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.nav-buttons a{
+
+    text-decoration: none;
+    color: #667BA4;
+    font-size: 20px;
+    margin-left: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.nav-buttons a:after {
+    content: '';
+    position: absolute;
+    margin-top: 10px;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .nav-buttons a:hover:after {
+    transform: scaleX(1);
+  }
+
+.call-to-action{
+
+    background-color: #7F56D9;
+   
+    padding: 15px;
+    border: 2px solid #7F56D9;
+    border-radius: 10px;
+    transition:  0.2s background-color;
+}
+
+.call-to-action:hover{
+
+    background: transparent ;
+    color: #7F56D9;
+    border: 2px solid #7F56D9;
+}
+
+.call-to-action:hover a{
+
+    color: black;
+}
+
+.call-to-action a{
+  color: white;
+     text-decoration: none;
+    text-align: center;
+}
+
+.nav-logo h3{
+    font-size: 40px;
+    color: #7F56D9;
+}
+.nav-logo p{
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-size: 15px;
+}
+
+.mobile-button{
+    font-size: 30px;
+    color: #7F56D9;
+}
+
+.mobile-panel{
+
+    height: 400px;
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    border-bottom: 2px solid #7F56D9;
+    display: none;
+   
+}
+
+
+.close-nav{
+
+    animation: commot 0.6s;
+}
+
+
+    
+@keyframes commot {
+
+    from{
+        transform: translateY(0);
+    }
+
+    to{
+        transform: translateY(-100%);
+    }
+}
+
+
+
+
+.mobile-panel .panel-inner{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-left: 57px;
+}
+
+
+.nav-buttons-mobile{
+    margin-top: 20px;
+}
+
+.nav-buttons-mobile a{
+    text-decoration: none;
+    color: #667BA4;
+    font-size: 20px;
+    margin-left: 15px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+}
+
+.mobile-cta{
+
+    margin-top: 25px;
+    
+    background-color: #7F56D9;
+   
+    padding: 15px;
+  
+    border-radius: 10px;
+
+}
+.mobile-cta a{
+    color: white;
+    text-decoration: none;
+}
+
+.icon{
+
+    margin-top: 30px;
+    background-color: #7F56D9;
+    font-size: 25px;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.close-btn{
+    font-weight: bold;
+    font-size: 30px;
+    float: right;
+    padding: 20px;
+    margin-bottom: 30px;
+    color: #7F56D9;
+
+}
+
+.open-nav{
+
+    -webkit-animation: enter 0.6s;
+    animation: enter 0.6s;
+    display: block;
+
+}
+
+
+@keyframes enter {
+
+    from{
+        transform: translateY(-100%);
+    }
+
+    to{
+        transform: translateY(0);
+    }
+}
+
+
+/* ============= RESPONSIVENESS ========= */
+
+
+@media all and (max-width: 751px) { /* your content here */ 
+
+    .nav-buttons{
+        display: none;
+    }
+
+}
+
+/* Bigger Screens */
+
+@media all and (min-width: 751px) { /* your content here */ 
+
+    .mobile-button{
+        display: none;
+    }
+    .mobile-panel{
+        display: none;
+    }
+
+}
+
+@media all and (max-width: 500px) { /* your content here */ 
+
+    .call-to-action{
+        display: none;
+    }
+    .nav-logo h3{
+        font-size: 30px;
+    }
+    .nav-logo p{
+        display: none;
+    }
+
+}
