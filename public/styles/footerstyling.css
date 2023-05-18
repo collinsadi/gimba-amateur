@@ -1,0 +1,38 @@
+footer{
+
+    width: 100%;
+    background-color: #101828;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.footer-inner{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.copyright p{
+
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.copyright a{
+
+    text-decoration: none;
+    color: #7F56D9 ;
+}
+
+@media all and (max-width: 420px) { /* your content here */ 
+
+.copyright p{
+
+    font-weight: normal;
+}
+
+}

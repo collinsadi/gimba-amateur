@@ -310,7 +310,23 @@ justify-content: center;
     font-weight: bold;
 }
 
+hr{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: #7F56D9;
+    height: 3px;
+}
+.grid-title{
 
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    font-size: 30px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+}
 
 
 
