@@ -15,8 +15,5 @@ closeNav.addEventListener("click", ()=>{
     //("close?")
 
     Panel.classList.remove("open-nav")
-    Panel.classList.add('close-nav', ()=>{
-
-        Panel.style.display = "none"
-    })
+    Panel.classList.add('close-nav')
 })

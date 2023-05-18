@@ -249,7 +249,7 @@ justify-content: center;
 .blogs-single-item{
 
     width:400px;
-    padding: 20px;
+    /* padding: 20px; */
     display: inline-block;
     max-height: 700px;
     overflow: hidden;
@@ -308,4 +308,153 @@ justify-content: center;
 
     color: rgba(128, 128, 128, 0.932);
     font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======= RESPONSIVENESS =====*/
+
+@media all and (max-width: 1249px) { /* your content here */ 
+
+    .blogs-single-item{
+
+        width: 300px;
+        margin-left: 25px;
+    }
+
+    .author-date{
+        width: 200px;
+        font-size: 10px;
+    }
+
+    .hero-title h1{
+        font-size: 50px;
+    }
+
+
+
+
+}
+
+@media all and (max-width: 1171px) { /* your content here */ 
+
+    .blog-contents{
+
+        flex-direction: column;
+    }
+    .content-inner{
+
+        flex-direction: column;
+    }
+    .blog-contents .right{
+        width: 60%;
+    }
+
+
+
+}
+
+@media all and (max-width: 1009px) { /* your content here */ 
+
+    .blogs-single-item{
+
+        width: 45%;
+        margin-left: 10px;
+    }
+
+
+}
+
+@media all and (max-width: 717px) { /* your content here */ 
+
+    .blog-contents .right{
+        width: 80%;
+    }
+
+    .blog-contents .left{
+        width: 80%;
+    }
+    .blog-contents .left h1{
+
+        font-size: 20px;
+    }
+    .blog-snippet{
+        width: 80%;
+    }
+    .blog-contents{
+        top: 300px;
+    }
+    .hero-title h1{
+        font-size: 30px;
+    }
+
+
+
+}
+
+@media all and (max-width: 516px) { /* your content here */ 
+
+    .blog-contents{
+        top: 200px;
+    }
+    .blog-contents .left{
+        width: 100%;
+    }
+    .blog-snippet{
+        width: 100%;
+    }
+
+
+}
+
+@media all and (max-width: 420px){
+
+    .blogs-single-item{
+
+        width: 90%;
+        margin-left: 20px;
+    }
+    .blog-contents{
+        top: 100px;
+    }
+    .hero-buttons{
+        width: 80%;
+    }
+    .featured-blog{
+        height: 593px;
+    }
+    .hero-title h1{
+        font-size: 20px;
+    }
+    .hero-description{
+
+        width: 80%;
+    }
+    .tag-btn1, .tag-btn2{
+
+        display: none;
+    }
+    
+}
+
+@media all and (max-width: 770px) { 
+
+    .blog-contents .right{
+        width: 100%;
+    }
+
+    .blog-contents .left{
+        width: 100%;
+    }
+    
+
 }
