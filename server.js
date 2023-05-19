@@ -3,7 +3,9 @@ const morgan = require('morgan')
 const app = express()
 const ethers = require('ethers');
 
+app.use(express.urlencoded({extended: true}))
 
+const blogRoutes = require('./routes/blogroutes')
 
 
 // Server Port
@@ -58,6 +60,11 @@ app.get('/contact', (req, res)=>{
     res.render('contact')
 })
 
+
+
+// Route for any of our blog requests
+
+app.use(blogRoutes)
 
 // 404 Redirection page if the url does not match any of the pages that i have on my get and post requests
 
