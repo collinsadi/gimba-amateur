@@ -2,10 +2,14 @@ const express = require('express')
 const morgan = require('morgan')
 const app = express()
 const ethers = require('ethers');
+const mongoose = require('mongoose')
+const blogroutes = require('./routes/blogRoutes')
 
-app.use(express.urlencoded({extended: true}))
 
-const blogRoutes = require('./routes/blogroutes')
+
+// connect to mongodb
+
+const url = 'mongodb://127.0.0.1:27017/gimba';
 
 
 // Server Port
@@ -15,56 +19,25 @@ const port = 4000;
 // Main Server
 
 app.listen(port, ()=>{
-
-    console.log("Server Started at Port "+ port)
+console.log("Server Started at Port "+ port)
 })
-
-// Registering the view engines
-
 app.set('view engine', 'ejs')
-
-// Middlewares and static files
-
-/*app.use(): This is the Express middleware function that is used to register middleware.
-express.static(): This is the Express static middleware function that is used to serve static files.
-'public': This is the directory that contains the static file*/
-
 app.use(express.static('public'))
-
 app.use(express.urlencoded({ extended: true}))
-
-// app.use(): This is the Express middleware function that is used to register middleware.
-//morgan(): This is the Morgan middleware function that is used to log HTTP requests and responses.
-//'dev': This is the preset that is used to log all requests to the console.
-
 app.use(morgan('dev'))
-
-// Lets Begin
-
-// Defining our home page route
-
 app.get('/', (req, res) =>{
 
     res.render('index')
 
 })
-
 app.get('/about', (req, res)=>{
 
     res.render('about')
 })
-
-
 app.get('/contact', (req, res)=>{
 
     res.render('contact')
 })
-
-
-
-// Route for any of our blog requests
-
-app.use(blogRoutes)
 
 // 404 Redirection page if the url does not match any of the pages that i have on my get and post requests
 
