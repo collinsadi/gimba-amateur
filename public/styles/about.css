@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     background-image: url("../images/team.jpg");
-    height: 500px;
+    height: 700px;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -17,4 +17,47 @@
 .page-title h3{
 
     font-size: 70px;
+}
+.teamdescription{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #101828;
+    color: white;
+    
+}
+
+.teamdescription .title{
+
+    width: 60%;
+    border:  3px solid #7F56D9;
+    padding: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.teamdescription .title p{
+
+    line-height: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+span{
+
+    color: #7F56D9;
+    font-weight: bold;
+}
+
+@media all and (max-width: 1041px) { /* your content here */ 
+
+
+    .teamdescription .title{
+
+        width: 90%;
+    }
+
+
+
 }
