@@ -39,7 +39,7 @@ app.get('/contact', (req, res)=>{
     res.render('contact')
 })
 
-// 404 Redirection page if the url does not match any of the pages that i have on my get and post requests
+app.use(blogroutes)
 
 app.use((req, res)=>{
 
