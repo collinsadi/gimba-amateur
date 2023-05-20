@@ -22,10 +22,10 @@ const blogschema = new schema({
         type: String,
         required: true,
     },
-    // blog_body: {
-    //     type: String,
-    //     required: true,
-    // },
+    blog_body: {
+        type: String,
+        required: true,
+    },
     blog_body_image_url:{
 
         type: String,
