@@ -12,11 +12,94 @@
 
     width: 80%;
     border-radius: 10px;
-    border: 2px solid white;
+   
 }
-.create-page-inner input{
-    width: 90%;
+.form-top{
+    margin-top: 10px;
+}
+.form-top input{
+    width: 100%;
     padding: 15px;
     border-radius: 10px;
+    color: black;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border: 2px solid white;
+}
+.form-top input:focus{
+
+    border: 2px solid white;
+    outline: 0;
+}
+.form-second{
+
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
 }
 
+.form-second input{
+
+    width: 50%;
+    padding: 15px;
+    border-radius: 10px;
+    color: black;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border: 2px solid #7F56D9;
+}
+.form-second input:focus{
+    border: 2px solid #7F56D9;
+    outline: 0;
+}
+#editor{
+
+    width: 100%;
+    background-color: white;
+    height: 300px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.create-blog-btn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.create-blog-btn button{
+
+    width: 50%;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.create-blog-btn button:hover{
+
+    cursor: pointer;
+    background-color: white;
+    color: #7F56D9;
+}
+.ql-editor {
+    color: black;
+  }
+  
+.ql-toolbar{
+    background-color: white !important;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.ql-toolbar button:hover{
+
+    color: #7F56D9;
+}
+.ql-container{
+
+    font-size: 15px;
+}

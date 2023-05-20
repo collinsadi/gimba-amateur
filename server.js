@@ -11,10 +11,20 @@ const blogroutes = require('./routes/blogRoutes')
 
 const url = 'mongodb://127.0.0.1:27017/gimba';
 
+mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology: true})
+
+.then(_=>{
+    console.log('Connected to DataBase ):')
+})
+.catch(err=>{
+    console.log("Could not connect to database X_X")
+    console.log(err)
+})
 
 // Server Port
 
 const port = 4000;
+app.use(express.json()); 
 
 // Main Server
 
@@ -30,6 +40,7 @@ app.get('/', (req, res) =>{
     res.render('index')
 
 })
+
 app.get('/about', (req, res)=>{
 
     res.render('about')
@@ -45,3 +56,5 @@ app.use((req, res)=>{
 
     res.status(404).render('404')
 })
+
+
