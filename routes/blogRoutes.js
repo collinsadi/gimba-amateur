@@ -3,6 +3,24 @@ const router = express.Router()
 const BlogPost = require('../models/blog')
 
 
+
+
+router.get('/', (req, res) =>{
+
+    BlogPost.find()
+
+    .then(result =>{
+
+    res.render('index', {blogpost: result})
+
+    })
+
+
+
+})
+
+
+
 router.get('/create', (req, res)=>{
 
     res.render('createblog')
@@ -25,9 +43,16 @@ newblog.save()
 })
 
 
-router.get('/show-all', ()=>{
+router.get('/show-all', (req, res)=>{
 
-    BlogPost.findById()
+    BlogPost.find()
+
+    .then(result =>{
+        res.send(result)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
 })
 
 

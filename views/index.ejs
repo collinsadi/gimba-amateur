@@ -126,309 +126,62 @@
 
         <div class="blogs-wrap">
 
+            <% if (blogpost.length > 0) {%>
 
-            <div class="blogs-single-item">
-
-                <div class="single-item-top">
-
-                    <img src="/images/blogimg1.jpg" alt="">
-
-                </div>
-
-                <div class="single-item-bottom">
-
-                    <div class="author-date">
-
-                        <p>Garth Morar .. April 4, 2023</p>
-
-                        <div class="fa-solid fa-arrow-right
-                        "></div>
-
-                    </div>
-
-                    <div class="blog-title-second">
-
-                        <a href="">
-                        <h3>The Psychology of Color in Marketing 
-                            and Design</h3>
-                        </a>
-
-                    </div>
-
-                    <div class="blog-snippet-second">
-
-                        
-                        <p>A deep dive into the psychology of color, 
-                            including how different colors can impact emotions, 
-                            behavior, and perceptions.</p>
-                            
-
-                    </div>
-
-                </div>
-
-            </div>
-
+                   <% blogpost.forEach(element => { %>
 
 
             <div class="blogs-single-item">
 
-                <div class="single-item-top">
+            <div class="single-item-top">
 
-                    <img src="/images/blogimg1.jpg" alt="">
+                <img src="/images/blogimg1.jpg" alt="">
+
+            </div>
+
+            <div class="single-item-bottom">
+
+                <div class="author-date">
+
+                    <p>Garth Morar .. April 4, 2023</p>
+
+                    <div class="fa-solid fa-arrow-right
+                    "></div>
 
                 </div>
 
-                <div class="single-item-bottom">
+                <div class="blog-title-second">
 
-                    <div class="author-date">
+                    <a href="">
+                    <h3>The Psychology of Color in Marketing 
+                        and Design</h3>
+                    </a>
 
-                        <p>Garth Morar .. April 4, 2023</p>
+                </div>
 
-                        <div class="fa-solid fa-arrow-right
-                        "></div>
+                <div class="blog-snippet-second">
 
-                    </div>
-
-                    <div class="blog-title-second">
-
-                        <a href="">
-                        <h3>The Psychology of Color in Marketing 
-                            and Design</h3>
-                        </a>
-
-                    </div>
-
-                    <div class="blog-snippet-second">
-
+                    
+                    <p><%= element.blog_snippet %></p>
                         
-                        <p>A deep dive into the psychology of color, 
-                            including how different colors can impact emotions, 
-                            behavior, and perceptions.</p>
-                            
-
-                    </div>
 
                 </div>
 
             </div>
 
-
-            <div class="blogs-single-item">
-
-                <div class="single-item-top">
-
-                    <img src="/images/blogimg1.jpg" alt="">
-
-                </div>
-
-                <div class="single-item-bottom">
-
-                    <div class="author-date">
-
-                        <p>Garth Morar .. April 4, 2023</p>
-
-                        <div class="fa-solid fa-arrow-right
-                        "></div>
-
-                    </div>
-
-                    <div class="blog-title-second">
-
-                        <a href="">
-                        <h3>The Psychology of Color in Marketing 
-                            and Design</h3>
-                        </a>
-
-                    </div>
-
-                    <div class="blog-snippet-second">
-
-                        
-                        <p>A deep dive into the psychology of color, 
-                            including how different colors can impact emotions, 
-                            behavior, and perceptions.</p>
-                            
-
-                    </div>
-
-                </div>
-
             </div>
+                
+           <% }); %>
+                
+           <% } %>
 
+         
 
-            <div class="blogs-single-item">
+            
 
-                <div class="single-item-top">
 
-                    <img src="/images/blogimg1.jpg" alt="">
 
-                </div>
-
-                <div class="single-item-bottom">
-
-                    <div class="author-date">
-
-                        <p>Garth Morar .. April 4, 2023</p>
-
-                        <div class="fa-solid fa-arrow-right
-                        "></div>
-
-                    </div>
-
-                    <div class="blog-title-second">
-
-                        <a href="">
-                        <h3>The Psychology of Color in Marketing 
-                            and Design</h3>
-                        </a>
-
-                    </div>
-
-                    <div class="blog-snippet-second">
-
-                        
-                        <p>A deep dive into the psychology of color, 
-                            including how different colors can impact emotions, 
-                            behavior, and perceptions.</p>
-                            
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="blogs-single-item">
-
-                <div class="single-item-top">
-
-                    <img src="/images/blogimg1.jpg" alt="">
-
-                </div>
-
-                <div class="single-item-bottom">
-
-                    <div class="author-date">
-
-                        <p>Garth Morar .. April 4, 2023</p>
-
-                        <div class="fa-solid fa-arrow-right
-                        "></div>
-
-                    </div>
-
-                    <div class="blog-title-second">
-
-                        <a href="">
-                        <h3>The Psychology of Color in Marketing 
-                            and Design</h3>
-                        </a>
-
-                    </div>
-
-                    <div class="blog-snippet-second">
-
-                        
-                        <p>A deep dive into the psychology of color, 
-                            including how different colors can impact emotions, 
-                            behavior, and perceptions.</p>
-                            
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-  <div class="blogs-single-item">
-
-                <div class="single-item-top">
-
-                    <img src="/images/blogimg1.jpg" alt="">
-
-                </div>
-
-                <div class="single-item-bottom">
-
-                    <div class="author-date">
-
-                        <p>Garth Morar .. April 4, 2023</p>
-
-                        <div class="fa-solid fa-arrow-right
-                        "></div>
-
-                    </div>
-
-                    <div class="blog-title-second">
-
-                        <a href="">
-                        <h3>The Psychology of Color in Marketing 
-                            and Design</h3>
-                        </a>
-
-                    </div>
-
-                    <div class="blog-snippet-second">
-
-                        
-                        <p>A deep dive into the psychology of color, 
-                            including how different colors can impact emotions, 
-                            behavior, and perceptions.</p>
-                            
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="blogs-single-item">
-
-                <div class="single-item-top">
-
-                    <img src="/images/blogimg1.jpg" alt="">
-
-                </div>
-
-                <div class="single-item-bottom">
-
-                    <div class="author-date">
-
-                        <p>Garth Morar .. April 4, 2023</p>
-
-                        <div class="fa-solid fa-arrow-right
-                        "></div>
-
-                    </div>
-
-                    <div class="blog-title-second">
-
-                        <a href="">
-                        <h3>The Psychology of Color in Marketing 
-                            and Design</h3>
-                        </a>
-
-                    </div>
-
-                    <div class="blog-snippet-second">
-
-                        
-                        <p>A deep dive into the psychology of color, 
-                            including how different colors can impact emotions, 
-                            behavior, and perceptions.</p>
-                            
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
+    
 
 
 
