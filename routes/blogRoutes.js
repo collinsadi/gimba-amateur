@@ -7,7 +7,7 @@ const BlogPost = require('../models/blog')
 
 router.get('/', (req, res) =>{
 
-    BlogPost.find()
+    BlogPost.find().sort({createdAt: -1})
 
     .then(result =>{
 
@@ -38,6 +38,7 @@ newblog.save()
     console.log(result)
 }).catch((err) => {
     console.log(err)
+    res.send(err)
 });
 
 })

@@ -143,7 +143,8 @@
 
                 <div class="author-date">
 
-                    <p>Garth Morar .. April 4, 2023</p>
+                    <p><%= element.createdAt.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
+                        %></p>
 
                     <div class="fa-solid fa-arrow-right
                     "></div>
@@ -152,9 +153,8 @@
 
                 <div class="blog-title-second">
 
-                    <a href="">
-                    <h3>The Psychology of Color in Marketing 
-                        and Design</h3>
+                    <a href="/blog-post/<%= element._id %>">
+                    <h3><%= element.blog_title %></h3>
                     </a>
 
                 </div>
@@ -173,10 +173,14 @@
                 
            <% }); %>
                 
-           <% } %>
+           <% } else {%>
 
-         
+            <div class="no-blog" style="margin-top: 10px;">
+                <h1>OOPS, No Blog To See Here...</h1>
+                <p><a href="/create" style="text-decoration: none; color: #7F56D9; font-weight: bold;"> Create </a> Some Blogs and Return Here to See Them</p>
+            </div>
 
+           <%}%>
             
 
 
