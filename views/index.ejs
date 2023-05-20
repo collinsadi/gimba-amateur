@@ -135,7 +135,7 @@
 
             <div class="single-item-top">
 
-                <img src="/images/blogimg1.jpg" alt="">
+                <img src="<%= element.blog_body_image_url %>" alt="">
 
             </div>
 
@@ -175,8 +175,8 @@
                 
            <% } else {%>
 
-            <div class="no-blog" style="margin-top: 10px;">
-                <h1>OOPS, No Blog To See Here...</h1>
+            <div class="no-blog" style="margin-top: 10px; text-align: center; width: 100%;">
+                <h1>OOPS!, No Blog To See Here...</h1>
                 <p><a href="/create" style="text-decoration: none; color: #7F56D9; font-weight: bold;"> Create </a> Some Blogs and Return Here to See Them</p>
             </div>
 

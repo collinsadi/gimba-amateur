@@ -5,6 +5,8 @@ const Panel = document.querySelector("#mobile-panel");
 const preloader = document.getElementById('preloader');
 
 
+
+
 window.addEventListener('load', ()=>{
 
     setTimeout(() => {

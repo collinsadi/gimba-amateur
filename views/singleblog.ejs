@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIMBA | <%= title %></title>
+    <%- include("./partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="../styles/singleblog.css">
+</head>
+<body>
+    
+ <!-- Including the page header -->
+
+ <%- include("./partials/header.ejs") %>
+
+
+<div class="page-hero" style="background-image: url('<%= blogpost.blog_body_image_url %>');">
+
+
+    <div class="page-hero-inner">
+
+            <div class="blog-details">
+
+                <div class="title-of-blog">
+
+                    <h1>
+                        <%= blogpost.blog_title %>
+                    </h1>
+
+                </div>
+                <div class="snippet-of-blog">
+                    <p><%= blogpost.blog_snippet %></p>
+                </div>
+
+                <div class="different-categories">
+                    <div class="main-category"> <%= blogpost.blog_category.substring(0,12) %> </div>
+                </div>
+
+             </div>
+
+    </div>
+
+</div>
+<div class="the-blog-body" id="the-blog-body">
+
+
+    <%= blogpost.blog_body %>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <%- include("./partials/newsletter.ejs") %>
+<%- include("./partials/footer.ejs") %>
+
+<%- include('./partials/iconscript.ejs') %>
+
+</body>
+</html>

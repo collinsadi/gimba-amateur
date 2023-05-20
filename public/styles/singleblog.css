@@ -1,0 +1,135 @@
+.page-hero{
+
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    /* background-image: url('../images/blogimg1.jpg'); */
+    height: 700px;
+    overflow-y: scroll;
+}
+.page-hero::-webkit-scrollbar{
+
+    display: none;
+}
+.page-hero-inner{
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.411);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.title-of-blog{
+
+    width: 70%;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+}
+.snippet-of-blog{
+
+    width: 70%;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+}
+.different-categories{
+
+    width: 50%;
+    display:  flex;
+    align-items: center;
+    padding: 15px;
+}
+.main-category, .related-category{
+
+    border: 2px solid rgba(255, 255, 255, 0.705);
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+    transition: 0.4s;
+    background-color: rgba(255, 255, 255, 0.479);
+    font-weight: bold;
+    width: 300px;
+    margin-left: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.the-blog-body{
+
+    width: 100%;
+    padding: 20px;
+}
+.the-blog-body p{
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(128, 128, 128, 0.76);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.the-blog-body q{
+
+    font-size: 25px;
+    padding: 10px;
+    border-left: 10px solid #7F56D9;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.the-blog-body h2, .the-blog-body h1{
+
+    padding: 10px;
+    border-bottom: 2px solid #7F56D9;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.the-blog-body a{
+    color: #7F56D9;
+    text-decoration: none;
+    /* border-bottom: 2px solid #7F56D9; */
+
+}
+.the-blog-body img{
+
+    max-width: 500px;
+    max-height: 500px;
+}
+
+
+@media all and (max-width: 770px) { 
+
+    .the-blog-body img{
+
+        max-width: 100%;
+    }
+    .main-category, .related-category{
+        width: 40%;
+    }
+    .title-of-blog{
+
+        width: 100%;
+        font-size: 15px;
+        font-weight: normal;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 20px;
+    }
+    .snippet-of-blog{
+    
+        width: 100%;
+        font-size: 10px;
+        font-weight: normal;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 20px;
+    }
+    .different-categories{
+    
+        width: 100%;
+        display:  flex;
+        align-items: center;
+        padding: 15px;
+    }
+
+
+}

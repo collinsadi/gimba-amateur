@@ -44,17 +44,32 @@ newblog.save()
 })
 
 
-router.get('/show-all', (req, res)=>{
+router.get('/blog-post/:id', (req, res)=>{
 
-    BlogPost.find()
+    const id = req.params.id
+    BlogPost.findById(id)
+    .then(result=>{
+        res.render('singleblog', {blogpost: result, title: result.blog_title.toUpperCase()})
+    })
+    .catch(error=>{
+        res.status(404).render('404')
+    })
 
-    .then(result =>{
-        res.send(result)
-    })
-    .catch(err =>{
-        console.log(err)
-    })
 })
+
+
+
+// router.get('/show-all', (req, res)=>{
+
+//     BlogPost.find()
+
+//     .then(result =>{
+//         res.send(result)
+//     })
+//     .catch(err =>{
+//         console.log(err)
+//     })
+// })
 
 
 
