@@ -27,11 +27,8 @@ const relatedCategory = document.getElementById('blog_related_category');
 const imageUrl = document.getElementById('blog_image_url');
 const preloader = document.getElementById('preloader')
 
-createButton.addEventListener('click', async(e)=>{
 
-  e.preventDefault();
-
-  preloader.style.display = "block"
+const craeteBlog = async()=>{
 
   const response = await fetch('/api/create_blog',{
 
@@ -56,11 +53,33 @@ createButton.addEventListener('click', async(e)=>{
   })
 
 
+
+
 if(response.ok){
 
 console.log("Blog Created Sucessfully")
 
 }
+
+
+}
+
+
+createButton.addEventListener('click', (e)=>{
+
+ 
+ e.preventDefault();
+
+  e.target.innerHTML = "Creating..."
+
+  setTimeout(() => {
+
+    craeteBlog()
+
+    window.location.href = '/'
+    
+  }, 1000);
+
 
 
 })
