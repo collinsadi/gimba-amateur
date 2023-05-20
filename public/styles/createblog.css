@@ -103,3 +103,19 @@
 
     font-size: 15px;
 }
+
+.error-message{
+
+    width: 300px;
+    padding: 15px;
+    position: fixed;
+    right: 0;
+    top: 200px;
+    background-color: rgba(255, 0, 0, 0.342);
+    border-left: 10px solid red;
+    backdrop-filter: blur(8px);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    border-radius: 10px;
+    display: none;
+}
