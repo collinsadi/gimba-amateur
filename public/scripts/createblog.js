@@ -25,11 +25,13 @@ const blogSnippet = document.getElementById('blog_snippet');
 const category = document.getElementById('blog_category');
 const relatedCategory = document.getElementById('blog_related_category');
 const imageUrl = document.getElementById('blog_image_url');
-
+const preloader = document.getElementById('preloader')
 
 createButton.addEventListener('click', async(e)=>{
 
   e.preventDefault();
+
+  preloader.style.display = "block"
 
   const response = await fetch('/api/create_blog',{
 
