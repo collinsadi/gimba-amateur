@@ -23,7 +23,7 @@ mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology: true})
 
 // Server Port
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 app.use(express.json()); 
 
 // Main Server
