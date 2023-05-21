@@ -36,6 +36,7 @@ const newblog = new BlogPost(req.body)
 newblog.save()
 .then((result) => {
     console.log(result)
+    res.status(200).send(result)
 }).catch((err) => {
     console.log(err)
     res.status(400).send(err)

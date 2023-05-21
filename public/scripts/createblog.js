@@ -64,25 +64,24 @@ const craeteBlog = async()=>{
 
     
   })
-
-
-
-
-if(response.ok){
-
-console.log("Blog Created Sucessfully")
-window.location.href = '/';
-
-} else{
-
-  
-  errorMesage.style.display = 'block'
-  messageTitle.innerHTML = "Error!"
-  messageBody.innerHTML = "400 Error Creating Blog"
-  return;
-
-
-}
+  .then(response => {
+    if (response.ok) {
+      errorMesage.style.display = 'block';
+      errorMesage.style.borderLeft = '10px solid green';
+      errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
+      messageTitle.innerHTML = 'Success!';
+      messageBody.innerHTML = 'Creating Blog';
+      window.location.href = '/';
+    } else {
+      throw new Error('Error Creating Blog');
+    }
+  })
+  .catch(error => {
+    errorMesage.style.display = 'block';
+    messageTitle.innerHTML = 'Error!';
+    messageBody.innerHTML = error.message;
+    return;
+  });
 
 
 }
@@ -125,17 +124,14 @@ createButton.addEventListener('click', (e) => {
       }, 4000);
     }
 
-    if (imageUrl.value.length < 3000) {
+    if (imageUrl.value.length < 5) {
       errorMesage.classList.add('show-error');
       messageBody.innerHTML = "Enter a Valid Data URL";
       isImageUrlValid = false;
       setTimeout(() => {
         errorMesage.classList.remove('show-error')
       }, 4000);
-    } else {
-      errorMesage.style.display = "none";
     }
-
 
 
   var bloglength = quill.getLength();

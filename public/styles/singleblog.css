@@ -6,6 +6,10 @@
     /* background-image: url('../images/blogimg1.jpg'); */
     height: 700px;
     overflow-y: scroll;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
 }
 .page-hero::-webkit-scrollbar{
 
