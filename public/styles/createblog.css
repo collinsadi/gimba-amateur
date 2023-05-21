@@ -119,3 +119,26 @@
     border-radius: 10px;
     display: none;
 }
+
+.show-error{
+    display: block;
+    animation: fadecomot 4s;
+    animation-fill-mode: initial;
+}
+
+@keyframes fadecomot {
+
+    0%{
+        
+        opacity: 1;
+        
+    }
+    50%{
+        opacity: 0.85;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+
+}

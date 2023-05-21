@@ -31,8 +31,13 @@ const relatedCategory = document.getElementById('blog_related_category');
 const imageUrl = document.getElementById('blog_image_url');
 
 
+const errorMesage = document.getElementById('error-message');
 
 
+const messageTitle = document.getElementById('msg-title');
+
+const messageBody = document.getElementById('msg-body');
+let isinvalid = false;
 
 
 
@@ -66,6 +71,16 @@ const craeteBlog = async()=>{
 if(response.ok){
 
 console.log("Blog Created Sucessfully")
+window.location.href = '/';
+
+} else{
+
+  
+  errorMesage.style.display = 'block'
+  messageTitle.innerHTML = "Error!"
+  messageBody.innerHTML = "400 Error Creating Blog"
+  return;
+
 
 }
 
@@ -73,12 +88,7 @@ console.log("Blog Created Sucessfully")
 }
 
 
-const errorMesage = document.getElementById('error-message');
 
-const messageTitle = document.getElementById('msg-title');
-
-const messageBody = document.getElementById('msg-body');
-let isinvalid = false;
 
 createButton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -89,27 +99,39 @@ createButton.addEventListener('click', (e) => {
     let isImageUrlValid = true;
 
     if (blogTitle.value.length > 64 || blogTitle.value.length < 2) {
-      errorMesage.style.display = "block";
+      errorMesage.classList.add('show-error');
       messageBody.innerHTML = blogTitle.value.length > 64 ? "Blog Title too long" : "Invalid Blog Title";
       isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
     }
 
     if (blogSnippet.value.length < 2) {
-      errorMesage.style.display = "block";
+      errorMesage.classList.add('show-error');
       messageBody.innerHTML = "Invalid Blog Snippet";
       isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
     }
 
     if (category.value.length < 2) {
-      errorMesage.style.display = "block";
+      errorMesage.classList.add('show-error');
       messageBody.innerHTML = "Invalid Blog Category";
       isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
     }
 
     if (imageUrl.value.length < 3000) {
-      errorMesage.style.display = "block";
+      errorMesage.classList.add('show-error');
       messageBody.innerHTML = "Enter a Valid Data URL";
       isImageUrlValid = false;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
     } else {
       errorMesage.style.display = "none";
     }
@@ -119,9 +141,13 @@ createButton.addEventListener('click', (e) => {
   var bloglength = quill.getLength();
 
     if (bloglength < 60) {
-      errorMesage.style.display = "block";
+      errorMesage.classList.add('show-error');
       messageBody.innerHTML = "Invalid Blog Content";
       isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
+      
     }
 
 
@@ -132,11 +158,10 @@ createButton.addEventListener('click', (e) => {
 
 
     if (!isinvalid && isImageUrlValid) {
-      createBlog();
-      window.location.href = '/';
+      craeteBlog();
     } else{
 
-      errorMesage.style.display ="block"
+      errorMesage.classList.add('show-error')
     }
 
     e.target.innerHTML = "CREATE BLOG";

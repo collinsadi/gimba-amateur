@@ -38,7 +38,7 @@ newblog.save()
     console.log(result)
 }).catch((err) => {
     console.log(err)
-    res.send(err)
+    res.status(400).send(err)
 });
 
 })
