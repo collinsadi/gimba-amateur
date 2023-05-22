@@ -18,7 +18,7 @@ mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology: true})
 })
 .catch(err=>{
     console.log("Could not connect to database X_X")
-    console.log(err)
+    console.log(er0r)
 })
 
 // Server Port
