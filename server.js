@@ -4,6 +4,7 @@ const app = express()
 const ethers = require('ethers');
 const mongoose = require('mongoose')
 const blogroutes = require('./routes/blogRoutes')
+const userauthroutes = require('./routes/userauthroutes')
 
 
 
@@ -47,6 +48,13 @@ app.get('/contact', (req, res)=>{
 })
 
 app.use(blogroutes)
+app.use(userauthroutes)
+
+
+
+
+
+
 
 app.use((req, res)=>{
 
