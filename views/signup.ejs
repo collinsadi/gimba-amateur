@@ -54,6 +54,9 @@
                 </div>
 
                  <div class="sign-up-form" id="log-in-form">
+                    <p style="text-align: center;color: red;" id="login-error">
+                        
+                    </p>
                     
                     <h3>Log In</h3>
 
@@ -202,11 +205,67 @@ signUpBtn.addEventListener("click", (e)=>{
 const loginBtn = document.getElementById('login-btn');
 const loginPassword = document.getElementById('loginpassword');
 const loginemail = document.getElementById('loginemail');
+const loginError = document.getElementById('login-error');
+
+
+
+const getUsers = async ()=>{
+
+    const response = await fetch('/api/get_user', {
+
+        method: "POST",
+        headers: {
+            "Content-Type": "Application/Json"
+        },
+        body: JSON.stringify({
+
+            email: loginemail.value,
+            password: loginPassword.value
+
+
+        })
+
+    })
+
+    const data = await response.json()
+    console.log(data)
+    console.log(data.redirectUrl)
+
+    if(data.message === "Invalid Credentials" ){
+
+        loginError.innerHTML = data.message
+        return;
+    }
+
+    if(data.message === "Log In Sucessful"){
+
+        loginError.style.color = "green"
+        loginError.innerHTML = data.message
+        window.location.href = data.redirectUrl
+
+    }
+
+}
+
 
 loginBtn.addEventListener('click', (e)=>{
 
     e.preventDefault();
     // alert('working bro')
+
+    e.target.innerHTML = "Logging in..."
+
+    setTimeout(() => {
+ getUsers()
+.then( e.target.innerHTML = "Login")
+        
+    }, 2000);
+
+   
+
+    
+
+
 
 })
 

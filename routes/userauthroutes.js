@@ -3,6 +3,39 @@ const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const jwtsecret = "mysecretblog"
+
+
+
+
+
+const authMiddleWare = (req, res, next) =>{
+
+    const token = req.cookies.token;
+
+    if(!token) {
+
+        // res.status(401).json({ message: 'Unauthorized'})
+
+        res.redirect('/join')
+        return;
+    }
+
+
+    try {
+
+        const decoded = jwt.verify(token, jwtsecret)
+        req.userId = decoded.UserId
+        next()
+    } catch (error) {
+        return res.redirect('/join')
+//  res.status(401).json({ message: 'Unauthorized'})
+    }
+
+
+
+
+}
 
 
 
@@ -49,6 +82,42 @@ router.post('/api/create_user', async (req, res)=>{
     }
     
 
+
+})
+
+router.post('/api/get_user', async (req, res)=>{
+
+    const {email, password} = req.body;
+
+    const user = await User.findOne({email})
+
+    if(!user){
+
+        res.status(401).send({message: "Invalid Credentials"})
+        return;
+    }
+
+    const ispasswordvalid = await bcrypt.compare(password, user.password)
+
+    if(!ispasswordvalid){
+
+        res.status(401).send({message: "Invalid Credentials"});
+        return;
+    }
+
+   
+    
+   
+    const token = jwt.sign({userId: user._id}, jwtsecret)
+    res.cookie("token", token, {httpOnly: true});
+    res.status(200).send({message: "Log In Sucessful",  redirectUrl: '/dashboard' })
+
+
+})
+
+router.get('/dashboard', authMiddleWare, (req, res)=>{
+
+res.render('dashboard')
 
 })
 
