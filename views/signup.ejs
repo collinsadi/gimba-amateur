@@ -96,6 +96,7 @@
     const loginpage = document.getElementById("log-in-form");
     // Signup button
     const signUpBtn = document.querySelector("#signup-btn")
+    const errormessage = document.getElementById('error-message');
 
     switchtologin.addEventListener("click", (e)=>{
         e.preventDefault();
@@ -127,12 +128,27 @@ const CreateUsers = async () => {
             },
             body: JSON.stringify({
                full_name: fullname.value,
-               email: email.value,
+               email: email.value.toLowerCase(),
                password: password.value 
             })
         })
 
         const data = await response.json()
+
+        if(data.message === "Email Already In Use"){
+            errormessage.innerHTML = data.message
+        }
+
+        if(data.message === "Sign Up Sucessful"){
+            errormessage.style.color = "green"
+            errormessage.innerHTML = data.message
+            location.reload()
+        }
+        
+        if(data.message === "Internal Server Error"){
+
+            errormessage.innerHTML = data.message
+        }
         console.log(data.message)
         
     } catch (error) {
@@ -145,7 +161,7 @@ const CreateUsers = async () => {
 signUpBtn.addEventListener("click", (e)=>{
     e.preventDefault();
 
-    const errormessage = document.getElementById('error-message');
+    
 
    
 
@@ -173,9 +189,24 @@ signUpBtn.addEventListener("click", (e)=>{
     setTimeout(() => {
 
         CreateUsers()
-        // .then(_=> location.reload())
+     
         
     }, 2000);
+
+})
+
+
+
+// Log Users In
+
+const loginBtn = document.getElementById('login-btn');
+const loginPassword = document.getElementById('loginpassword');
+const loginemail = document.getElementById('loginemail');
+
+loginBtn.addEventListener('click', (e)=>{
+
+    e.preventDefault();
+    // alert('working bro')
 
 })
 

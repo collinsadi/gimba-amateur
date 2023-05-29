@@ -12,17 +12,17 @@ const MongoStore = require('connect-mongo')
 
 
 // connect to mongodb
+const liveurl = 'mongodb+srv://netninja:1020304050@cluster0.54vyixp.mongodb.net/node-tuts?retryWrites=true&w=majority'
+const localurl = 'mongodb://127.0.0.1:27017/gimba';
 
-const url = 'mongodb://127.0.0.1:27017/gimba';
-
-mongoose.connect(url,{useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(liveurl,{useNewUrlParser: true, useUnifiedTopology: true})
 
 .then(_=>{
     console.log('Connected to DataBase ):')
 })
 .catch(err=>{
     console.log("Could not connect to database X_X")
-    console.log(er0r)
+    console.log(err)
 })
 
 // Server Port
@@ -43,7 +43,7 @@ app.use(Session({
     secret: "mysecretblog",
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl: url})
+    store: MongoStore.create({mongoUrl: localurl})
 }))
 
 
