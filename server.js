@@ -5,6 +5,9 @@ const ethers = require('ethers');
 const mongoose = require('mongoose')
 const blogroutes = require('./routes/blogRoutes')
 const userauthroutes = require('./routes/userauthroutes')
+const Session = require('express-session');
+const cookieparser = require('cookie-parser')
+const MongoStore = require('connect-mongo')
 
 
 
@@ -36,6 +39,14 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true}))
 app.use(morgan('dev'))
+app.use(Session({
+    secret: "mysecretblog",
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({mongoUrl: url})
+}))
+
+
 
 
 app.get('/about', (req, res)=>{
