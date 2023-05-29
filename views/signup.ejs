@@ -33,6 +33,8 @@
 
 
                 <div class="sign-up-form" id="sign-up-form">
+
+                    <p style="color: red;" id="error-message"></p>
                     
                     <h3>Sign Up</h3>
 
@@ -107,10 +109,35 @@
         loginpage.style.display = "none"
     })
 
-    
+    const fullname = document.getElementById("fullname");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
 
 // Fetch the api to create users
 const CreateUsers = async () => {
+
+    
+    try {
+
+        const response = await fetch('/api/create_user', {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/Json"
+            },
+            body: JSON.stringify({
+               full_name: fullname.value,
+               email: email.value,
+               password: password.value 
+            })
+        })
+
+        const data = await response.json()
+        console.log(data.message)
+        
+    } catch (error) {
+        console.log(error)
+    }
 
 };
 
@@ -118,11 +145,35 @@ const CreateUsers = async () => {
 signUpBtn.addEventListener("click", (e)=>{
     e.preventDefault();
 
-    e.target.innerHTML = "Working..."
+    const errormessage = document.getElementById('error-message');
+
+   
+
+    if(fullname.value === "" || password.value === "" || email.value === ""){
+        errormessage.innerHTML = "All Fields are Required"
+        return;
+    }
+
+    if(fullname.value.length < 3) {
+        errormessage.innerHTML = "Your Full Name is Required"
+        return;
+    }
+
+    if(email.value.indexOf("@") === -1){
+        errormessage.innerHTML = "Please Enter a Valid Email"
+        return;
+    }
+
+    if(password.value.length <= 6){
+        errormessage.innerHTML = "Password must be more than 6 Characters"
+        return;
+    }
+ e.target.innerHTML = "Working..."
 
     setTimeout(() => {
 
         CreateUsers()
+        // .then(_=> location.reload())
         
     }, 2000);
 

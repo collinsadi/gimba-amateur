@@ -25,16 +25,22 @@ router.post('/api/create_user', async (req, res)=>{
 
         try{
 
-            const user = User.create({full_name, email, password: hashedpassword})
+            const user = await User.create({full_name, email, password: hashedpassword})
             res.status(200).send({message: "Sign Up Sucessful"})
+            return;
         } catch(error){
 
             if(error.code === 11000){
 
                 res.status(401).send({message: "Email Already In Use"})
+                console.log(error)
+                return;
             }
 
             res.status(500).send({message: "Internal Server Error"})
+            console.log(error)
+            return;
+            
         }
 
     } catch(error){
