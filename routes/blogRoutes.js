@@ -29,7 +29,7 @@ router.get('/create', (req, res)=>{
 
 router.post('/api/create_blog', (req, res)=>{
 
-const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url, } = req.body
+const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,author } = req.body
 
 
 const newblog = new BlogPost(req.body)

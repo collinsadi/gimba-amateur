@@ -137,6 +137,7 @@ const getUsers = async ()=>{
     console.log(data.redirectUrl)
     console.log(data.author)
 
+
     if(data.message === "Invalid Credentials" ){
 
         loginError.innerHTML = data.message
@@ -144,10 +145,16 @@ const getUsers = async ()=>{
     }
 
     if(data.message === "Log In Sucessful"){
-
+        const author =  data.author.full_name
         loginError.style.color = "green"
         loginError.innerHTML = data.message
-       // window.location.href = data.redirectUrl
+
+        if(author){
+
+             localStorage.setItem('fullName', author)
+        }
+       
+        window.location.href = data.redirectUrl
 
     }
 

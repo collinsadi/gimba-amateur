@@ -8,7 +8,15 @@
 </head>
 <body>
 
-    <h1> Dashboard for <%= user %> </h1>
+    <h1> Dashboard for <span id="authorname"></span>  </h1>
     
 </body>
 </html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+
+</script>

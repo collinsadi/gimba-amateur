@@ -30,6 +30,10 @@ const blogschema = new schema({
 
         type: String,
         required: true,
+    },
+    author:{
+        type: String,
+        required: true,
     }
 
 }, {timestamps: true})
