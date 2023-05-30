@@ -1,0 +1,178 @@
+    const switchtologin = document.querySelector("#switch-to-login");
+    const switchtosignup = document.querySelector("#switch-to-signup");
+    const signuppage = document.querySelector("#sign-up-form");
+    const loginpage = document.getElementById("log-in-form");
+    // Signup button
+    const signUpBtn = document.querySelector("#signup-btn")
+    const errormessage = document.getElementById('error-message');
+
+    switchtologin.addEventListener("click", (e)=>{
+        e.preventDefault();
+        signuppage.style.display = "none"
+        loginpage.style.display = "block"
+    })
+
+    switchtosignup.addEventListener("click", (e)=>{
+        e.preventDefault();
+        signuppage.style.display = "block"
+        loginpage.style.display = "none"
+    })
+
+    const fullname = document.getElementById("fullname");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
+
+// Fetch the api to create users
+const CreateUsers = async () => {
+
+    
+    try {
+
+        const response = await fetch('/api/create_user', {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/Json"
+            },
+            body: JSON.stringify({
+               full_name: fullname.value,
+               email: email.value.toLowerCase(),
+               password: password.value 
+            })
+        })
+
+        const data = await response.json()
+
+        if(data.message === "Email Already In Use"){
+            errormessage.innerHTML = data.message
+        }
+
+        if(data.message === "Sign Up Sucessful"){
+            errormessage.style.color = "green"
+            errormessage.innerHTML = data.message
+            location.reload()
+        }
+        
+        if(data.message === "Internal Server Error"){
+
+            errormessage.innerHTML = data.message
+        }
+        console.log(data.message)
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+};
+
+
+signUpBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+
+    
+
+   
+
+    if(fullname.value === "" || password.value === "" || email.value === ""){
+        errormessage.innerHTML = "All Fields are Required"
+        return;
+    }
+
+    if(fullname.value.length < 3) {
+        errormessage.innerHTML = "Your Full Name is Required"
+        return;
+    }
+
+    if(email.value.indexOf("@") === -1){
+        errormessage.innerHTML = "Please Enter a Valid Email"
+        return;
+    }
+
+    if(password.value.length <= 6){
+        errormessage.innerHTML = "Password must be more than 6 Characters"
+        return;
+    }
+ e.target.innerHTML = "Working..."
+
+    setTimeout(() => {
+
+        CreateUsers()
+     
+        
+    }, 2000);
+
+})
+
+
+
+// Log Users In
+
+const loginBtn = document.getElementById('login-btn');
+const loginPassword = document.getElementById('loginpassword');
+const loginemail = document.getElementById('loginemail');
+const loginError = document.getElementById('login-error');
+
+
+
+const getUsers = async ()=>{
+
+    const response = await fetch('/api/get_user', {
+
+        method: "POST",
+        headers: {
+            "Content-Type": "Application/Json"
+        },
+        body: JSON.stringify({
+
+            email: loginemail.value,
+            password: loginPassword.value
+
+
+        })
+
+    })
+
+    const data = await response.json()
+    console.log(data)
+    console.log(data.redirectUrl)
+    console.log(data.author)
+
+    if(data.message === "Invalid Credentials" ){
+
+        loginError.innerHTML = data.message
+        return;
+    }
+
+    if(data.message === "Log In Sucessful"){
+
+        loginError.style.color = "green"
+        loginError.innerHTML = data.message
+       // window.location.href = data.redirectUrl
+
+    }
+
+}
+
+
+loginBtn.addEventListener('click', (e)=>{
+
+    e.preventDefault();
+    // alert('working bro')
+
+    e.target.innerHTML = "Logging in..."
+
+    setTimeout(() => {
+ getUsers()
+.then( e.target.innerHTML = "Login")
+        
+    }, 2000);
+
+   
+
+    
+
+
+
+})
+
+

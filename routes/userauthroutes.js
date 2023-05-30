@@ -111,8 +111,14 @@ router.post('/api/get_user', async (req, res)=>{
    
     const token = jwt.sign({userId: user._id}, jwtsecret)
     res.cookie("token", token, {httpOnly: true});
-    res.status(200).send({message: "Log In Sucessful",  redirectUrl: '/dashboard' })
+    res.status(200).send({message: "Log In Sucessful",  redirectUrl: '/dashboard', author: user })
 
+
+})
+
+router.get('/logout', (req, res)=>{
+
+    req.session.destroy()
 
 })
 
