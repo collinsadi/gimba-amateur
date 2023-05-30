@@ -86,18 +86,14 @@
     background-color: white;
     color: #7F56D9;
 }
-.ql-editor {
+.ck-editor {
     color: black;
   }
   
-.ql-toolbar{
+.ck-editor{
     background-color: white !important;
     margin-top: 10px;
     border-radius: 10px;
-}
-.ql-toolbar button:hover{
-
-    color: #7F56D9;
 }
 .ql-container{
 

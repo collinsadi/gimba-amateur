@@ -11,6 +11,9 @@
   "author": "Collins Adi",
   "license": "ISC",
   "dependencies": {
+    "@tiptap/core": "^2.0.3",
+    "@tiptap/pm": "^2.0.3",
+    "@tiptap/starter-kit": "^2.0.3",
     "@walletconnect/client": "^1.8.0",
     "bcrypt": "^5.1.0",
     "colors": "^1.4.0",

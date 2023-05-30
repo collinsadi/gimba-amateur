@@ -9,7 +9,7 @@ const jwtsecret = "mysecretblog"
 
 
 
-const authMiddleWare = (req, res, next) =>{
+const authMiddleWare = async (req, res, next) =>{
 
     const token = req.cookies.token;
 
@@ -24,8 +24,9 @@ const authMiddleWare = (req, res, next) =>{
 
     try {
 
-        const decoded = jwt.verify(token, jwtsecret)
+        const decoded = await jwt.verify(token, jwtsecret)
         req.userId = decoded.UserId
+        console.log(req.userId)
         next()
     } catch (error) {
         return res.redirect('/join')
@@ -116,6 +117,8 @@ router.post('/api/get_user', async (req, res)=>{
 })
 
 router.get('/dashboard', authMiddleWare, (req, res)=>{
+
+
 
 res.render('dashboard')
 
