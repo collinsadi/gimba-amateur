@@ -1,0 +1,109 @@
+
+:root{
+
+    --primary-color: blueviolet;
+    --white-color: white;
+    --white-text: white;
+}
+
+body{
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-sidebar{
+
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    background-color: var(--primary-color);
+}
+
+.dashboard-main-page{
+
+    position: fixed;
+   width: 1117px;
+    height: 100%;
+    right: 0;
+    top: 60px;
+    background-color: var(--white-color);
+    overflow-x: hidden;
+
+}
+.dashboard-header{
+    position: fixed;
+    height: 60px;
+    width: 1117px;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    background-color: var(--primary-color);
+}
+.sidebar-inner{
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.dashboard-brandname{
+    width: 90%;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    color: white;
+}
+.dashboard-brandname h3{
+
+    font-size: 35px;
+    text-align: center;
+}
+
+
+
+/* the dashboard header */
+
+
+.dashboard-header{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-header-inner{
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+padding-right: 15px;
+}
+.user-image-name{
+
+    width: 500px;
+}
+.user-name{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white-text);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+.user-name p{
+
+    margin-right: 5px;
+}
+.userimage{
+
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.userimage img{
+    width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+}
