@@ -49,8 +49,7 @@ body{
 .dashboard-brandname{
     width: 90%;
     padding: 20px;
-    position: absolute;
-    top: 0;
+   
     color: white;
 }
 .dashboard-brandname h3{
@@ -81,6 +80,9 @@ padding-right: 15px;
 .user-image-name{
 
     width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 .user-name{
 
@@ -90,20 +92,135 @@ padding-right: 15px;
     color: var(--white-text);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+    cursor: pointer;
 }
 .user-name p{
 
     margin-right: 5px;
+    text-transform: uppercase;
 }
+
 .userimage{
 
-    width: 300px;
+    width: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
 .userimage img{
-    width: 100px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     max-width: 100px;
     overflow: hidden;
+}
+.sidebar-buttons{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+
+.single-button{
+
+width: 80%;
+display: flex;
+align-items: center;
+color: var(--white-text);
+font-size: 20px;
+font-weight: bold;
+cursor: pointer;
+transition: 0.4s;
+padding: 15px;
+margin-top: 20px;
+}
+.single-button:first-child{
+    margin-top: 0;
+}
+.single-button p{
+    margin-left: 20px;
+}
+
+.single-button:hover{
+
+margin-left: 25px;
+}
+
+.active-sidebar-btn{
+
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+
+
+
+
+
+/* ========== NO STYLING IN THIS MEDIA  */
+
+
+@media (min-width: 1308px){
+
+    .mobile-sidebar{
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 1308px) { 
+
+.dashboard-sidebar{
+
+    display: none;
+animation: sidein 0.6s;
+z-index: 15;
+}
+
+@keyframes sidein{
+
+    from{
+                transform: translateX(-100%);
+    }
+    to{
+
+        transform: translateX(0);
+    }
+}
+
+.dashboard-main-page{
+
+    width: 100%;
+}
+.dashboard-header{
+width: 100%;
+}
+
+.dashboard-header-inner{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+}
+
+.mobile-sidebar{
+
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--white-color);
+    
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+
+
+
 }
