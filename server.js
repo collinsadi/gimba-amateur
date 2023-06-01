@@ -4,6 +4,7 @@ const app = express()
 const ethers = require('ethers');
 const mongoose = require('mongoose')
 const blogroutes = require('./routes/blogRoutes')
+const dashboardroutes = require('./routes/dashboard')
 const userauthroutes = require('./routes/userauthroutes')
 const Session = require('express-session');
 const cookieparser = require('cookie-parser')
@@ -61,7 +62,7 @@ app.get('/contact', (req, res)=>{
 
 app.use(blogroutes)
 app.use(userauthroutes)
-
+app.use(dashboardroutes)
 
 
 

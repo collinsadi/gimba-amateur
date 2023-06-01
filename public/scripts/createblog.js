@@ -1,15 +1,15 @@
 
-var options = {
-  placeholder: 'Blog Body Goes Here',
-  readOnly: false,
-  theme: 'snow'
-};
+// var options = {
+//   placeholder: 'Blog Body Goes Here',
+//   readOnly: false,
+//   theme: 'snow'
+// };
 
 
-var quill = new Quill('#editor', options);
+// var quill = new Quill('#editor', options);
 
-var htmlContent = quill.root.innerHTML;
-console.log(htmlContent);
+// var htmlContent = quill.root.innerHTML;
+// console.log(htmlContent);
 
 
 // ClassicEditor

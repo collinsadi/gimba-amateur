@@ -9,3 +9,20 @@ bringSidebar.addEventListener('click', ()=>{
     sideBar.style.display = "block"
 
 })
+
+const expandEditor = document.querySelector('#create-new-blog')
+const editor = document.querySelector('#the-main-editor');
+
+expandEditor.addEventListener('click', ()=>{
+
+    if(editor.classList.contains('removeeditor')){
+        editor.classList.remove('removeeditor')
+        editor.classList.add('showeditor')
+    } else if(editor.classList.contains('showeditor')){
+        editor.classList.remove('showeditor')
+        editor.classList.add('removeeditor')
+    } else{
+        editor.style.display = 'none'
+    }
+
+})
