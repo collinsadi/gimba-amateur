@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const BlogPost = require('../models/blog')
+const Draft = require('../models/draft')
 
 
 
@@ -27,20 +28,89 @@ router.get('/create', (req, res)=>{
 
 })
 
-router.post('/api/create_blog', (req, res)=>{
+router.post('/api/create_blog', async (req, res)=>{
 
-const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,author } = req.body
+const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
+
+try {
+
+    // const AuthorId = authorId;
 
 
-const newblog = new BlogPost(req.body)
-newblog.save()
-.then((result) => {
-    console.log(result)
-    res.status(200).send(result)
-}).catch((err) => {
-    console.log(err)
-    res.status(400).send(err)
-});
+    const newblog = await BlogPost.create({
+
+        blog_title,
+        blog_snippet,
+        blog_body,
+        blog_category,
+        blog_related_category,
+        blog_body,
+        blog_body_image_url,
+        author: authorId
+
+    })
+   // newblog.save()
+    .then((result) => {
+
+        console.log(result)
+        res.status(200).send(result)
+
+    }).catch((err) => {
+        console.log(err)
+        res.status(400).send(err)
+    });
+
+
+
+} catch (error) {
+
+    console.log(error)
+    
+}
+
+})
+
+router.post('/api/create_draft', async(req, res)=>{
+
+
+    const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
+
+    try {
+    
+        // const AuthorId = authorId;
+    
+    
+        const newblog = await Draft.create({
+    
+            blog_title,
+            blog_snippet,
+            blog_body,
+            blog_category,
+            blog_related_category,
+            blog_body,
+            blog_body_image_url,
+            author: authorId
+    
+        })
+       // newblog.save()
+        .then((result) => {
+    
+            console.log(result)
+            res.status(200).send(result)
+    
+        }).catch((err) => {
+            console.log(err)
+            res.status(400).send(err)
+        });
+    
+    
+    
+    } catch (error) {
+    
+        console.log(error)
+        
+    }
+    
 
 })
 

@@ -1,43 +1,37 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
-const blogschema = new schema({
+const draftschema = new schema({
 
     blog_title: {
 
         type: String,
-        required: true,
     },
     blog_snippet: {
 
         type: String,
-        required: true,
     },
     blog_category: {
         type: String,
-        required: true,
     },
     blog_related_category: {
 
         type: String,
-        required: true,
     },
     blog_body: {
         type: String,
-        required: true,
     },
     blog_body_image_url:{
 
         type: String,
-        required: true,
     },
     author:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'User',
     }
 
 }, {timestamps: true})
 
-const BlogPost = mongoose.model('blogpost', blogschema)
+const Draft = mongoose.model('draft', draftschema)
 
-module.exports = BlogPost
+module.exports = Draft

@@ -112,7 +112,7 @@
 
                     <h3>Create a New Blog</h3>
 
-                    <i class="fa-solid fa-angle-down"></i>
+                    <i class="fa-solid fa-angle-down" id="arrow-to-toggle"></i>
 
                 </div>
 
@@ -124,6 +124,10 @@
 
             </div>
         </div>
+
+        <% blogpost.forEach(blog => { %>
+            <h1> <%= blog.blog_title %></h1>
+      <% }); %>
      
         <!-- <%- include('./createblog.ejs') %> -->
 

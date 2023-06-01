@@ -32,6 +32,7 @@
 
 
 const createButton = document.getElementById('create-blog-btn');
+const draftButton = document.getElementById('draft-blog-btn');
 const  blogTitle = document.getElementById('blog_title');
 const blogSnippet = document.getElementById('blog_snippet');
 const category = document.getElementById('blog_category');
@@ -66,7 +67,7 @@ const craeteBlog = async()=>{
       blog_related_category: relatedCategory.value,
       blog_body: quill.root.innerHTML,
       blog_body_image_url: imageUrl.value,
-      author: localStorage.getItem('fullName')
+      authorId: localStorage.getItem('id')
 
     })
 
@@ -174,10 +175,130 @@ createButton.addEventListener('click', (e) => {
   }, 1000);
 });
 
+const createDraft = async()=>{
+
+  
+  const response = await fetch('/api/create_draft',{
+
+    method: 'POST', 
+    headers: {
+
+      'Content-Type': 'Application/Json'
+    },
+    body: JSON.stringify({
+
+      blog_title: blogTitle.value,
+      blog_snippet: blogSnippet.value,
+      blog_category: category.value,
+      blog_related_category: relatedCategory.value,
+      blog_body: quill.root.innerHTML,
+      blog_body_image_url: imageUrl.value,
+      authorId: localStorage.getItem('id')
+
+    })
+
+
+    
+  })
+  .then(response => {
+    if (response.ok) {
+      errorMesage.style.display = 'block';
+      errorMesage.style.borderLeft = '10px solid green';
+      errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
+      messageTitle.innerHTML = 'Success!';
+      messageBody.innerHTML = 'Creating Blog';
+      window.location.href = '/';
+    } else {
+      throw new Error('Error Creating Blog');
+    }
+  })
+  .catch(error => {
+    errorMesage.style.display = 'block';
+    messageTitle.innerHTML = 'Error!';
+    messageBody.innerHTML = error.message;
+    return;
+  });
+
+ 
+}
+
+
+draftButton.addEventListener('click', (e)=>{
+
+  e.preventDefault();
+  e.target.innerHTML = "Creating...";
+  console.log(document.querySelector('#editor').innerHTML)
+
+  setTimeout(() => {
+    let isinvalid = false;
+    let isImageUrlValid = true;
+
+    if (blogTitle.value.length > 64 || blogTitle.value.length < 2) {
+      errorMesage.classList.add('show-error');
+      messageBody.innerHTML = blogTitle.value.length > 64 ? "Blog Title too long" : "Invalid Blog Title";
+      isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
+    }
+
+    if (blogSnippet.value.length < 2) {
+      errorMesage.classList.add('show-error');
+      messageBody.innerHTML = "Invalid Blog Snippet";
+      isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
+    }
+
+    if (category.value.length < 2) {
+      errorMesage.classList.add('show-error');
+      messageBody.innerHTML = "Invalid Blog Category";
+      isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
+    }
+
+    if (imageUrl.value.length < 5) {
+      errorMesage.classList.add('show-error');
+      messageBody.innerHTML = "Enter a Valid Data URL";
+      isImageUrlValid = false;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
+    }
+
+
+  var bloglength = quill.getLength();
+
+    if (bloglength < 60) {
+      errorMesage.classList.add('show-error');
+      messageBody.innerHTML = "Invalid Blog Content";
+      isinvalid = true;
+      setTimeout(() => {
+        errorMesage.classList.remove('show-error')
+      }, 4000);
+      
+    }
 
 
 
 
+    
+   
+
+
+    if (!isinvalid && isImageUrlValid) {
+      createDraft();
+    } else{
+
+      errorMesage.classList.add('show-error')
+    }
+
+    e.target.innerHTML = "Save to Draft";
+  }, 1000);
+})
 
 
 
