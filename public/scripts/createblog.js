@@ -1,33 +1,4 @@
 
-// var options = {
-//   placeholder: 'Blog Body Goes Here',
-//   readOnly: false,
-//   theme: 'snow'
-// };
-
-
-// var quill = new Quill('#editor', options);
-
-// var htmlContent = quill.root.innerHTML;
-// console.log(htmlContent);
-
-
-// ClassicEditor
-// .create(document.querySelector('#editor'))
-// .then(editor => {
-//   console.log('Editor initialized', editor);
-// })
-// .catch(error => {
-//   console.error('Error initializing editor', error);
-// });
-
-// console.log(document.querySelector('#editor').innerHTML)
-
-// quill.on('text-change', function(delta, oldDelta, source) {
-//     console.log('Content changed:', quill.root.innerHTML);
-//   });
-
-
 
 
 

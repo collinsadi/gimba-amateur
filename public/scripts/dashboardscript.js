@@ -31,22 +31,3 @@ expandEditor.addEventListener('click', ()=>{
 })
 
 
-window.addEventListener('load', async ()=>{
-
-    const AuthorId = localStorage.getItem('id')
-
-    //console.log(AuthorId)
-  
-
-const response = await fetch(`/dashboard/articles`, {
-    method: 'POST',
-    headers: {
-        'Content-Type': "Application/Json"
-    },
-    body: JSON.stringify({authorid: AuthorId})
-})
-
-const data = await response.json()
-console.log(data)
-
-})
