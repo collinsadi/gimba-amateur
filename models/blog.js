@@ -32,8 +32,8 @@ const blogschema = new schema({
         required: true,
     },
     author:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        type: String,
+        required: true,
     }
 
 }, {timestamps: true})
