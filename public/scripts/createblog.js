@@ -1,7 +1,3 @@
-
-
-
-
 const createButton = document.getElementById('create-blog-btn');
 const draftButton = document.getElementById('draft-blog-btn');
 const  blogTitle = document.getElementById('blog_title');
@@ -9,6 +5,7 @@ const blogSnippet = document.getElementById('blog_snippet');
 const category = document.getElementById('blog_category');
 const relatedCategory = document.getElementById('blog_related_category');
 const imageUrl = document.getElementById('blog_image_url');
+const blogBody = document.getElementById('blog_body');
 
 
 const errorMesage = document.getElementById('error-message');
@@ -36,7 +33,7 @@ const craeteBlog = async()=>{
       blog_snippet: blogSnippet.value,
       blog_category: category.value,
       blog_related_category: relatedCategory.value,
-      blog_body: quill.root.innerHTML,
+      blog_body: blogBody.value,
       blog_body_image_url: imageUrl.value,
       authorId: localStorage.getItem('id')
 
@@ -108,7 +105,7 @@ createButton.addEventListener('click', (e) => {
 
     if (imageUrl.value.length < 5) {
       errorMesage.classList.add('show-error');
-      messageBody.innerHTML = "Enter a Valid Data URL";
+      messageBody.innerHTML = "Enter a Valid Image URL";
       isImageUrlValid = false;
       setTimeout(() => {
         errorMesage.classList.remove('show-error')
@@ -116,9 +113,9 @@ createButton.addEventListener('click', (e) => {
     }
 
 
-  var bloglength = quill.getLength();
+  // var bloglength = quill.getLength();
 
-    if (bloglength < 60) {
+    if (blogBody.value.length < 60) {
       errorMesage.classList.add('show-error');
       messageBody.innerHTML = "Invalid Blog Content";
       isinvalid = true;
