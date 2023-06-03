@@ -159,7 +159,7 @@ const createDraft = async()=>{
       blog_snippet: blogSnippet.value,
       blog_category: category.value,
       blog_related_category: relatedCategory.value,
-      blog_body: quill.root.innerHTML,
+      blog_body: blog_body.value,
       blog_body_image_url: imageUrl.value,
       authorId: localStorage.getItem('id')
 
@@ -175,7 +175,7 @@ const createDraft = async()=>{
       errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
       messageTitle.innerHTML = 'Success!';
       messageBody.innerHTML = 'Creating Blog';
-      window.location.href = '/';
+      location.reload();
     } else {
       throw new Error('Error Creating Blog');
     }
