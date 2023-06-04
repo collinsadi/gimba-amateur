@@ -65,7 +65,7 @@ window.addEventListener('load', async ()=>{
                     
                     <div class="read-more-button">
     
-                        <button id=${x._id}>
+                        <button id=${x._id} onclick="restoreBlog(this.id)">
                         <i class="fa-solid fa-pen-to-square"></i>
                         Restore
     
@@ -123,7 +123,8 @@ const permanentlyDeleteBlog = async (id)=>{
         method: 'DELETE',
         headers:{
             'Content-Type':'Application/Json'
-        }
+        },
+        body: JSON.stringify({action : 'delete'})
     })
 
     const data = await response.json()
@@ -142,5 +143,33 @@ const permanentlyDeleteBlog = async (id)=>{
 
     console.log(data)
 
+
+}
+
+const restoreBlog = async (id)=>{
+
+    const response = await fetch('/dashboard/trash/'+id, {
+        method: 'DELETE',
+        headers:{
+            'Content-Type':'Application/Json'
+        },
+        body: JSON.stringify({action : 'restore'})
+    })
+
+    const data = await response.json()
+
+    if(data.details === "Blog Post Restored"){
+        errorMesage.style.display = 'block';
+        errorMesage.style.borderLeft = '10px solid green';
+        errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
+        messageTitle.innerHTML = 'Success!';
+        messageBody.innerHTML = data.details;
+        location.reload()
+    }else{
+
+        alert('Error Restoring Blog')
+    }
+
+    console.log(data)
 
 }

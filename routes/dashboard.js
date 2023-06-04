@@ -85,15 +85,67 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
+    // router.delete('/dashboard/trash/:id', async (req, res)=>{
+
+    //   const id = req.params.id
+
+    //   try {
+
+    //     await Trash.findByIdAndDelete(id)
+
+    //     res.status(200).json({details: "Trash Item Deleted"})
+        
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+
+    // })
+
+
+
     router.delete('/dashboard/trash/:id', async (req, res)=>{
 
       const id = req.params.id
+      const action = req.body.action
 
       try {
+
+        if(action === 'delete'){
 
         await Trash.findByIdAndDelete(id)
 
         res.status(200).json({details: "Trash Item Deleted"})
+        return;
+        } else if(action === 'restore') {
+
+        const gottenTrash = await Trash.findById(id)
+
+          const restoredPost = new BlogPost({
+
+            blog_title: gottenTrash.blog_title,
+            blog_snippet: gottenTrash.blog_snippet,
+            blog_category: gottenTrash.blog_category,
+            blog_related_category: gottenTrash.blog_related_category,
+            blog_body: gottenTrash.blog_body,
+            blog_body_image_url: gottenTrash.blog_body_image_url,
+            author: gottenTrash.author
+
+          })
+
+        await restoredPost.save()
+
+        await Trash.findByIdAndDelete(id)
+
+        res.status(200).json({details: "Blog Post Restored"})
+
+        return;
+
+        } else{
+
+          res.status(401).json({details: "Invalid Action"})
+        }
+
+        
         
       } catch (error) {
         console.log(error)
