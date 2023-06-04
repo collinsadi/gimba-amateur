@@ -5,7 +5,7 @@ const ethers = require('ethers');
 const mongoose = require('mongoose')
 const blogroutes = require('./routes/blogRoutes')
 const dashboardroutes = require('./routes/dashboard')
-const userauthroutes = require('./routes/userauthroutes')
+const {useroutes} = require('./routes/userauthroutes')
 const Session = require('express-session');
 const cookieparser = require('cookie-parser')
 const MongoStore = require('connect-mongo')
@@ -29,7 +29,7 @@ mongoose.connect(localurl,{useNewUrlParser: true, useUnifiedTopology: true})
 // Server Port
 
 const port = process.env.PORT || 4000;
-app.use(express.json()); 
+app.use(express.json({limit: '10mb'})); 
 
 // Main Server
 
@@ -62,7 +62,7 @@ app.get('/contact', (req, res)=>{
 })
 
 app.use(blogroutes)
-app.use(userauthroutes)
+app.use(useroutes)
 app.use(dashboardroutes)
 
 

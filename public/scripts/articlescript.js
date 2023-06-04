@@ -16,21 +16,6 @@
 
 
 
-const searchInput = document.getElementById('searchblogs');
-const searchItems = document.querySelectorAll('.single-blog');
-
-searchInput.addEventListener('input', () => {
-  const searchTerm = searchInput.value.toLowerCase();
-
-  searchItems.forEach((searched) => {
-    if (searched.textContent.toLowerCase().includes(searchTerm) ) {
-      searched.style.display = 'inline-block';
-    } else {
-      searched.style.display = 'none';
-    }
-  });
-});
-
 
 // Fetch the Blog Posts
 
@@ -54,7 +39,12 @@ const data = await response.json()
 console.log(data)
 const blogs = data.blogpost
 
+
+
+
 blogContainer.innerHTML = blogs.map((x) =>{
+
+    const {_id} = x
 
     return `
     
@@ -80,7 +70,8 @@ blogContainer.innerHTML = blogs.map((x) =>{
 
         <div class="trash-button">
 
-            <button data-blogid = ${x._id}>
+
+            <button data-blogid = ${x._id}  id=${x._id} onclick="trashBlog(this.id)">
                 <i class="fa-solid fa-trash"></i>
                 Trash
             </button>
@@ -90,13 +81,15 @@ blogContainer.innerHTML = blogs.map((x) =>{
         
         <div class="read-more-button">
 
+    <a href="/dashboard/edit-blog?id=${_id}">
+
             <button data-blogid = ${x._id}>
             <i class="fa-solid fa-pen-to-square"></i>
             Edit
 
             </button>
 
-           
+      </a>     
         </div>
         
 
@@ -111,4 +104,86 @@ blogContainer.innerHTML = blogs.map((x) =>{
 
 }).join('')
 
+
+if(blogs.length === 0){
+
+    return blogContainer.innerHTML = `
+    
+    <div class="empty-state">
+
+        <h3> OOPS!, No Article was Found </h3>
+        <p> Seems Like you havent created any Article </p>
+
+
+        </div>
+    
+    
+    `
+}
+
+
 })
+
+
+const searchInput = document.getElementById('searchblogs');
+const searchItems = document.querySelectorAll('.single-blog');
+
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.toLowerCase();
+
+  searchItems.forEach((searched) => {
+    if (searched.textContent.toLowerCase().includes(searchTerm) ) {
+      searched.style.display = 'inline-block';
+    } else {
+      searched.style.display = 'none';
+    }
+  });
+});
+
+
+
+
+const trashButton = document.querySelectorAll('#trash-can')
+
+const trashBlog = async (id)=>{
+
+    //console.log('Working' + id)
+
+    try {
+
+        const response = await fetch('/blog-post/'+id, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': "Application/Json"
+            }
+        })
+
+        const data = await response.json()
+        console.log(data)
+
+        if(data.details === "Blog Moved to Trash"){
+            errorMesage.style.display = 'block';
+            errorMesage.style.borderLeft = '10px solid green';
+            errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
+            messageTitle.innerHTML = 'Success!';
+            messageBody.innerHTML = data.details;
+            location.reload()
+        } else{
+
+            alert('Error Trashing Blog')
+        }
+
+    } catch (error) {
+        console.eror(error)
+    }
+
+}
+
+// trashButton.forEach(button => {
+
+//     button.addEventListener('click', ()=>{
+
+//         console.log('Clicked')
+//     })
+
+// })

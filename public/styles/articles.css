@@ -198,3 +198,14 @@
 
     max-width: 100px;
 }
+
+.empty-state{
+
+    width: 100%;
+    text-align: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

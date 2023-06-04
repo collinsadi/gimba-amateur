@@ -49,7 +49,7 @@ const craeteBlog = async()=>{
       errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
       messageTitle.innerHTML = 'Success!';
       messageBody.innerHTML = 'Creating Blog';
-      window.location.href = '/';
+      location.reload()
     } else {
       throw new Error('Error Creating Blog');
     }
@@ -159,7 +159,7 @@ const createDraft = async()=>{
       blog_snippet: blogSnippet.value,
       blog_category: category.value,
       blog_related_category: relatedCategory.value,
-      blog_body: blog_body.value,
+      blog_body: blogBody.value,
       blog_body_image_url: imageUrl.value,
       authorId: localStorage.getItem('id')
 
@@ -174,7 +174,7 @@ const createDraft = async()=>{
       errorMesage.style.borderLeft = '10px solid green';
       errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
       messageTitle.innerHTML = 'Success!';
-      messageBody.innerHTML = 'Creating Blog';
+      messageBody.innerHTML = 'Creating Draft';
       location.reload();
     } else {
       throw new Error('Error Creating Blog');
@@ -203,46 +203,23 @@ draftButton.addEventListener('click', (e)=>{
 
     if (blogTitle.value.length > 64 || blogTitle.value.length < 2) {
       errorMesage.classList.add('show-error');
-      messageBody.innerHTML = blogTitle.value.length > 64 ? "Blog Title too long" : "Invalid Blog Title";
+      messageBody.innerHTML = blogTitle.value.length > 64 ? "Blog Title too long" : "Drafts Should have Title";
       isinvalid = true;
       setTimeout(() => {
         errorMesage.classList.remove('show-error')
       }, 4000);
     }
 
-    if (blogSnippet.value.length < 2) {
+   
+
+
+
+
+  // var bloglength = quill.getLength();
+
+    if (blogBody.value.length < 10) {
       errorMesage.classList.add('show-error');
-      messageBody.innerHTML = "Invalid Blog Snippet";
-      isinvalid = true;
-      setTimeout(() => {
-        errorMesage.classList.remove('show-error')
-      }, 4000);
-    }
-
-    if (category.value.length < 2) {
-      errorMesage.classList.add('show-error');
-      messageBody.innerHTML = "Invalid Blog Category";
-      isinvalid = true;
-      setTimeout(() => {
-        errorMesage.classList.remove('show-error')
-      }, 4000);
-    }
-
-    if (imageUrl.value.length < 5) {
-      errorMesage.classList.add('show-error');
-      messageBody.innerHTML = "Enter a Valid Data URL";
-      isImageUrlValid = false;
-      setTimeout(() => {
-        errorMesage.classList.remove('show-error')
-      }, 4000);
-    }
-
-
-  var bloglength = quill.getLength();
-
-    if (bloglength < 60) {
-      errorMesage.classList.add('show-error');
-      messageBody.innerHTML = "Invalid Blog Content";
+      messageBody.innerHTML = "Drafts Should have a brief body";
       isinvalid = true;
       setTimeout(() => {
         errorMesage.classList.remove('show-error')

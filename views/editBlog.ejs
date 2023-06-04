@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <%- include("./partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/articles.css">
+    <link rel="stylesheet" href="../styles/createblog.css">
+   
+    
+    
+
+
+</head>
+<body>
+
+    <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
+    <div class="dashboard-header">
+        <div class="dashboard-header-inner">
+            <div class="mobile-sidebar" id="mobile-sidebar">
+                        <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="dropdown-menu"></div>
+
+            <div class="user-image-name">
+                <div class="user-name">
+                    <p>Collins Adi</p>
+                    <div class="fa-solid fa-angle-down"></div>
+                </div>
+              
+                <div class="userimage">
+                    <img src="/images/user.png" alt="">
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="dashboard-sidebar" id="dashboard-sidebar">
+
+        <div class="sidebar-inner">
+
+            <div class="dashboard-brandname">
+                <h3>GIMBA</h3>
+            </div>
+
+            <div class="sidebar-buttons">
+
+                <div class="single-button">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <p> <a href="/dashboard"> Dashboard</a></p>
+                </div>
+
+
+
+
+
+                <div class="single-button  active-sidebar-btn">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p><a href="/dashboard/articles">My Articles</a> </p>
+                </div>
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p> <a href="/dashboard/analytics"> Analytics</a></p>
+                </div>
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <p><a href="/dashboard/drafts">Drafts</a> </p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-trash"></i>
+                    <p> <a href="/dashboard/trash">Trash</a> </p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-gear"></i>
+                    <p> <a href="/dashboard/settings">Settings</a> </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- The Main DashBoard Content  -->  
+
+    <main class="dashboard-main-page">
+
+
+        <div class="create-new-blog">
+            <div class="create-new-blog-inner">
+
+                <div class="create-new-blog-title">
+
+                    <h3>Edit Your Blog</h3>
+
+                    <i class="fa-solid fa-angle-down" id="arrow-to-toggle"></i>
+
+                </div>
+
+              
+
+<section class="create-page" style="margin-top: 20px;">
+
+<div class="create-page-inner">
+
+<div class="main-form">
+
+    <div class="form-body">
+
+        <form action="">
+
+            <div class="form-top">
+                <input type="text" placeholder="Blog Title" id="blog_title">
+            </div>
+            <div class="form-top">
+                <input type="text" placeholder="Blog Snippet" id="blog_snippet">
+            </div>
+            <div class="form-second">
+                <input type="text" placeholder="Category" id="blog_category">
+                <input type="text" placeholder="Related Category" id="blog_related_category">
+            </div>
+            <div class="form-top">
+                <input type="text" placeholder="Blog Image Url" id="blog_image_url">
+            </div>
+         
+                <div id="editor">
+                    <textarea name="" id="blog_body" placeholder="Blog Body Here"></textarea>
+                </div>
+
+
+            <div class="create-blog-btn">
+            <button id="edit-blog-btn">Edit Blog</button>         
+            </div>
+              
+        </form>
+
+        
+
+    </div>
+</div>
+
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+<div class="error-message" id="error-message">
+
+    <div class="message-title">
+        <h3 id="msg-title">Invalid Input</h3>
+    </div>
+    <div class="message-body">
+        <p id="msg-body"> one or more field is Invalid </p>
+    </div>
+    
+    </div>
+
+                
+            </div>
+        </div>
+
+  
+
+
+
+    </main>
+
+
+
+
+    <%- include('./partials/iconscript.ejs') %>
+
+
+<script src="../scripts/editBlog.js"></script>
+    <script src="../scripts/dashboardscript.js"></script>  
+</body>
+</html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+
+</script>

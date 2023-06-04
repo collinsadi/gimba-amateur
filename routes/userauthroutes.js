@@ -133,4 +133,4 @@ res.render('dashboard')
 
 
 
-module.exports = router;
+module.exports = {useroutes:router,authMiddleWare};

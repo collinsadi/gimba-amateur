@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const BlogPost = require('../models/blog')
 const Draft = require('../models/draft')
+const Trash = require('../models/Trash')
 
 
 
@@ -128,6 +129,73 @@ router.get('/blog-post/:id', (req, res)=>{
 
 })
 
+router.delete('/blog-post/:id', async (req, res)=>{
+
+const blogId = req.params.id
+
+console.log(blogId)
+
+
+try {
+
+    
+
+    const blog = await BlogPost.findById(blogId)
+
+    console.log(blog)
+
+    if(!blog) {
+
+        return res.status(401).json({details: "Blog Post Not Found"})
+    }
+
+    //  await Trash.create(blog)
+
+    const trashBlog = new Trash({
+        blog_title: blog.blog_title,
+        blog_snippet: blog.blog_snippet,
+        blog_category: blog.blog_category,
+        blog_related_category: blog.blog_related_category,
+        blog_body: blog.blog_body,
+        blog_body_image_url: blog.blog_body_image_url,
+        author: blog.author
+    })
+
+    await trashBlog.save()
+
+    await BlogPost.findByIdAndDelete(blogId)
+
+    return res.status(200).json({details: "Blog Moved to Trash"})
+} catch (error) {
+    console.log(error)
+
+    res.status(500).json({details: "Internal Server Error"})
+}
+
+
+
+})
+
+router.put('/blog-post/:id', async (req, res)=>{
+
+    const id = req.params.id
+
+    const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url} = req.body
+try {
+
+    await BlogPost.findByIdAndUpdate(id, req.body)
+
+return res.status(200).json({details: "Blog Updated Sucessfully"})
+
+} catch (error) {
+
+    console.log(error)
+    
+}
+   
+
+
+})
 
 
 // router.get('/show-all', (req, res)=>{
