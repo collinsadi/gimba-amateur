@@ -3,10 +3,11 @@
 const express = require('express')
 const router = express.Router();
 const BlogPost = require('../models/blog')
+const Trash = require('../models/Trash')
 const {authMiddleWare} = require('./userauthroutes')
 
 
-router.use(authMiddleWare);
+// router.use(authMiddleWare);
 
 router.post('/dashboard/articles', async (req, res) => {
     try {
@@ -60,8 +61,45 @@ router.post('/dashboard/articles', async (req, res) => {
   
    // console.log(AuthorId)
 
-    
+   router.get('/dashboard/trash', (req, res)=>{
 
+      res.render('trash')
+   })
+
+    router.post('/dashboard/trash', async (req, res)=>{
+
+      try {
+        
+        const authorId = req.body.author
+
+        const TrashItems = await Trash.find({author: authorId})
+
+        res.status(200).json({TrashItems})
+
+      } catch (error) {
+
+        console.log(error)
+        
+      }
+
+
+    })
+
+    router.delete('/dashboard/trash/:id', async (req, res)=>{
+
+      const id = req.params.id
+
+      try {
+
+        await Trash.findByIdAndDelete(id)
+
+        res.status(200).json({details: "Trash Item Deleted"})
+        
+      } catch (error) {
+        console.log(error)
+      }
+
+    })
 
     //console.log(res.session)
 

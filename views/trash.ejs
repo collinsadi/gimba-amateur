@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Articles</title>
+    <title>Dashboard | Trash</title>
     <%- include("./partials/headerstyle.ejs") %>
     <link rel="stylesheet" href="/styles/dashboard.css">
     <link rel="stylesheet" href="/styles/articles.css">
@@ -58,7 +58,7 @@
 
 
 
-                <div class="single-button  active-sidebar-btn">
+                <div class="single-button ">
                     <i class="fa-solid fa-newspaper"></i>
                     <p><a href="/dashboard/articles">My Articles</a> </p>
                 </div>
@@ -76,7 +76,7 @@
                     <p><a href="/dashboard/drafts">Drafts</a> </p>
                 </div>
 
-                <div class="single-button">
+                <div class="single-button  active-sidebar-btn">
                     <i class="fa-solid fa-trash"></i>
                     <p> <a href="/dashboard/trash">Trash</a> </p>
                 </div>
@@ -104,50 +104,30 @@
     <main class="dashboard-main-page">
 
 
-        <div class="create-new-blog">
-            <div class="create-new-blog-inner">
-
-                <div class="create-new-blog-title" id="create-new-blog">
-
-                    <h3>Create a New Blog</h3>
-
-                    <i class="fa-solid fa-angle-down" id="arrow-to-toggle"></i>
-
-                </div>
-
-                <div class="the-main-editor removeeditor" id="the-main-editor">
-
-                    <%- include('./createblog.ejs') %>
-
-                </div>
-
-            </div>
-        </div>
-
         <div class="all-your-blogs">
 
             <div class="all-your-blogs-inner">
 
                 <div class="all-your-blogs-header">
-                    <h3>All Your Articles</h3>
+                    <h3>Your Trash</h3>
 
-                    <input type="text" placeholder="Search Your Blogs" id="searchblogs">
+                    <input type="text" placeholder="Search Your Trash" id="searchblogs">
                 </div>
 
 
 
 
-                <div class="all-the-blogs-array" id="all-the-blogs-array">
+                <div class="all-the-blogs-array" id="all-the-trash-array">
 
 
 
 <div class="loading-state">
     <img src="/images/preloader2.gif" alt="">
 
-    <p>Fetching Articles.....</p>
+    <p>Fetching Trash.....</p>
 </div>
 
-        <!-- <div class="single-blog">
+       <!-- <div class="single-blog">
 
             <div class="single-blog-image">
 
@@ -192,58 +172,10 @@
             </div>
 
 
-        </div>
-
-
-        
-        <div class="single-blog">
-
-            <div class="single-blog-image">
-
-                <img src="/images/blogimg1.jpg" alt="">
-
-            </div>
-            <div class="single-blog-title">
-
-                <h3>Navigating the Digital Age: Artificial Inteligence</h3>
-
-            </div>
-
-            <div class="single-blog-snippet">
-
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit voluptates eius sapiente repellat eos. Excepturi tempora voluptate natus, nemo quo saepe eaque facere reiciendis veritatis? Molestias, corporis dicta. Ratione, vel.</p>
-            </div>
-
-            <div class="single-blog-controls">
-
-                <div class="trash-button">
-
-                    <button>
-                        <i class="fa-solid fa-trash"></i>
-                        Trash
-                    </button>
-
-                    
-                </div>
-                
-                <div class="read-more-button">
-
-                    <button>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    Edit
-
-                    </button>
-
-                   
-                </div>
-                
-
-            </div>
-
-
         </div> -->
 
 
+      
 
 
 
@@ -263,6 +195,22 @@
 
 
 
+            <div class="error-message" id="error-message">
+
+                <div class="message-title">
+                    <h3 id="msg-title">Invalid Input</h3>
+                </div>
+                <div class="message-body">
+                    <p id="msg-body"> one or more field is Invalid </p>
+                </div>
+                
+                </div>
+            
+
+
+
+
+
         </div>
 
     
@@ -278,9 +226,8 @@
     <%- include('./partials/iconscript.ejs') %>
 
 
-<script src="../scripts/createblog.js"></script>
-    <script src="../scripts/dashboardscript.js"></script>   
-    <script src="../scripts/articlescript.js"></script>  
+    <script src="../scripts/dashboardscript.js"></script> 
+    <script src="../scripts/trash.js"></script> 
 
 </body>
 </html>
