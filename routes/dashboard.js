@@ -180,6 +180,59 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
+    router.delete('/dashboard/drafts/:id', async (req, res)=>{
+
+      const blogId = req.params.id
+
+      try{
+
+        await Draft.findByIdAndDelete(blogId)
+
+        res.status(200).json({details: "Item Deleted From Draft"})
+        return;
+      } catch(error){
+
+        console.log(error)
+        res.status(401).send({details: "Requested Item not Found in Draft"})
+      }
+
+    })
+
+    router.get('/dashboard/edit-draft', (req, res)=>{
+
+      res.render('editdraft')
+
+    })
+
+    router.post('/dashboard/edit-draft/:id', async (req, res) => {
+
+      const blogId = req.params.id
+      const authorId = req.body.author
+
+      try{
+
+          const draftItem = await Draft.findById(blogId)
+
+        if(!draftItem){
+
+          return res.status(401).json({details: "Draft Item Not found"})
+        }
+
+        if(draftItem.author !== authorId){
+
+          res.status(401).json({details: "Unauthorized", redirectUrl: "/dashboard"})
+          return;
+        }
+
+        res.status(200).json({details: "Draft Item to Edit Found"})
+        return
+      }catch(error){
+
+        console.log(error)
+      }
+
+    })
+
     //console.log(res.session)
 
 

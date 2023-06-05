@@ -2,6 +2,17 @@
 
 const DraftContainer = document.getElementById('all-the-draft-array')
 
+
+const errorMesage = document.getElementById('error-message');
+
+
+const messageTitle = document.getElementById('msg-title');
+
+const messageBody = document.getElementById('msg-body');
+
+
+
+
 const getDrafts = async ()=>{
 
 
@@ -48,7 +59,7 @@ const getDrafts = async ()=>{
 
                 <div class="trash-button">
 
-                    <button id=${x._id}>
+                    <button data-blogid=${x._id} onclick="deleteDraft(this)">
                         <i class="fa-solid fa-trash"></i>
                         Delete
                     </button>
@@ -107,8 +118,36 @@ if(gottenDrafts.length === 0){
 }
 
 
-
-
-
-
 getDrafts();
+
+
+const deleteDraft = async (button) =>{
+    button.disabled = true
+    const id = button.dataset.blogid
+
+    const response = await fetch('/dashboard/drafts/'+id, {
+        method: "DELETE",
+        headers:{
+            'Content-Type': 'Application/Json'
+        }
+    })
+
+    const data = await response.json()
+
+    console.log(data)
+
+    if(data.details === 'Item Deleted From Draft'){
+        errorMesage.style.display = 'block';
+        errorMesage.style.borderLeft = '10px solid green';
+        errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
+        messageTitle.innerHTML = 'Success!';
+        messageBody.innerHTML = data.details;
+        location.reload()
+
+    } else{
+
+        alert('Error Deleting Draft Item')
+    }
+
+
+}
