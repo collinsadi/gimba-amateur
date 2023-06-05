@@ -80,6 +80,24 @@ const getDrafts = async ()=>{
         })
 
 
+
+                   
+if(gottenDrafts.length === 0){
+
+    return DraftContainer.innerHTML = `
+    
+    <div class="empty-state">
+
+        <h3> OOPS!, Draft Is Empty</h3>
+
+
+        </div>
+    
+    
+    `
+}
+
+
     } catch(error){
 
         console.log(error)

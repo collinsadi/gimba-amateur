@@ -69,9 +69,10 @@
 }
 .the-blog-body p{
     font-weight: bold;
-    font-size: 20px;
-    color: rgba(128, 128, 128, 0.76);
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.76);
     margin-bottom: 20px;
+    line-height: 35px;
     margin-top: 20px;
 }
 .the-blog-body q{
