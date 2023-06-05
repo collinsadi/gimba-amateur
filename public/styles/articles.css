@@ -120,6 +120,7 @@
 .all-the-blogs-array{
 
     width: 100%;
+    padding-bottom: 20px;
 }
 
 .single-blog{
@@ -134,7 +135,7 @@
     align-items: center;
     flex-direction: column;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: bottom;
 }
 .single-blog-image{
 
@@ -185,6 +186,10 @@
     color: var(--white-text);
     font-size: 15px;
     cursor: pointer;
+}
+.single-blog-controls button:disabled{
+
+    cursor: not-allowed;
 }
 .loading-state{
 

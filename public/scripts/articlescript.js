@@ -71,7 +71,7 @@ blogContainer.innerHTML = blogs.map((x) =>{
         <div class="trash-button">
 
 
-            <button data-blogid = ${x._id}  id=${x._id} onclick="trashBlog(this.id)">
+            <button data-blogid = ${x._id} data-blogid=${x._id} onclick="trashBlog(this)">
                 <i class="fa-solid fa-trash"></i>
                 Trash
             </button>
@@ -145,8 +145,11 @@ searchInput.addEventListener('input', () => {
 
 const trashButton = document.querySelectorAll('#trash-can')
 
-const trashBlog = async (id)=>{
+const trashBlog = async (button)=>{
+    // id.target.disabled = true
 
+    button.disabled = true
+    const id = button.dataset.blogid
     //console.log('Working' + id)
 
     try {

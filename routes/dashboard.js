@@ -4,10 +4,11 @@ const express = require('express')
 const router = express.Router();
 const BlogPost = require('../models/blog')
 const Trash = require('../models/Trash')
+const Draft = require('../models/draft')
 const {authMiddleWare} = require('./userauthroutes')
 
 
-// router.use(authMiddleWare);
+router.use(authMiddleWare);
 
 router.post('/dashboard/articles', async (req, res) => {
     try {
@@ -63,7 +64,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
    router.get('/dashboard/trash', (req, res)=>{
 
-      res.render('trash')
+      res.status(200).render('trash')
    })
 
     router.post('/dashboard/trash', async (req, res)=>{
@@ -85,6 +86,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
+   
     // router.delete('/dashboard/trash/:id', async (req, res)=>{
 
     //   const id = req.params.id
@@ -150,6 +152,31 @@ router.post('/dashboard/articles', async (req, res) => {
       } catch (error) {
         console.log(error)
       }
+
+    })
+
+
+    router.get('/dashboard/drafts', (req, res)=>{
+
+      res.status(200).render('draft')
+
+    })
+
+    router.post('/dashboard/drafts', async (req, res)=>{
+
+      const authorId = req.body.author
+
+      try{
+
+        const draftItems = await Draft.find({author: authorId})
+
+        res.status(200).json({drafts: draftItems})
+
+      } catch(error){
+
+        console.log(error)
+      }
+
 
     })
 

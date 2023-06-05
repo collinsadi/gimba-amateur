@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Drafts</title>
+    <%- include("./partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/articles.css">
+    <link rel="stylesheet" href="../styles/createblog.css">
+   
+    
+    
+
+
+</head>
+<body>
+
+    <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
+    <div class="dashboard-header">
+        <div class="dashboard-header-inner">
+            <div class="mobile-sidebar" id="mobile-sidebar">
+                        <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="dropdown-menu"></div>
+
+            <div class="user-image-name">
+                <div class="user-name">
+                    <p>Collins Adi</p>
+                    <div class="fa-solid fa-angle-down"></div>
+                </div>
+              
+                <div class="userimage">
+                    <img src="/images/user.png" alt="">
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="dashboard-sidebar" id="dashboard-sidebar">
+
+        <div class="sidebar-inner">
+
+            <div class="dashboard-brandname">
+                <h3>GIMBA</h3>
+            </div>
+
+            <div class="sidebar-buttons">
+
+                <div class="single-button">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <p> <a href="/dashboard"> Dashboard</a></p>
+                </div>
+
+
+
+
+
+                <div class="single-button ">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p><a href="/dashboard/articles">My Articles</a> </p>
+                </div>
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p> <a href="/dashboard/analytics"> Analytics</a></p>
+                </div>
+
+
+
+                <div class="single-button  active-sidebar-btn">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <p><a href="/dashboard/drafts">Drafts</a> </p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-trash"></i>
+                    <p> <a href="/dashboard/trash">Trash</a> </p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-gear"></i>
+                    <p> <a href="/dashboard/settings">Settings</a> </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- The Main DashBoard Content  -->  
+
+    <main class="dashboard-main-page">
+
+
+        <div class="all-your-blogs">
+
+            <div class="all-your-blogs-inner">
+
+                <div class="all-your-blogs-header">
+                    <h3>Your Drafts</h3>
+
+                    <input type="text" placeholder="Search Your Drafts" id="searchblogs">
+                </div>
+
+
+
+
+                <div class="all-the-blogs-array" id="all-the-draft-array">
+
+
+
+<div class="loading-state">
+    <img src="/images/preloader2.gif" alt="">
+
+    <p>Fetching Drafts.....</p>
+</div>
+
+       <!-- <div class="single-blog">
+
+            <div class="single-blog-image">
+
+                <img src="/images/blogimg1.jpg" alt="">
+
+            </div>
+            <div class="single-blog-title">
+
+                <h3>Navigating the Digital Age: Embracing Change in a Rapidly Evolving World</h3>
+
+            </div>
+
+            <div class="single-blog-snippet">
+
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit voluptates eius sapiente repellat eos. Excepturi tempora voluptate natus, nemo quo saepe eaque facere reiciendis veritatis? Molestias, corporis dicta. Ratione, vel.</p>
+            </div>
+
+            <div class="single-blog-controls">
+
+                <div class="trash-button">
+
+                    <button>
+                        <i class="fa-solid fa-trash"></i>
+                        Trash
+                    </button>
+
+                    
+                </div>
+                
+                <div class="read-more-button">
+
+                    <button>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Edit
+
+                    </button>
+
+                   
+                </div>
+                
+
+            </div>
+
+
+        </div> -->
+
+
+      
+
+
+
+     
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="error-message" id="error-message">
+
+                <div class="message-title">
+                    <h3 id="msg-title">Invalid Input</h3>
+                </div>
+                <div class="message-body">
+                    <p id="msg-body"> one or more field is Invalid </p>
+                </div>
+                
+                </div>
+            
+
+
+
+
+
+        </div>
+
+    
+
+
+
+
+    </main>
+
+
+
+
+    <%- include('./partials/iconscript.ejs') %>
+
+
+    <script src="../scripts/dashboardscript.js"></script> 
+    <script src="../scripts/draft.js"></script> 
+
+</body>
+</html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+
+</script>

@@ -55,7 +55,7 @@ window.addEventListener('load', async ()=>{
     
                     <div class="trash-button">
     
-                        <button id=${x._id} onclick="permanentlyDeleteBlog(this.id)">
+                        <button data-blogid=${x._id} onclick="permanentlyDeleteBlog(this)">
                             <i class="fa-solid fa-trash"></i>
                            Delete
                         </button>
@@ -65,7 +65,7 @@ window.addEventListener('load', async ()=>{
                     
                     <div class="read-more-button">
     
-                        <button id=${x._id} onclick="restoreBlog(this.id)">
+                        <button data-blogid=${x._id} onclick="restoreBlog(this)">
                         <i class="fa-solid fa-pen-to-square"></i>
                         Restore
     
@@ -117,7 +117,10 @@ if(TrashedItems.length === 0){
 
 
 
-const permanentlyDeleteBlog = async (id)=>{
+const permanentlyDeleteBlog = async (button)=>{
+    // id.disabled = true
+    button.disabled = true
+    const id = button.dataset.blogid
 
     const response = await fetch('/dashboard/trash/'+id, {
         method: 'DELETE',
@@ -146,8 +149,10 @@ const permanentlyDeleteBlog = async (id)=>{
 
 }
 
-const restoreBlog = async (id)=>{
+const restoreBlog = async (button)=>{
+    button.disabled = true
 
+    const id = button.dataset.blogid
     const response = await fetch('/dashboard/trash/'+id, {
         method: 'DELETE',
         headers:{
@@ -155,7 +160,7 @@ const restoreBlog = async (id)=>{
         },
         body: JSON.stringify({action : 'restore'})
     })
-
+        
     const data = await response.json()
 
     if(data.details === "Blog Post Restored"){

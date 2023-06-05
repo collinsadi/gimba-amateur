@@ -124,7 +124,7 @@ const getUsers = async ()=>{
         },
         body: JSON.stringify({
 
-            email: loginemail.value,
+            email: loginemail.value.toLowerCase(),
             password: loginPassword.value
 
 

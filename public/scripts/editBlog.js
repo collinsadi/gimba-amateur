@@ -112,6 +112,7 @@ const editBlog = async ()=>{
 editButton.addEventListener('click', (e)=>{
 
 e.preventDefault();
+e.disabled = true
 e.target.innerHTML = "Editing"
 
 setTimeout(() => {
