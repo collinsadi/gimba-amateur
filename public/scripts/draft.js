@@ -59,22 +59,24 @@ const getDrafts = async ()=>{
 
                 <div class="trash-button">
 
+                   
                     <button data-blogid=${x._id} onclick="deleteDraft(this)">
                         <i class="fa-solid fa-trash"></i>
                         Delete
                     </button>
-
+                   
                     
                 </div>
                 
                 <div class="read-more-button">
 
+                <a href="/dashboard/edit-draft?id=${x._id}">
                     <button id=${x._id}>
                     <i class="fa-solid fa-pen-to-square"></i>
                     Edit
 
                     </button>
-
+                    </a>
                    
                 </div>
                 

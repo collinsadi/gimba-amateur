@@ -27,7 +27,7 @@
 
             <div class="user-image-name">
                 <div class="user-name">
-                    <p>Collins Adi</p>
+                    <p id="authorname"></p>
                     <div class="fa-solid fa-angle-down"></div>
                 </div>
               
@@ -109,7 +109,7 @@
 
                 <div class="create-new-blog-title">
 
-                    <h3>Edit Your Blog</h3>
+                    <h3>Edit Your Draft</h3>
 
                     <i class="fa-solid fa-angle-down" id="arrow-to-toggle"></i>
 
@@ -147,7 +147,8 @@
 
 
             <div class="create-blog-btn">
-            <button id="edit-blog-btn">Edit Blog</button>         
+            <button id="edit-draft-btn">Edit Draft</button>
+            <button id="publish-draft-btn">Publish Draft</button>         
             </div>
               
         </form>
@@ -196,7 +197,7 @@
     <%- include('./partials/iconscript.ejs') %>
 
 
-<script src="../scripts/editBlog.js"></script>
+<script src="../scripts/editdraft.js"></script>
     <script src="../scripts/dashboardscript.js"></script>  
 </body>
 </html>

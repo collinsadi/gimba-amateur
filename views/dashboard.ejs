@@ -25,7 +25,7 @@
 
             <div class="user-image-name">
                 <div class="user-name">
-                    <p>Collins Adi</p>
+                    <p id="authorname"></p>
                     <div class="fa-solid fa-angle-down"></div>
                 </div>
               
@@ -64,24 +64,24 @@
 
                 <div class="single-button">
                     <i class="fa-solid fa-chart-simple"></i>
-                    <p>Analytics</p>
+                    <p><a href="/dashboard/analytics">Analytics</a></p>
                 </div>
 
 
 
                 <div class="single-button">
                     <i class="fa-solid fa-pen-to-square"></i>
-                    <p>Drafts</p>
+                    <p><a href="/dashboard/drafts">Drafts</a></p>
                 </div>
 
                 <div class="single-button">
                     <i class="fa-solid fa-trash"></i>
-                    <p>Trash</p>
+                    <p><a href="/dashboard/trash">Trash</a></p>
                 </div>
 
                 <div class="single-button">
                     <i class="fa-solid fa-gear"></i>
-                    <p>Settings</p>
+                    <p><a href="/dashboard/settings">Settings</a></p>
                 </div>
 
             </div>
@@ -107,10 +107,10 @@
 
                 <div class="welcome-left">
 
-                    <h3>Welcome Collins!</h3>
+                    <h3>Welcome <span id="authorname2"></span></h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-                 <a href=""> <button>  Create New Post </button> </a>  
+                 <a href="/dashboard/articles"> <button>  Create New Post </button> </a>  
 
                 </div>
                 <div class="welcome-right">
@@ -326,5 +326,6 @@
     const author = localStorage.getItem('fullName')
 
     document.getElementById('authorname').innerHTML = author
+    document.getElementById('authorname2').innerHTML = author + "!"
 
 </script>

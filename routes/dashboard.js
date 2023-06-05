@@ -213,23 +213,91 @@ router.post('/dashboard/articles', async (req, res) => {
 
           const draftItem = await Draft.findById(blogId)
 
-        if(!draftItem){
+        // if(!draftItem){
 
-          return res.status(401).json({details: "Draft Item Not found"})
-        }
+        //   return res.status(401).json({details: "Draft Item Not found"})
+        // }
 
-        if(draftItem.author !== authorId){
+        // if(draftItem.author !== authorId){
 
-          res.status(401).json({details: "Unauthorized", redirectUrl: "/dashboard"})
-          return;
-        }
+        //   res.status(401).json({details: "Unauthorized", redirectUrl: "/dashboard"})
+        //   return;
+        // }
 
-        res.status(200).json({details: "Draft Item to Edit Found"})
+        res.status(200).json({details: "Draft Item to Edit Found", draft: draftItem})
         return
       }catch(error){
 
         console.log(error)
       }
+
+    })
+
+    router.put('/dashboard/edit-draft/:id', async (req, res) =>{
+
+      const id = req.params.id
+
+      const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url} = req.body
+
+
+      try{
+
+        await Draft.findByIdAndUpdate(id, req.body)
+
+        res.status(200).json({details: "Draft Item Updated"})
+
+      }
+      
+      
+      
+      catch(error){
+
+
+
+        console.log(error)
+      
+        res.status(500).json({details: "Internal Server Error"})
+      
+      
+      }
+
+    })
+
+    router.post('/dashboard/publish-draft/:id', async (req, res)=>{
+
+      const id = req.params.id
+
+      const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
+
+try {
+
+    // const AuthorId = authorId;
+
+    await Draft.findByIdAndDelete(id)
+
+    const newblog = await BlogPost.create({
+
+        blog_title,
+        blog_snippet,
+        blog_body,
+        blog_category,
+        blog_related_category,
+        blog_body,
+        blog_body_image_url,
+        author: authorId
+
+    })
+   // newblog.save()
+   res.status(200).json({details: "Blog Post Created"})
+
+  
+
+} catch (error) {
+
+    console.log(error)
+    
+}
+
 
     })
 
