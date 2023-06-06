@@ -6,6 +6,18 @@
     --white-text: white;
 }
 
+::-moz-selection{
+
+    color: white;
+    background-color: #7F56D9;
+}
+
+::selection{
+    color: white;
+    background-color: #7F56D9;
+
+}
+
 body{
 
     display: flex;
