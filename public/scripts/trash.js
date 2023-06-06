@@ -17,7 +17,7 @@ window.addEventListener('load', async ()=>{
 
         try {
             
-            const response = await fetch('/dashboard/trash', {
+            const response = await fetch('/api/get_user_trash', {
                 method: 'POST',
                 headers:{
                     'Content-Type': "Application/Json"
@@ -122,7 +122,7 @@ const permanentlyDeleteBlog = async (button)=>{
     button.disabled = true
     const id = button.dataset.blogid
 
-    const response = await fetch('/dashboard/trash/'+id, {
+    const response = await fetch('/api/delete_restore_blog/'+id, {
         method: 'DELETE',
         headers:{
             'Content-Type':'Application/Json'
@@ -153,7 +153,7 @@ const restoreBlog = async (button)=>{
     button.disabled = true
 
     const id = button.dataset.blogid
-    const response = await fetch('/dashboard/trash/'+id, {
+    const response = await fetch('/api/delete_restore_blog/'+id, {
         method: 'DELETE',
         headers:{
             'Content-Type':'Application/Json'

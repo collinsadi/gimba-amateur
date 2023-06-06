@@ -19,7 +19,7 @@ const getDrafts = async ()=>{
     try{
 
 
-        const response = await fetch('/dashboard/drafts', {
+        const response = await fetch('/api/get_user_drafts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'Application/Json'
@@ -127,7 +127,7 @@ const deleteDraft = async (button) =>{
     button.disabled = true
     const id = button.dataset.blogid
 
-    const response = await fetch('/dashboard/drafts/'+id, {
+    const response = await fetch('/api/delete_draft/'+id, {
         method: "DELETE",
         headers:{
             'Content-Type': 'Application/Json'

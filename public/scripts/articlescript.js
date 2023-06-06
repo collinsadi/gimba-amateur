@@ -27,7 +27,7 @@ window.addEventListener('load', async ()=>{
     
     const blogContainer = document.getElementById('all-the-blogs-array');
 
-const response = await fetch(`/dashboard/articles`, {
+const response = await fetch(`/api/get_user_articles`, {
     method: 'POST',
     headers: {
         'Content-Type': "Application/Json"
@@ -154,7 +154,7 @@ const trashBlog = async (button)=>{
 
     try {
 
-        const response = await fetch('/blog-post/'+id, {
+        const response = await fetch('/api/trash_blog_post'+id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': "Application/Json"

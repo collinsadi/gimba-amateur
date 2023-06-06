@@ -129,7 +129,7 @@ router.get('/blog-post/:id', (req, res)=>{
 
 })
 
-router.delete('/blog-post/:id', async (req, res)=>{
+router.delete('/api/trash_blog_post/:id', async (req, res)=>{
 
 const blogId = req.params.id
 
@@ -176,7 +176,7 @@ try {
 
 })
 
-router.put('/blog-post/:id', async (req, res)=>{
+router.put('/api/edit_blog_post/:id', async (req, res)=>{
 
     const id = req.params.id
 

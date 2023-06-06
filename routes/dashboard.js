@@ -10,7 +10,7 @@ const {authMiddleWare} = require('./userauthroutes')
 
 router.use(authMiddleWare);
 
-router.post('/dashboard/articles', async (req, res) => {
+router.post('/api/get_user_articles', async (req, res) => {
     try {
       const authorId = req.body.authorid;
 
@@ -40,7 +40,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
   })
 
-  router.post('/dashboard/edit-blog/:id', async (req, res)=>{
+  router.post('/api/get_old_blog_data/:id', async (req, res)=>{
 
     const id = req.params.id
 
@@ -67,7 +67,7 @@ router.post('/dashboard/articles', async (req, res) => {
       res.status(200).render('trash')
    })
 
-    router.post('/dashboard/trash', async (req, res)=>{
+    router.post('/api/get_user_trash', async (req, res)=>{
 
       try {
         
@@ -105,7 +105,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
 
 
-    router.delete('/dashboard/trash/:id', async (req, res)=>{
+    router.delete('/api/delete_restore_blog/:id', async (req, res)=>{
 
       const id = req.params.id
       const action = req.body.action
@@ -162,7 +162,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
-    router.post('/dashboard/drafts', async (req, res)=>{
+    router.post('/api/get_user_drafts', async (req, res)=>{
 
       const authorId = req.body.author
 
@@ -180,7 +180,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
-    router.delete('/dashboard/drafts/:id', async (req, res)=>{
+    router.delete('/api/delete_draft/:id', async (req, res)=>{
 
       const blogId = req.params.id
 
@@ -204,7 +204,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
-    router.post('/dashboard/edit-draft/:id', async (req, res) => {
+    router.post('/api/get_old_draft_data/:id', async (req, res) => {
 
       const blogId = req.params.id
       const authorId = req.body.author
@@ -233,7 +233,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
-    router.put('/dashboard/edit-draft/:id', async (req, res) =>{
+    router.put('/api/edit_draft/:id', async (req, res) =>{
 
       const id = req.params.id
 
@@ -263,7 +263,7 @@ router.post('/dashboard/articles', async (req, res) => {
 
     })
 
-    router.post('/dashboard/publish-draft/:id', async (req, res)=>{
+    router.post('/api/publish_draft/:id', async (req, res)=>{
 
       const id = req.params.id
 

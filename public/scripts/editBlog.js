@@ -28,7 +28,7 @@ console.log(id)
 const getOldData = async ()=>{
 
 try {
-    const response = await fetch('/dashboard/edit-blog/'+id, {
+    const response = await fetch('/api/get_old_blog_data/'+id, {
         method: 'POST', 
         headers:{
             'Content-Type': "Application/Json"
@@ -73,7 +73,7 @@ const editBlog = async ()=>{
 
     try {
 
-    const response = await fetch('/blog-post/'+id, {
+    const response = await fetch('/api/edit_blog_post/'+id, {
         method: 'PUT',
         headers: {
             'Content-Type': "Application/Json"

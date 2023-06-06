@@ -29,7 +29,7 @@ console.log(id)
 const getOldData = async ()=>{
 
 try {
-    const response = await fetch('/dashboard/edit-draft/'+id, {
+    const response = await fetch('/api/get_old_draft_data/'+id, {
         method: 'POST', 
         headers:{
             'Content-Type': "Application/Json"
@@ -74,7 +74,7 @@ const editDraft = async ()=>{
 
     try {
 
-    const response = await fetch('/dashboard/edit-draft/'+id, {
+    const response = await fetch('/api/edit_draft/'+id, {
         method: 'PUT',
         headers: {
             'Content-Type': "Application/Json"
@@ -116,7 +116,7 @@ const editDraft = async ()=>{
 
 const craeteBlog = async()=>{
 
-    const response = await fetch('/dashboard/publish-draft/'+id,{
+    const response = await fetch('/api/publish_draft/'+id,{
   
       method: 'POST', 
       headers: {
