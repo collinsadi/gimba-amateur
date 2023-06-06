@@ -154,7 +154,7 @@ const trashBlog = async (button)=>{
 
     try {
 
-        const response = await fetch('/api/trash_blog_post'+id, {
+        const response = await fetch('/api/trash_blog_post/'+id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': "Application/Json"
