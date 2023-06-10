@@ -31,6 +31,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    profileimage: {
+        type: String
+    },
     verified: {
         type: String,
         default: "not verified"

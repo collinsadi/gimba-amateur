@@ -9,9 +9,9 @@ const {authMiddleWare} = require('./userauthroutes');
 const User = require('../models/user');
 
 
-router.use(authMiddleWare);
+//router.use(authMiddleWare);
 
-router.post('/api/get_user_articles', async (req, res) => {
+router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
     try {
       const authorId = req.body.authorid;
 
@@ -29,19 +29,19 @@ router.post('/api/get_user_articles', async (req, res) => {
     }
   });
 
-  router.get('/dashboard/articles', async (req, res) =>{
+  router.get('/dashboard/articles', authMiddleWare, async (req, res) =>{
 
     res.status(200).render('mrarticles')
 
   })
 
-  router.get('/dashboard/edit-blog', async (req, res) => {
+  router.get('/dashboard/edit-blog', authMiddleWare, async (req, res) => {
 
     res.status(200).render('editBlog')
 
   })
 
-  router.post('/api/get_old_blog_data/:id', async (req, res)=>{
+  router.post('/api/get_old_blog_data/:id', authMiddleWare, async (req, res)=>{
 
     const id = req.params.id
 
@@ -63,7 +63,7 @@ router.post('/api/get_user_articles', async (req, res) => {
   
    // console.log(AuthorId)
 
-   router.get('/dashboard/trash', (req, res)=>{
+   router.get('/dashboard/trash', authMiddleWare, (req, res)=>{
 
       res.status(200).render('trash')
    })
@@ -106,7 +106,7 @@ router.post('/api/get_user_articles', async (req, res) => {
 
 
 
-    router.delete('/api/delete_restore_blog/:id', async (req, res)=>{
+    router.delete('/api/delete_restore_blog/:id', authMiddleWare, async (req, res)=>{
 
       const id = req.params.id
       const action = req.body.action
@@ -157,7 +157,7 @@ router.post('/api/get_user_articles', async (req, res) => {
     })
 
 
-    router.get('/dashboard/drafts', (req, res)=>{
+    router.get('/dashboard/drafts', authMiddleWare, (req, res)=>{
 
       res.status(200).render('draft')
 
@@ -181,7 +181,7 @@ router.post('/api/get_user_articles', async (req, res) => {
 
     })
 
-    router.delete('/api/delete_draft/:id', async (req, res)=>{
+    router.delete('/api/delete_draft/:id',authMiddleWare , async (req, res)=>{
 
       const blogId = req.params.id
 
@@ -199,13 +199,13 @@ router.post('/api/get_user_articles', async (req, res) => {
 
     })
 
-    router.get('/dashboard/edit-draft', (req, res)=>{
+    router.get('/dashboard/edit-draft', authMiddleWare, (req, res)=>{
 
       res.render('editdraft')
 
     })
 
-    router.post('/api/get_old_draft_data/:id', async (req, res) => {
+    router.post('/api/get_old_draft_data/:id', authMiddleWare, async (req, res) => {
 
       const blogId = req.params.id
       const authorId = req.body.author
@@ -234,7 +234,7 @@ router.post('/api/get_user_articles', async (req, res) => {
 
     })
 
-    router.put('/api/edit_draft/:id', async (req, res) =>{
+    router.put('/api/edit_draft/:id', authMiddleWare, async (req, res) =>{
 
       const id = req.params.id
 
@@ -264,7 +264,7 @@ router.post('/api/get_user_articles', async (req, res) => {
 
     })
 
-    router.post('/api/publish_draft/:id', async (req, res)=>{
+    router.post('/api/publish_draft/:id', authMiddleWare, async (req, res)=>{
 
       const id = req.params.id
 
@@ -302,7 +302,7 @@ try {
 
     })
 
-    router.get('/dashboard/settings', (req, res)=>{
+    router.get('/dashboard/settings', authMiddleWare, (req, res)=>{
 
       res.status(200).render('settings')
 
@@ -310,7 +310,7 @@ try {
 
     //console.log(res.session)
 
-    router.post('/api/get_user_information/:id', async (req, res)=>{
+    router.post('/api/get_user_information/:id', authMiddleWare, async (req, res)=>{
 
       const id = req.params.id
 
@@ -333,11 +333,11 @@ try {
     
     })
 
-    router.put('/api/edit_user/:id', async(req, res)=>{
+    router.put('/api/edit_user/:id', authMiddleWare, async(req, res)=>{
 
       const id = req.params.id
 
-      const {full_name,profile_image, bio, twitter, website} = req.body;
+      const {full_name,profileimage, bio, twitter, website} = req.body;
 
       try {
 
@@ -352,7 +352,7 @@ try {
 
     })
 
-   router.put('/api/request_verification/:id', async(req, res)=>{
+   router.put('/api/request_verification/:id', authMiddleWare, async(req, res)=>{
 
     const id = req.params.id
 
@@ -379,29 +379,29 @@ try {
 
 // Profile page
 
-router.get('/u/:username', async(req, res)=>{
+// router.get('/u/:username', async(req, res)=>{
 
-  const useridname = req.params.username
+//   const useridname = req.params.username
 
-  try{
+//   try{
 
-    const user = await User.findOne({useridname})
+//     const user = await User.findOne({useridname})
 
-    if(!user){
+//     if(!user){
 
-      // res.status(401).json({details: "User Not Found"})
-      res.status(404).render("404")
-      return;
-    }
+//       // res.status(401).json({details: "User Not Found"})
+//       res.status(404).render("404")
+//       return;
+//     }
 
-    res.status(200).send(user)
+//     res.status(200).send(user)
 
-  }catch(error){
-    console.log(error)
-    res.status(500).json("Internal Server Error")
-  }
+//   }catch(error){
+//     console.log(error)
+//     res.status(500).json("Internal Server Error")
+//   }
 
 
-})
+// })
 
 module.exports = router;

@@ -99,6 +99,9 @@ const getUserInfo = async ()=>{
         if(currentUser.website){
             WebsiteUrl.value = currentUser.website
         }
+        if(currentUser.profileimage){
+            profileImage.value = currentUser.profileimage
+        }
 
         localStorage.setItem('fullName',currentUser.full_name )
 
@@ -167,7 +170,7 @@ saveChanges.addEventListener('click', async ()=>{
         body: JSON.stringify({
             full_name: fullname.value.trim(),
             username: username.value.toLowerCase().trim(),
-            profile_image: profileImage.value.trim(),
+            profileimage: profileImage.value.trim(),
             bio: bioInfo.value.trim(),
             twitter: TwitterUrl.value.trim(),
             website: WebsiteUrl.value.trim()
@@ -254,7 +257,25 @@ try {
     if(data.details === "Password Updated Sucessfully"){
         passwordChangeStatus.innerHTML = data.details
         passwordChangeStatus.style.color = "green"
-        window.location.href = '/join'
+
+        try {
+
+            const response = await fetch('/logout',  
+            {
+            method: "GET",
+            headers: {
+                "Content-Type":"Application/Json"
+            }
+            })
+            localStorage.clear()
+            window.location.href = "/join"
+            
+        } catch (error) {
+    
+            console.log(error)
+            
+        }
+    
 
         return;
     }
