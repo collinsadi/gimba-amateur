@@ -114,6 +114,7 @@ padding-right: 15px;
     font-weight: bold;
     cursor: pointer;
 }
+
 .user-name p{
 
     margin-right: 5px;
@@ -352,6 +353,19 @@ width: 90%;
     cursor: pointer;
 }
 
+.show-logout{
+
+    width: 120px;
+    padding: 20px;
+    background-color: white;
+    position: absolute;
+    top: 55px;
+    right: 100px;
+    z-index: 1000;
+    box-shadow: 0px 0 5px rgba(0, 0, 0, 0.432);
+    display: none;
+    cursor: pointer;
+}
 
 
 

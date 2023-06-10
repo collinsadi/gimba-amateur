@@ -119,7 +119,8 @@ router.post('/api/get_user', async (req, res)=>{
 
 router.get('/logout', (req, res)=>{
 
-    req.session.destroy()
+   res.clearCookie('token')
+   res.redirect('/join')
 
 })
 

@@ -1,4 +1,55 @@
+// Show Log out
+const showLogout = document.querySelector('.user-name');
+const logoutPanel = document.querySelector('.show-logout')
 
+showLogout.addEventListener('mouseenter', ()=>{
+
+    // alert('Okay')
+
+    logoutPanel.style.display = "block"
+})
+logoutPanel.addEventListener('mouseenter', ()=>{
+
+    // alert('Okay')
+
+    logoutPanel.style.display = "block"
+})
+logoutPanel.addEventListener('mouseleave', ()=>{
+
+    // alert('Okay')
+
+    logoutPanel.style.display = "none"
+})
+
+
+logoutPanel.addEventListener('click',async ()=>{
+
+    try {
+
+        const response = await fetch('/logout',  
+        {
+        method: "GET",
+        headers: {
+            "Content-Type":"Application/Json"
+        }
+        })
+        localStorage.clear()
+        window.location.href = "/join"
+        
+    } catch (error) {
+
+        console.log(error)
+        
+    }
+
+
+})
+
+
+
+
+
+// Responsive Sidebar
 
 let bringSidebar = document.querySelector('#mobile-sidebar');
 let sideBar = document.querySelector('#dashboard-sidebar');
@@ -10,6 +61,10 @@ bringSidebar.addEventListener('click', ()=>{
 
 })
 
+
+
+
+// Articles Page
 const expandEditor = document.querySelector('#create-new-blog')
 const editor = document.querySelector('#the-main-editor');
 

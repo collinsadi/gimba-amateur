@@ -19,27 +19,8 @@
 <body>
 
     <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
-    <div class="dashboard-header">
-        <div class="dashboard-header-inner">
-            <div class="mobile-sidebar" id="mobile-sidebar">
-                        <i class="fa-solid fa-bars"></i>
-            </div>
-            <div class="dropdown-menu"></div>
-
-            <div class="user-image-name">
-                <div class="user-name">
-                    <p id="authorname"></p>
-                    <div class="fa-solid fa-angle-down"></div>
-                </div>
-              
-                <div class="userimage">
-                    <img src="/images/user.png" alt="">
-                </div>
-                
-            </div>
-        </div>
-
-    </div>
+    <%- include("./partials/dashboardheader.ejs") %>
+    
     <div class="dashboard-sidebar" id="dashboard-sidebar">
 
         <div class="sidebar-inner">
@@ -207,9 +188,9 @@
 
     <div class="inner-form">
 
-    <p>Verification Status: <span id="verification-status">Verified</span></p>
+    <p>Verification Status: <span id="verification-status"></span></p>
 
-        <button>Request Verification</button>
+        <button id="request-verification">Request Verification</button>
     </div>
 
 

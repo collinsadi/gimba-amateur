@@ -1,5 +1,7 @@
 const droptoggle = document.querySelectorAll("#drop-toggle")
 const id = localStorage.getItem('id')
+
+const requestVerificationBtn = document.getElementById('request-verification');
 // for(i =0; i < droptoggle.length; i++){
 
 
@@ -54,6 +56,10 @@ const email = document.getElementById('email');
 const username = document.getElementById('username');
 const profileImage = document.getElementById('profile_image');
 
+// Display the verification
+
+const verificationStatus = document.getElementById('verification-status')
+
 const getUserInfo = async ()=>{
 
     try{
@@ -75,6 +81,22 @@ const getUserInfo = async ()=>{
         email.value = currentUser.email
         fullname.value = currentUser.full_name
         localStorage.setItem('fullName',currentUser.full_name )
+
+        if(currentUser.verified === 'not verified'){
+            verificationStatus.innerHTML = "Not Verified"
+        }
+        if(currentUser.verified === 'requested'){
+            verificationStatus.innerHTML = "Requested"
+            verificationStatus.style.color = "orange"
+            requestVerificationBtn.style.display ="none"
+            requestVerificationBtn.disabled = true
+        }
+        if(currentUser.verified === 'verified'){
+            verificationStatus.innerHTML = "Verified"
+            verificationStatus.style.color = "green"
+            requestVerificationBtn.style.display ="none"
+            requestVerificationBtn.disabled = true
+        }
 
     } catch(error){
         console.error(error)
@@ -196,5 +218,30 @@ try {
     console.log(error)
 }
 
+
+})
+
+
+// Request for verifications
+
+
+requestVerificationBtn.addEventListener('click', async()=>{
+
+    try{
+
+    const response = await fetch('/api/request_verification/'+id, {
+    
+        method: "PUT",
+        headers:{
+            "Content-Type":"Application/Json"
+        }
+
+    })
+
+
+    } catch(error){
+
+        console.log(error)
+    }
 
 })
