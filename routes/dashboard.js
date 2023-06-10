@@ -9,7 +9,7 @@ const {authMiddleWare} = require('./userauthroutes');
 const User = require('../models/user');
 
 
-//router.use(authMiddleWare);
+router.use(authMiddleWare);
 
 router.post('/api/get_user_articles', async (req, res) => {
     try {
