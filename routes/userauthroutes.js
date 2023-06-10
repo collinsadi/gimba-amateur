@@ -139,7 +139,7 @@ router.put('/api/change_password/:id', async (req, res)=>{
 
     try{
 
-        const user = User.findById(id)
+        const user = await User.findById(id)
 
       if(!user){
 
@@ -164,7 +164,7 @@ router.put('/api/change_password/:id', async (req, res)=>{
 
       console.log(error)
 
-      res.status(500).json({details: "Internal Server Error"})
+    //   res.status(500).json({details: "Internal Server Error"})
     }
 
 

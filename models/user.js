@@ -17,6 +17,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    verified: {
+        type: String,
+        default: "not verified"
+    }
     // socials: [
     //     facebook: {
     //         type: String
