@@ -51,7 +51,7 @@ router.get('/join', (req, res)=>{
 
 router.post('/api/create_user', async (req, res)=>{
 
-    const {full_name, email, password} = req.body;
+    const {full_name, email, password, useridname, bio, twitter, website} = req.body;
 
     try{
 
@@ -59,19 +59,48 @@ router.post('/api/create_user', async (req, res)=>{
 
         try{
 
-            const user = await User.create({full_name, email, password: hashedpassword})
+            const user = await User.create({full_name, email, password: hashedpassword, useridname, bio, twitter, website})
             res.status(200).send({message: "Sign Up Sucessful"})
             return;
         } catch(error){
 
+
+
+            if(error.keyPattern.useridname && error.keyPattern.email){
+
+                
+                res.status(401).json({message: "Email and Username Already In Use"})
+                // console.log(error)
+                return;
+            }
+            if(error.keyPattern.useridname){
+
+                // console.log("na user name cause am")
+
+                
+                res.status(401).json({message: "Username Already In Use"})
+                // console.log(error)
+                return;
+            }
+            if(error.keyPattern.email){
+
+                // console.log("na email cause am")
+
+                
+                res.status(401).json({message: "Email Already In Use"})
+                console.log(error)
+                return;
+
+            }
+
             if(error.code === 11000){
 
-                res.status(401).send({message: "Email Already In Use"})
+                // res.status(401).send({message: "User Already In Use"})
                 console.log(error)
                 return;
             }
 
-            res.status(500).send({message: "Internal Server Error"})
+            res.status(500).json({message: "Internal Server Error"})
             console.log(error)
             return;
             
