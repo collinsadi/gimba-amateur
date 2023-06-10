@@ -103,11 +103,14 @@
         <div class="all-the-blogs-array removepanel">
 
             <div class="inner-form">
+
+               
+
                 <input type="text" placeholder="Your Fullname" id="fullname">
 
                 <div class="username-section">
-                    <input type="text" placeholder="Username" id="username">
-                    <button>Check Availability</button>
+                    <input type="text" placeholder="Username" id="username" disabled>
+                    <!-- <button>Check Availability</button> -->
                 </div>
 
                 <input type="text" placeholder="Email" id="email" disabled>
@@ -115,22 +118,20 @@
 
                 <Label>Socials</Label>
 
+                    <p id="url-alert" style="margin-top: 10px;"></p>
+
                 <div class="social-media-handles">
 
-                    <input type="text" placeholder="Facebook Url">
-                    <input type="text" placeholder="Instagram Url">
-
-                </div>
-                <div class="social-media-handles">
-
-                    <input type="text" placeholder="Twitter Url">
-                    <input type="text" placeholder="Whatsapp Number">
+                    <input type="text" placeholder="Twitter Url" id="twitter">
+                    
+                    <input type="text" placeholder="Website" id="website">
+                    
 
                 </div>
 
                 <Label>Bio</Label>
 
-                <textarea name="" placeholder="Your Bio..."></textarea>
+                <textarea id="bio_info" placeholder="Your Bio..."></textarea>
                 <button id="change-info">Save</button>
             </div>
 

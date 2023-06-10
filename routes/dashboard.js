@@ -337,7 +337,7 @@ try {
 
       const id = req.params.id
 
-      const {full_name, username,profile_image} = req.body;
+      const {full_name,profile_image, bio, twitter, website} = req.body;
 
       try {
 

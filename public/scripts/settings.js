@@ -55,10 +55,19 @@ const fullname = document.getElementById('fullname')
 const email = document.getElementById('email');
 const username = document.getElementById('username');
 const profileImage = document.getElementById('profile_image');
+const bioInfo = document.getElementById('bio_info');
+const TwitterUrl = document.getElementById('twitter');
+const WebsiteUrl = document.getElementById('website');
+const UrlError = document.getElementById('url-alert');
 
 // Display the verification
 
 const verificationStatus = document.getElementById('verification-status')
+
+
+//  Get User Default Info
+
+
 
 const getUserInfo = async ()=>{
 
@@ -80,6 +89,17 @@ const getUserInfo = async ()=>{
 
         email.value = currentUser.email
         fullname.value = currentUser.full_name
+        username.value = currentUser.useridname
+        bioInfo.value = currentUser.bio
+        
+
+        if(currentUser.twitter){
+            TwitterUrl.value = currentUser.twitter
+        }
+        if(currentUser.website){
+            WebsiteUrl.value = currentUser.website
+        }
+
         localStorage.setItem('fullName',currentUser.full_name )
 
         if(currentUser.verified === 'not verified'){
@@ -113,6 +133,30 @@ const saveChanges = document.getElementById('change-info')
 saveChanges.addEventListener('click', async ()=>{
     // alert('Working')
 
+    if(username.value.trim().indexOf(' ') !== -1) {
+        alert("use Url Friendly Username (eg, collins-adi, collinsadi, collins)")
+        return;
+    }
+
+    if(WebsiteUrl.value.trim().indexOf('https://') == -1){
+    
+    UrlError.innerHTML = "Enter a Valid Https Url"
+    UrlError.style.color ="red"
+
+    // alert('Enter a Valid Https Url')
+    return;
+    }
+    if(TwitterUrl.value.trim().indexOf('https://') == -1){
+
+    UrlError.innerHTML = "Enter a Valid Https Url"
+    UrlError.style.color ="red"
+
+    // alert('Enter a Valid Https Url')
+    // alert('Enter a Valid Twitter Url')
+
+    return;
+    }
+
     try {
         
     const response = await fetch('/api/edit_user/'+id, {
@@ -122,8 +166,11 @@ saveChanges.addEventListener('click', async ()=>{
         },
         body: JSON.stringify({
             full_name: fullname.value.trim(),
-            username: username.value.trim(),
-            profile_image: profileImage.value.trim()
+            username: username.value.toLowerCase().trim(),
+            profile_image: profileImage.value.trim(),
+            bio: bioInfo.value.trim(),
+            twitter: TwitterUrl.value.trim(),
+            website: WebsiteUrl.value.trim()
 
         })
     })

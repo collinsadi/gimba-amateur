@@ -21,7 +21,31 @@
     const fullname = document.getElementById("fullname");
     const email = document.getElementById("email");
     const password = document.getElementById("password");
+    const bioInfo = document.getElementById("bio_info");
+    const userName = document.getElementById("username");
+ 
 
+    // let users switch modes with short key
+
+    window.addEventListener('keydown', (event)=>{
+
+        if(event.altKey && event.key ==="l"){
+
+            // alert('Working')
+
+            signuppage.style.display = "none"
+            loginpage.style.display = "block"
+        }
+
+         if(event.altKey && event.key ==="s"){
+
+            // alert('Working')
+
+            signuppage.style.display = "block"
+            loginpage.style.display = "none"
+        }
+
+    })
 
 // Fetch the api to create users
 const CreateUsers = async () => {
@@ -37,7 +61,10 @@ const CreateUsers = async () => {
             body: JSON.stringify({
                full_name: fullname.value.trim(),
                email: email.value.toLowerCase().trim(),
-               password: password.value.trim() 
+               password: password.value.trim(),
+               bio: bioInfo.value.trim(),
+               useridname: userName.value.toLowerCase().trim(),
+
             })
         })
 
@@ -46,12 +73,19 @@ const CreateUsers = async () => {
         if(data.message === "Email Already In Use"){
             errormessage.innerHTML = data.message
         }
+        if(data.message === "Email and Username Already In Use"){
+            errormessage.innerHTML = data.message
+        }
+        if(data.message === "Username Already In Use"){
+            errormessage.innerHTML = data.message
+        }
 
         if(data.message === "Sign Up Sucessful"){
             errormessage.style.color = "green"
             errormessage.innerHTML = data.message
             location.reload()
         }
+        
         
         if(data.message === "Internal Server Error"){
 
@@ -73,13 +107,21 @@ signUpBtn.addEventListener("click", (e)=>{
 
    
 
-    if(fullname.value === "" || password.value === "" || email.value === ""){
+    if(fullname.value === "" || password.value === "" || email.value === "" || bioInfo.value === "" || userName.value === ""){
         errormessage.innerHTML = "All Fields are Required"
         return;
     }
 
     if(fullname.value.length < 3) {
         errormessage.innerHTML = "Your Full Name is Required"
+        return;
+    }
+    if(userName.value.length <= 3) {
+        errormessage.innerHTML = "username too short"
+        return;
+    }
+    if(userName.value.trim().indexOf(' ') !== -1) {
+        errormessage.innerHTML = "use Url Friendly Username (eg, collins-adi, collinsadi, collins)"
         return;
     }
 
@@ -98,7 +140,7 @@ signUpBtn.addEventListener("click", (e)=>{
 
         CreateUsers()
      
-        
+    .then(e.target.innerHTML = "Become an Author")
     }, 2000);
 
 })
