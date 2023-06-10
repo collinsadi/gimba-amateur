@@ -35,9 +35,9 @@ const CreateUsers = async () => {
                 "Content-Type": "Application/Json"
             },
             body: JSON.stringify({
-               full_name: fullname.value,
-               email: email.value.toLowerCase(),
-               password: password.value 
+               full_name: fullname.value.trim(),
+               email: email.value.toLowerCase().trim(),
+               password: password.value.trim() 
             })
         })
 

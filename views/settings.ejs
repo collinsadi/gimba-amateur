@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Settings</title>
+    <%- include("./partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <!-- <link rel="stylesheet" href="/styles/articles.css"> -->
+    <link rel="stylesheet" href="../styles/createblog.css">
+    <link rel="stylesheet" href="../styles/settings.css">
+   
+    
+    
+
+
+</head>
+<body>
+
+    <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
+    <div class="dashboard-header">
+        <div class="dashboard-header-inner">
+            <div class="mobile-sidebar" id="mobile-sidebar">
+                        <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="dropdown-menu"></div>
+
+            <div class="user-image-name">
+                <div class="user-name">
+                    <p id="authorname"></p>
+                    <div class="fa-solid fa-angle-down"></div>
+                </div>
+              
+                <div class="userimage">
+                    <img src="/images/user.png" alt="">
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="dashboard-sidebar" id="dashboard-sidebar">
+
+        <div class="sidebar-inner">
+
+            <div class="dashboard-brandname">
+                <h3>GIMBA</h3>
+            </div>
+
+            <div class="sidebar-buttons">
+
+                <div class="single-button">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <p> <a href="/dashboard"> Dashboard</a></p>
+                </div>
+
+
+
+
+
+                <div class="single-button ">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p><a href="/dashboard/articles">My Articles</a> </p>
+                </div>
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p> <a href="/dashboard/analytics"> Analytics</a></p>
+                </div>
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <p><a href="/dashboard/drafts">Drafts</a> </p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-trash"></i>
+                    <p> <a href="/dashboard/trash">Trash</a> </p>
+                </div>
+
+                <div class="single-button  active-sidebar-btn">
+                    <i class="fa-solid fa-gear"></i>
+                    <p> <a href="/dashboard/settings">Settings</a> </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- The Main DashBoard Content  -->  
+
+    <main class="dashboard-main-page">
+
+
+        <div class="all-your-blogs">
+
+            <div class="all-your-blogs-inner">
+
+
+     
+        <div class="all-your-blogs-header"id="drop-toggle">
+                    <h3>Your Personal Info</h3>
+
+        <div class="fa-solid fa-angle-down" ></div>
+        </div>
+
+
+
+        <div class="all-the-blogs-array removepanel">
+
+            <div class="inner-form">
+                <input type="text" placeholder="Your Fullname" id="fullname">
+
+                <div class="username-section">
+                    <input type="text" placeholder="Username" id="username">
+                    <button>Check Availability</button>
+                </div>
+
+                <input type="text" placeholder="Email" id="email" disabled>
+                <input type="text" placeholder="Profile Image Url" id="profile_image">
+
+                <Label>Socials</Label>
+
+                <div class="social-media-handles">
+
+                    <input type="text" placeholder="Facebook Url">
+                    <input type="text" placeholder="Instagram Url">
+
+                </div>
+                <div class="social-media-handles">
+
+                    <input type="text" placeholder="Twitter Url">
+                    <input type="text" placeholder="Whatsapp Number">
+
+                </div>
+
+                <Label>Bio</Label>
+
+                <textarea name="" placeholder="Your Bio..."></textarea>
+                <button id="change-info">Save</button>
+            </div>
+
+
+                </div>
+
+
+        
+                <!-- Login and Password -->
+
+                
+        <div class="all-your-blogs-header"id="drop-toggle">
+            <h3> Password and Security</h3>
+
+<div class="fa-solid fa-angle-down" ></div>
+</div>
+
+
+
+<div class="all-the-blogs-array removepanel">
+
+    <div class="inner-form">
+
+        <label>Change Password </label>
+
+        <input type="text" placeholder="Old Password">
+
+        <input type="text" placeholder="New Password">
+        <input type="text" placeholder="Confirm New Password">
+
+        <button>Change</button>
+    </div>
+
+
+        </div>
+              
+
+
+        <!-- Verification -->
+
+                  
+        <div class="all-your-blogs-header"id="drop-toggle">
+            <h3> Verification </h3>
+
+<div class="fa-solid fa-angle-down" ></div>
+</div>
+
+
+
+<div class="all-the-blogs-array removepanel">
+
+    <div class="inner-form">
+
+    <p>Verification Status: <span id="verification-status">Verified</span></p>
+
+        <button>Request Verification</button>
+    </div>
+
+
+        </div>
+              
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+             
+
+        
+
+             
+
+
+
+
+            </div>
+
+
+
+            <div class="error-message" id="error-message">
+
+                <div class="message-title">
+                    <h3 id="msg-title">Invalid Input</h3>
+                </div>
+                <div class="message-body">
+                    <p id="msg-body"> one or more field is Invalid </p>
+                </div>
+                
+                </div>
+            
+
+
+
+
+
+        </div>
+
+    
+
+
+
+
+    </main>
+
+
+
+
+    <%- include('./partials/iconscript.ejs') %>
+
+
+    <script src="../scripts/dashboardscript.js"></script> 
+    <script src="../scripts/settings.js"></script> 
+
+</body>
+</html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+
+</script>

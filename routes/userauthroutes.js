@@ -131,6 +131,46 @@ res.render('dashboard')
 
 })
 
+router.put('/api/change_password/:id', async (req, res)=>{
+
+    const id = req.params.id
+
+    const {oldPassword, password} = req.body
+
+    try{
+
+        const user = User.findById(id)
+
+      if(!user){
+
+        return res.status(401).json({details: "User Was Not Found"})
+      }
+
+    const passwordIsValid =  await bcrypt.compare(oldPassword,user.password)
+
+    if(!passwordIsValid){
+      return  res.status(401).json({details: "Invalid Credentials"})
+    }
+
+    const hashedpassword = await bcrypt.hash(password,10)
+
+   user.password = hashedpassword
+
+   await user.save()
+
+   res.status(201).json({details: "Password Updated Sucessfully"})
+
+    }catch(error){
+
+      console.log(error)
+
+      res.status(500).json({details: "Internal Server Error"})
+    }
+
+
+  })
+
+
 
 
 module.exports = {useroutes:router,authMiddleWare};

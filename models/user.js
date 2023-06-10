@@ -16,7 +16,13 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    // socials: [
+    //     facebook: {
+    //         type: String
+    //     },
+        
+    // ]
 },{timestamps: true})
 
 

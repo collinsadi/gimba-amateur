@@ -5,10 +5,11 @@ const router = express.Router();
 const BlogPost = require('../models/blog')
 const Trash = require('../models/Trash')
 const Draft = require('../models/draft')
-const {authMiddleWare} = require('./userauthroutes')
+const {authMiddleWare} = require('./userauthroutes');
+const User = require('../models/user');
 
 
-router.use(authMiddleWare);
+//router.use(authMiddleWare);
 
 router.post('/api/get_user_articles', async (req, res) => {
     try {
@@ -301,10 +302,57 @@ try {
 
     })
 
+    router.get('/dashboard/settings', (req, res)=>{
+
+      res.status(200).render('settings')
+
+    })
+
     //console.log(res.session)
 
+    router.post('/api/get_user_information/:id', async (req, res)=>{
 
+      const id = req.params.id
 
+      try{
+
+      const currentUser =  await User.findById(id)
+        
+      if(!currentUser){
+
+       return res.status(401).json({details: "Your Request did not Return any Response"});
+      }
+
+      res.status(201).json({details: "User Found", currentUser})
+      }catch(error){
+
+        res.status(500).json({details: "An Error Occured"})
+
+      }
+
+    
+    })
+
+    router.put('/api/edit_user/:id', async(req, res)=>{
+
+      const id = req.params.id
+
+      const {full_name, username,profile_image} = req.body;
+
+      try {
+
+        await User.findByIdAndUpdate(id, req.body)
+
+        res.status(200).json({details: "User Updated Sucessfully"})
+        return;
+      } catch (error) {
+        console.log(error)
+        res.status(404).json({details: "an Error Occured"})
+      }
+
+    })
+
+   
 
 
 module.exports = router;
