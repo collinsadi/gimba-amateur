@@ -51,7 +51,7 @@ try{
         
 
         ${user.verified === "verified" ? `<div class="badge pd-btm" title="Verified Blogger">
-             <div class="fa-solid fa-certificate"></div>
+             <div class="fa-solid fa-circle-check"></div>
         </div>` : ""}
         
         
@@ -117,7 +117,7 @@ try{
                 <div class ="name-badge">
                 <p>${user.useridname}</p>
                     ${user.verified === "verified" ? `<div class="badge" title="Verified Blogger">
-                    <div class="fa-solid fa-certificate"></div>
+                    <div class="fa-solid fa-circle-check"></div>
                </div>` : ""}
                 </div>
                     

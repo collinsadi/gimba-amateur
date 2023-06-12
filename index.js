@@ -5,6 +5,7 @@ const ethers = require('ethers');
 const mongoose = require('mongoose')
 const blogroutes = require('./routes/blogRoutes')
 const dashboardroutes = require('./routes/dashboard')
+const superadminroutes = require('./routes/superadminroute')
 const profileroutes = require('./routes/profile')
 const {useroutes} = require('./routes/userauthroutes')
 const Session = require('express-session');
@@ -65,6 +66,7 @@ app.get('/contact', (req, res)=>{
 app.use(blogroutes)
 app.use(useroutes)
 app.use(profileroutes)
+app.use(superadminroutes)
 
 
 

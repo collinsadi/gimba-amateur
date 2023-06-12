@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <%- include("../partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="../styles/createblog.css">
+
+
+</head>
+<body>
+
+    <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
+
+    <%- include("./partials/dashboardheader.ejs") %>
+   
+    <div class="dashboard-sidebar" id="dashboard-sidebar">
+
+        <div class="sidebar-inner">
+
+            <div class="dashboard-brandname">
+                <h3>GIMBA</h3>
+            </div>
+
+            <div class="sidebar-buttons">
+
+                <div class="single-button active-sidebar-btn">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <p><a href="/superadmin/dashboard"> Dashboard</a></p>
+                </div>
+
+
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p><a href="/superadmin/dashboard/blogs">Blogs</a> </p>
+                </div>
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p><a href="/superadmin/dashboard/analytics">Analytics</a></p>
+                </div>
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-bell"></i>
+                    <p><a href="/superadmin/dashboard/notifications">Notification</a></p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-users"></i>
+                    <p><a href="/superadmin/dashboard/users">Users</a></p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <p><a href="/superadmin/dashboard/blacklist">Blacklist</a></p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- The Main DashBoard Content  -->  
+
+    <main class="dashboard-main-page">
+
+
+        <div class="welcome-message">
+            <div class="welcome-message-inner">
+
+                <div class="welcome-left">
+
+                    <h3>Welcome <span id="authorname2"></span></h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                 <a href="/dashboard/articles"> <button>  Manage Users </button> </a>  
+
+                </div>
+                <div class="welcome-right">
+                    <img src="/images/ban.png" alt="">
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+        
+        <div class="recent-articles">
+            <div class="recent-articles-inner">
+                <div class="recent-articles-title">
+                    <h3>Recent Articles</h3>
+                </div>
+
+
+                <div class="recent-articles-body">
+
+
+                 
+                </div>
+            </div>
+          </div>
+
+
+
+
+
+    </main>
+
+
+
+
+    <%- include('../partials/iconscript.ejs') %>
+
+
+
+    <script src="../scripts/dashboardscript.js"></script>   
+<script src="../scripts/createblog.js" type="module"></script>
+</body>
+</html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+    document.getElementById('authorname2').innerHTML = author + "!"
+
+</script>

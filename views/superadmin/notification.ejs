@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <%- include("../partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/articles.css">
+    <link rel="stylesheet" href="/styles/createblog.css">
+    <link rel="stylesheet" href="/styles/settings.css">
+    <link rel="stylesheet" href="/styles/superadmin/notification.css">
+
+</head>
+<body>
+
+    <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
+
+    <%- include("./partials/dashboardheader.ejs") %>
+   
+    <div class="dashboard-sidebar" id="dashboard-sidebar">
+
+        <div class="sidebar-inner">
+
+            <div class="dashboard-brandname">
+                <h3>GIMBA</h3>
+            </div>
+
+            <div class="sidebar-buttons">
+
+                <div class="single-button">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <p><a href="/superadmin/dashboard"> Dashboard</a></p>
+                </div>
+
+
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p><a href="/superadmin/dashboard/blogs">Blogs</a> </p>
+                </div>
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p><a href="/superadmin/dashboard/analytics">Analytics</a></p>
+                </div>
+
+
+
+                <div class="single-button active-sidebar-btn">
+                    <i class="fa-solid fa-bell"></i>
+                    <p><a href="/superadmin/dashboard/notifications">Notification</a></p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-users"></i>
+                    <p><a href="/superadmin/dashboard/users">Users</a></p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <p><a href="/superadmin/dashboard/blacklist">Blacklist</a></p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- The Main DashBoard Content  -->  
+
+    <main class="dashboard-main-page">
+
+
+        <div class="all-your-blogs">
+
+            <div class="all-your-blogs-inner">
+
+
+     
+        <div class="all-your-blogs-header"id="drop-toggle">
+                    <h3>New Notification</h3>
+
+        <div class="fa-solid fa-angle-down" ></div>
+        </div>
+
+
+
+        <div class="all-the-blogs-array removepanel">
+
+            <div class="inner-form">
+
+                <p id="error-tracker"></p>
+
+                <input type="text" placeholder="Notification Title" id="notification_title">
+
+
+                <div class="username-section">
+                    <input type="text" placeholder="Receiver" id="receiver">
+                    <!-- <button>Check Availability</button> -->
+                </div>
+
+                
+
+                <textarea  placeholder="Message Body..." id="message-body"></textarea>
+
+
+                <button id="send-notification">Send</button>
+            </div>
+
+
+                </div>
+
+
+
+                <div class="all-your-blogs-header"id="drop-toggle">
+                    <h3>Sent Notifications</h3>
+
+        <div class="fa-solid fa-angle-down" ></div>
+        </div>
+
+
+
+        <div class="all-the-blogs-array removepanel">
+
+            <div class="notification-array">
+
+                <div class="notification-array-inner" id="notification-array">
+
+                    <div class="single-notification">
+
+                        <div class="notification-title">
+                            <p>Welcome, Message New User</p>
+                        </div>
+                        <div class="notification-receiver">
+                            <p>supaadmin</p>
+                        </div>
+                        <div class="notification-createdat">
+                            <p>25, June 2023</p>
+                        </div>
+                        <div class="notification-status">
+                            <p class="active-status" id="notification-status">Delivered</p> 
+                            <!-- <p>Seen</p> -->
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+                </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+             
+
+        
+
+             
+
+
+
+
+            </div>
+
+
+
+        <div class="error-message" id="error-message">
+
+            <div class="message-title">
+                <h3 id="msg-title">Invalid Input</h3>
+            </div>
+            <div class="message-body">
+                <p id="msg-body"> one or more field is Invalid </p>
+            </div>
+            
+            </div>
+
+
+    </main>
+
+
+
+
+    
+
+
+    <script src="/scripts/dashboardscript.js"></script>  
+    <script src="/scripts/superadmin/notificationscript.js"></script>  
+<%- include('../partials/iconscript.ejs') %>
+</body>
+</html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+    document.getElementById('authorname2').innerHTML = author + "!"
+
+</script>

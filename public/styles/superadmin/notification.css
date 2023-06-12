@@ -1,0 +1,47 @@
+.notification-array{
+
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.notification-array-inner{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.single-notification{
+
+    width: 100%;
+    padding-left: 20px;
+    border-left: 8px solid var(--primary-color);
+    margin-top: 10px;
+}
+.notification-title p{
+
+    font-size: 20px;
+    
+}
+.notification-receiver p{
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--primary-color);
+    
+}
+.notification-status{
+
+    display: flex;
+    margin-top: 10px;
+}
+.notification-status .active-status {
+
+    color: var(--primary-color);
+}
+.seen-status{
+    color: green;
+    font-weight: bold;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="../styles/signup.css">
+    <title>Sign Up</title>
+</head>
+<body>
+    
+      <!-- Including the page header -->
+
+      <!-- <%- include("../partials/header.ejs") %> -->
+
+
+
+
+        <div class="main-form-section">
+
+
+            <div class="main-form-container">
+
+                <div class="form-container-top">
+
+                    <img src="../images/ban.png" alt="">
+
+                </div>
+
+                <!-- <div class="theunderline"></div> -->
+
+
+
+                <div class="sign-up-form" id="sign-up-form">
+
+                    <p style="color: red;" id="error-message"></p>
+                    
+                    <h3>Sign Up</h3>
+
+                    <label for="fullname"> Full Name</label>
+                    <input type="text" placeholder="Full Name" id="fullname">
+                    <label for="email"> Email</label>
+                    <input type="email" placeholder="Email" id="email">
+                    <label for="email"> Username</label>
+                    <input type="text" placeholder="username" id="username">
+
+                     <label for="password"> Password</label>
+                    <input type="password" placeholder="Password" id="password">
+
+                    <div class="submit-button">
+                        <button id="signup-btn">Become an Author</button>
+                    </div>
+                    <p>Already an Author? <a href="" id="switch-to-login">Login</a></p>
+
+
+                </div>
+
+                 <div class="sign-up-form" id="log-in-form">
+                    <p style="text-align: center;color: red;" id="login-error">
+                        
+                    </p>
+                    
+                    <h3>Log In</h3>
+
+                   
+                    <label for="loginemail"> Email</label>
+                    <input type="email" placeholder="Email or Username" id="loginemail">
+                    <label for="loginpassword"> Password</label>
+                    <input type="password" placeholder="Password" id="loginpassword">
+
+                    <div class="submit-button" id="login-btn">
+                        <button>Log In</button>
+                    </div>
+                    <p>New Here? <a href="" id="switch-to-signup">Sign Up</a></p>
+
+
+                </div>
+
+
+            </div>
+
+      
+
+
+        </div>
+
+
+
+
+
+
+       
+      <!-- <%- include("../partials/newsletter.ejs") %> -->
+      <%- include("../partials/footer.ejs") %>
+      
+      <%- include('../partials/iconscript.ejs') %>
+
+      <script src="../scripts/superadmin/loginscript.js" type="module"></script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 
-const userSchema = new Schema({
+const SuperAdminSchema = new Schema({
     full_name: {
         type: String,
         required: true
@@ -31,16 +31,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    profileimage: {
-        type: String
-    },
-    verified: {
-        type: String,
-        default: "not verified"
-    },
     role: {
+
         type: String,
-        default: "author"
+        unique: true,
+        default: "superadmin"
+
     }
     // socials: [
     //     facebook: {
@@ -51,7 +47,7 @@ const userSchema = new Schema({
 },{timestamps: true})
 
 
-const User = mongoose.model('user', userSchema)
+const SuperAdmin = mongoose.model('superadmin', SuperAdminSchema)
 
-module.exports = User;
+module.exports = SuperAdmin;
 
