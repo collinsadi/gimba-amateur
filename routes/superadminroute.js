@@ -281,6 +281,45 @@ try{
  
 })
 
+router.post('/api/superadmin/get_all_users', authMiddleWare, async (req, res)=>{
+
+    try{
+
+     const authors =   await User.find().sort({createdAt: -1})
+
+    
+
+        res.status(200).json({details: "Blogs Found", authors })
+    }catch(error){
+
+        res.status(500).json({details: "an Error Occured"})
+
+        console.log(error)
+    }
+
+
+})
+
+router.post('/api/superadmin/verify_user',  authMiddleWare, async (req, res)=>{
+
+const userId = req.body.userid
+
+try {
+
+    const user = await User.findByIdAndUpdate(userId, {verified: "verified"})
+
+    await user.save()
+
+    res.json({details: "User Verified"})
+
+}catch(error){
+
+    console.log(error)
+}
+
+
+
+})
 
 
 

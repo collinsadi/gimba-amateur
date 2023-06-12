@@ -1,0 +1,67 @@
+.table{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table-inner{
+
+    padding: 15px;
+    width: 100%;
+    
+}
+
+.table-inner .all-users{
+
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+.all-users td, .all-users th{
+
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+}
+.all-users td a{
+
+    text-decoration: none;
+    color: black;
+}
+
+.all-users th{
+
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+}
+.block-user{
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+.verify-user{
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+.verified{
+
+    color: rgb(11, 201, 11);
+    font-weight: bold;
+}
+.requested{
+    color: orange;
+    font-weight: bold;
+}
+.not-verified{
+    color: red;
+    font-weight: bold;
+}

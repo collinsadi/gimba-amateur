@@ -41,6 +41,10 @@ const userSchema = new Schema({
     role: {
         type: String,
         default: "author"
+    },
+    blocked: {
+        type: Boolean,
+        default: false
     }
     // socials: [
     //     facebook: {
