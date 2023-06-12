@@ -185,6 +185,13 @@ const getUsers = async ()=>{
         loginError.innerHTML = data.message
         return;
     }
+    if(data.message === "Account is Temporary Disabled" ){
+
+        const username = data.blockedUser
+
+        loginError.innerHTML = "@"+ username + " Your " + data.message
+        return;
+    }
 
     if(data.message === "Log In Sucessful"){
         const author =  data.author.full_name

@@ -135,7 +135,13 @@ router.post('/api/get_user', async (req, res)=>{
         return;
     }
 
-   
+   if(user.blocked){
+
+    const username = user.useridname
+
+    res.status(401).send({message: "Account is Temporary Disabled", blockedUser: username});
+    return;
+   }
     
    
     const token = jwt.sign({userId: user._id}, jwtsecret)

@@ -306,11 +306,78 @@ const userId = req.body.userid
 
 try {
 
+    const author = await User.findById(userId)
+
+    if(!author){
+
+        return res.status(401).json({details: "Author not found"})
+    } 
+    
     const user = await User.findByIdAndUpdate(userId, {verified: "verified"})
 
     await user.save()
 
-    res.json({details: "User Verified"})
+    await Notification.create({notification_title: author.full_name + " Your Account Have Been Verified", receiver: author.useridname, notification_body: author.full_name + " We Found out that this was an authentic account and so we decided to verify the account to tell users that this is one of the authentic accounts on GIMBA, we are working everyday to make GIMBA a safe space for Readers, so we you not to violate any of our terms of service else, your Badge would be removed and accound disable, Sincerely: SUPER ADMIN" })
+
+   
+
+    res.status(200).json({details: "User Verified"})
+
+}catch(error){
+
+    console.log(error)
+}
+
+
+
+})
+
+
+router.post('/api/superadmin/remove_user_verification',  authMiddleWare, async (req, res)=>{
+
+const userId = req.body.userid
+
+try {
+
+    const author = await User.findById(userId)
+
+    if(!author){
+
+        return res.status(401).json({details: "Author not found"})
+    } 
+    
+    const user = await User.findByIdAndUpdate(userId, {verified: "removed"})
+
+    await user.save()
+
+    await Notification.create({notification_title: author.full_name + " Your Verification Have Been Removed", receiver: author.useridname, notification_body: author.full_name + " Your Verification was removed because you went against our community Guidelines, your account would be blocked if you go against our community Guidelines again Sincerely: SUPER ADMIN" })
+
+   
+
+    res.status(200).json({details: "User Verification Removed"})
+
+}catch(error){
+
+    console.log(error)
+}
+
+
+
+})
+
+
+router.post('/api/superadmin/block_user',  authMiddleWare, async (req, res)=>{
+
+const userId = req.body.userid
+
+try {
+    
+    const user = await User.findByIdAndUpdate(userId, {blocked: true})
+
+    await user.save()
+   
+
+    res.status(200).json({details: "User Blocked"})
 
 }catch(error){
 

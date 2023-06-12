@@ -52,6 +52,14 @@
     color: white;
     cursor: pointer;
 }
+.unverify-user{
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
 .verified{
 
     color: rgb(11, 201, 11);
@@ -62,6 +70,11 @@
     font-weight: bold;
 }
 .not-verified{
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.removed{
+
     color: red;
     font-weight: bold;
 }
