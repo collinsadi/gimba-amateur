@@ -206,7 +206,10 @@ router.put('/api/change_password/:id', async (req, res)=>{
 
   })
 
+router.get('/disabled', (req, res)=>{
 
+    res.status(200).render('disabled')
+})
 
 
 module.exports = {useroutes:router,authMiddleWare};

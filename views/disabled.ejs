@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Disabled </title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+
+
+
+    <style>
+
+        *{
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .main{
+
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            color: white;
+        }
+        
+        .main-inner{
+            padding: 20px;
+            width: 500px;
+            height: 200px;
+            background-color: blueviolet;
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .disabled-card-top{
+
+            padding-bottom: 15px;
+            border-bottom: 1px solid black;
+            margin-bottom: 10px;
+        }
+        .disabled-card-footer{
+            margin-top: 10px;
+        }
+        .disabled-card-footer button{
+
+            padding: 10px;
+            border: 0;
+            outline: 0;
+            color: blueviolet;
+            background-color: white;
+            cursor: pointer;
+        }
+        .disabled-card-footer a{
+
+            color: blueviolet;
+            text-decoration: none;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    
+    
+</body>
+</html>
+
+<script>
+    const blockedUser = localStorage.getItem("blockedUser")
+    const body = document.querySelector('body');
+
+    if(blockedUser){
+
+        body.innerHTML = `
+        
+        
+        <div class="main">
+
+
+        <div class="main-inner">
+
+
+           
+            <div class="disabled-card">
+
+                <div class="disabled-card-inner">
+
+                    <div class="disabled-card-top">
+                        <h3>Account Temporarily Disabled</h3>
+                    </div>
+                    <div class="disabled-card-body">
+
+                        <p>@${blockedUser} Your Account Was Temporarily Disabled and we are carrying out a check on the Account, This Check Might Take up to a week, if you think this was a mistake <a href="">Message Admin</a></p>
+
+                    </div>
+
+                    <div class="disabled-card-footer">
+                        <button><a href="/join">Log Out</a></button>
+                        <button><a href="/join">Not Collins? Login Here</a></button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+        
+        
+        
+        `
+
+    }
+
+    window.addEventListener('beforeunload', ()=>{
+
+        localStorage.clear();
+
+    })
+
+</script>

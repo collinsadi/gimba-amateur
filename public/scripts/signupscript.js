@@ -189,8 +189,14 @@ const getUsers = async ()=>{
 
         const username = data.blockedUser
 
-        loginError.innerHTML = "@"+ username + " Your " + data.message
+        localStorage.setItem('blockedUser', username)
+
+        window.location.href ="/disabled"
+
         return;
+        
+        loginError.innerHTML = "@"+ username + " Your " + data.message
+       
     }
 
     if(data.message === "Log In Sucessful"){
