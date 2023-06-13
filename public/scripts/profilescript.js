@@ -27,6 +27,10 @@ try{
         window.location.href = "/404"
         return;
     }
+    if(data.details === "Account is Disabled"){
+        window.location.href = "/404"
+        return;
+    }
 
 
     const user = data.user

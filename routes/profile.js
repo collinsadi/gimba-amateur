@@ -47,6 +47,12 @@ router.get('/u/:username', async(req, res)=>{
         res.status(404).json({details: "Author Not Found"})
         return;
       }
+
+      if(user.blocked){
+
+        res.status(404).json({details: "Account is Disabled"})
+        return;
+      }
   
       // res.status(200).render('profile')
       const blogs = await BlogPost.find({author: user._id})
