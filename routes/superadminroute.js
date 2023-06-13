@@ -386,6 +386,28 @@ try {
 
 
 
+}) 
+
+router.post('/api/superadmin/unblock_user',  authMiddleWare, async (req, res)=>{
+
+const userId = req.body.userid
+
+try {
+    
+    const user = await User.findByIdAndUpdate(userId, {blocked: false})
+
+    await user.save()
+   
+
+    res.status(200).json({details: "User UnBlocked"})
+
+}catch(error){
+
+    console.log(error)
+}
+
+
+
 })
 
 

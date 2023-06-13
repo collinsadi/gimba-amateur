@@ -52,7 +52,7 @@ try {
 
             ${x.verified === "removed" ? `<td class="removed">Removed</td>` : ""}
 
-            ${x.blocked !== true ? `<td><button class="block-user" id="block-users" data-userid=${x._id}>Block</button></td>` : `<td><button class="block-user" data-userid=${x._id}>Unblock</button></td>`}
+            ${x.blocked !== true ? `<td><button class="block-user" id="block-users" data-userid=${x._id}>Block</button></td>` : `<td><button class="block-user" id="unblock-user" data-userid=${x._id}>Unblock</button></td>`}
 
             
 
@@ -101,6 +101,17 @@ try {
             button.addEventListener("click", ()=>{
 
                 blockUser(button)
+            })
+
+        })
+
+    const UnblockBtn  = document.querySelectorAll("#unblock-user")
+
+    UnblockBtn.forEach((button)=>{
+
+            button.addEventListener("click", ()=>{
+
+                unBlockUser(button)
             })
 
         })
@@ -194,6 +205,7 @@ console.log(data)
     
 // alert(id)
 }
+
 const blockUser = async (button)=>{
 
 
@@ -212,6 +224,45 @@ const response = await fetch('/api/superadmin/block_user', {
 const data = await response.json()
 
 if(data.details === "User Blocked"){
+
+    errorMesage.style.display = 'block';
+    errorMesage.style.borderLeft = '10px solid green';
+    errorMesage.style.backgroundColor = 'rgba(41, 224, 41, 0.397)';
+    messageTitle.innerHTML = 'Success!';
+    messageBody.innerHTML = data.details;
+    location.reload()
+}
+console.log(data)
+
+} catch(error){
+
+    console.log(error)
+}
+
+
+
+    
+// alert(id)
+}
+
+const unBlockUser = async (button)=>{
+
+
+const id = button.dataset.userid
+
+try{
+
+const response = await fetch('/api/superadmin/unblock_user', {
+    method: "POST",
+    headers: {
+        "Content-Type":"Application/Json"
+    },
+    body: JSON.stringify({userid: id})
+})
+
+const data = await response.json()
+
+if(data.details === "User UnBlocked"){
 
     errorMesage.style.display = 'block';
     errorMesage.style.borderLeft = '10px solid green';
