@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <%- include("../partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/articles.css">
+    <link rel="stylesheet" href="/styles/createblog.css">
+    <link rel="stylesheet" href="/styles/settings.css">
+    <link rel="stylesheet" href="/styles/superadmin/notification.css">
+    <link rel="stylesheet" href="/styles/superadmin/users.css">
+
+</head>
+<body>
+
+    <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
+
+    <%- include("./partials/dashboardheader.ejs") %>
+   
+    <div class="dashboard-sidebar" id="dashboard-sidebar">
+
+        <div class="sidebar-inner">
+
+            <div class="dashboard-brandname">
+                <h3>GIMBA</h3>
+            </div>
+
+            <div class="sidebar-buttons">
+
+                <div class="single-button">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <p><a href="/superadmin/dashboard"> Dashboard</a></p>
+                </div>
+
+
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p><a href="/superadmin/dashboard/blogs">Blogs</a> </p>
+                </div>
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p><a href="/superadmin/dashboard/analytics">Analytics</a></p>
+                </div>
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-bell"></i>
+                    <p><a href="/superadmin/dashboard/notifications">Notification</a></p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-users"></i>
+                    <p><a href="/superadmin/dashboard/users">Users</a></p>
+                </div>
+
+                <div class="single-button active-sidebar-btn">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <p><a href="/superadmin/dashboard/blacklist">Blacklist</a></p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- The Main DashBoard Content  -->  
+
+    <main class="dashboard-main-page">
+
+
+        <div class="all-your-blogs">
+
+            <div class="all-your-blogs-inner">
+
+
+     
+        <div class="all-your-blogs-header"id="drop-toggle">
+                    <h3>Add to Blacklist</h3>
+
+        <div class="fa-solid fa-angle-down" ></div>
+        </div>
+
+
+
+        <div class="all-the-blogs-array removepanel">
+
+            <div class="inner-form">
+
+                <p id="error-tracker"></p>
+
+                <div class="username-section">
+                    <input type="text" placeholder="Email or Username" id="receiver">
+                    <!-- <button>Check Availability</button> -->
+                </div>
+
+
+                <button id="add-to-blacklist">Blacklist</button>
+            </div>
+
+
+                </div>
+
+         
+
+
+            <div class="table">
+
+                <div class="table-inner">
+
+                    <table class="all-users">
+
+                        <tr>
+                            
+                            <th>Item</th>
+                            <th>Action</th>
+                        </tr>
+
+                        <tbody id="blacklist-items">
+                        <!-- <tr>
+                            <td>collinsadi@gmail.com</td>
+                            <td><button class="block-user">Remove</button></td>
+                        </tr>  -->
+                    </tbody>
+
+                    </table>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+             
+
+        
+
+             
+
+
+
+
+
+
+
+        <div class="error-message" id="error-message">
+
+            <div class="message-title">
+                <h3 id="msg-title">Invalid Input</h3>
+            </div>
+            <div class="message-body">
+                <p id="msg-body"> one or more field is Invalid </p>
+            </div>
+            
+            </div>
+
+
+    </main>
+
+
+
+
+    
+
+
+    <script src="/scripts/dashboardscript.js"></script>  
+    <script src="/scripts/superadmin/blacklistscript.js"></script>  
+<%- include('../partials/iconscript.ejs') %>
+</body>
+</html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+    document.getElementById('authorname2').innerHTML = author + "!"
+
+</script>

@@ -6,6 +6,7 @@ const Draft = require('../models/draft')
 const User = require('../models/user');
 const SuperAdmin = require('../models/superadmin');
 const Notification = require('../models/notification');
+const Blacklist = require('../models/blacklist');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const jwtsecret = "mysecretadmin"
@@ -410,8 +411,69 @@ try {
 
 })
 
+router.post('/api/superadmin/create_new_blacklist',   authMiddleWare,  async (req, res)=>{
+
+    const blacklistItem = req.body.blacklistitem
+
+    try {
+
+        if(!blacklistItem){
+
+            return res.status(401).json({details: "The I tem you Tried Adding to Blacklist is Invalid"})
+        }
+
+        await Blacklist.create({blacklistItem})
+
+        res.status(200).json({details: "Item added to Blacklist"})
+    } catch (error){
 
 
+        if(error.code === 11000){
+
+            res.status(404).json({details: "Value Already Exists in  Database"})
+        }
+
+        console.log(error)
+    }
+
+
+
+})
+
+router.post('/api/superadmin/get_blacklist_items', authMiddleWare,  async (req, res)=>{
+
+    try{
+
+           const blacklist =  await Blacklist.find().sort({createdAt: -1})
+
+        res.status(200).json({blacklist})
+
+
+    }
+    catch(error){
+
+        console.log(error)
+    }
+
+})
+
+router.delete('/api/superadmin/remove_from_blacklist', authMiddleWare,  async(req, res)=>{
+
+    const itemid = req.body.itemid
+
+    try{
+
+        await Blacklist.findByIdAndDelete(itemid)
+
+        res.status(200).json({details: "Item Removed From Blacklist"})
+
+    } catch(error){
+
+        console.log(error)
+    }
+
+
+})
 
 
 module.exports = router;

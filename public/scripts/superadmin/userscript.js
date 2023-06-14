@@ -284,8 +284,8 @@ console.log(data)
 // alert(id)
 }
 
-window.addEventListener('beforeunload', (e)=>{
+// window.addEventListener('beforeunload', (e)=>{
 
-alert('Hello')
-e.returnValue = "Are You Sure You Want to Leave?"
-})
+// alert('Hello')
+// e.returnValue = "Are You Sure You Want to Leave?"
+// })

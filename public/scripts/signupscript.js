@@ -202,6 +202,9 @@ const getUsers = async ()=>{
     if(data.message === "Log In Sucessful"){
         const author =  data.author.full_name
         const authorId = data.author._id
+        const receiver = data.author.useridname
+
+
         loginError.style.color = "green"
         loginError.innerHTML = data.message
 
@@ -213,6 +216,10 @@ const getUsers = async ()=>{
         if(authorId){
 
             localStorage.setItem('id', authorId)
+        }
+        if(receiver){
+
+            localStorage.setItem('receiver', receiver)
         }
        
         window.location.href = data.redirectUrl

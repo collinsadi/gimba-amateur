@@ -376,6 +376,11 @@ try {
 
    })
 
+   router.get('/dashboard/view-notification',   authMiddleWare, (req, res)=>{
+
+    res.status(200).render('notification')
+
+   })
 
 // Profile page
 
