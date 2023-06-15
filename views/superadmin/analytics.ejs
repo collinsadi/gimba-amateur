@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <%- include("../partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/createblog.css">
+    <link rel="stylesheet" href="/styles/superadmin/analytics.css">
+
+
+</head>
+<body>
+
+    <!-- <h1> Dashboard for <span id="authorname"></span>  </h1> -->
+
+    <%- include("./partials/dashboardheader.ejs") %>
+   
+    <div class="dashboard-sidebar" id="dashboard-sidebar">
+
+        <div class="sidebar-inner">
+
+            <div class="dashboard-brandname">
+                <h3>GIMBA</h3>
+            </div>
+
+            <div class="sidebar-buttons">
+
+                <div class="single-button">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <p><a href="/superadmin/dashboard"> Dashboard</a></p>
+                </div>
+
+
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <p><a href="/superadmin/dashboard/blogs">Blogs</a> </p>
+                </div>
+
+
+                <div class="single-button active-sidebar-btn">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p><a href="/superadmin/dashboard/analytics">Analytics</a></p>
+                </div>
+
+
+
+                <div class="single-button">
+                    <i class="fa-solid fa-bell"></i>
+                    <p><a href="/superadmin/dashboard/notifications">Notification</a></p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-users"></i>
+                    <p><a href="/superadmin/dashboard/users">Users</a></p>
+                </div>
+
+                <div class="single-button">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <p><a href="/superadmin/dashboard/blacklist">Blacklist</a></p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- The Main DashBoard Content  -->  
+
+    <main class="dashboard-main-page">
+
+
+   <div class="analytics">
+
+    <div class="analytics-inner" id="analytics-holder">
+
+        <div class="loading-state">
+            <img src="/images/preloader2.gif" alt="">
+        
+            <p>Putting Analytics Together...</p>
+        </div>
+
+        <!-- <div class="user-analytics">
+            
+            <div class="user-analytics-inner">
+
+           
+
+            <div class="user-analytic-top">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div class="user-analytics-section-title">
+                <h3>Total Users</h3>
+            </div>
+
+            <div class="number">
+                <p id="total-users"></p>
+            </div>
+
+            </div>
+
+        </div>
+        <div class="user-analytics">
+
+            <div class="user-analytics-inner">
+
+           
+
+                <div class="user-analytic-top">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+    
+                <div class="user-analytics-section-title">
+                    <h3>Notifications Sent</h3>
+                </div>
+    
+                <div class="number">
+                    <p id="notification-sent"></p>
+                </div>
+    
+                </div>
+
+
+        </div>
+        <div class="user-analytics">
+
+            <div class="user-analytics-inner">
+
+           
+
+                <div class="user-analytic-top">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+    
+                <div class="user-analytics-section-title">
+                    <h3>Blocked Users</h3>
+                </div>
+    
+                <div class="number">
+                    <p id="blockedUsers"></p>
+                </div>
+    
+                </div>
+
+        </div>
+        <div class="user-analytics">
+
+            <div class="user-analytics-inner">
+
+           
+
+                <div class="user-analytic-top">
+                    <i class="fa-solid fa-newspaper"></i>
+                </div>
+    
+                <div class="user-analytics-section-title">
+                    <h3>Total Blogs</h3>
+                </div>
+    
+                <div class="number">
+                    <p id="total-blogs"></p>
+                </div>
+    
+                </div>
+
+        </div>
+        <div class="user-analytics">
+
+            <div class="user-analytics-inner">
+
+           
+
+                <div class="user-analytic-top">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+    
+                <div class="user-analytics-section-title">
+                    <h3>Verified Users</h3>
+                </div>
+    
+                <div class="number">
+                    <p id="verified-users"></p>
+                </div>
+    
+                </div>
+
+        </div>
+        <div class="user-analytics">
+
+            <div class="user-analytics-inner">
+
+           
+
+                <div class="user-analytic-top">
+                    <i class="fa-solid fa-person-shelter"></i>
+                </div>
+    
+                <div class="user-analytics-section-title">
+                    <h3>Loged In Users</h3>
+                </div>
+    
+                <div class="number">
+                    <p id="logged-users"></p>
+                </div>
+    
+                </div>
+
+        </div>
+        <div class="user-analytics">
+
+            <div class="user-analytics-inner">
+
+           
+
+                <div class="user-analytic-top">
+                    <i class="fa-solid fa-file-import"></i>
+                </div>
+    
+                <div class="user-analytics-section-title">
+                    <h3>Verification Requests</h3>
+                </div>
+    
+                <div class="number">
+                    <p id="verification-requests"></p>
+                </div>
+    
+                </div>
+
+        </div>
+        -->
+
+    </div>
+
+   </div>
+       
+
+
+
+
+    </main>
+
+
+
+
+    <%- include('../partials/iconscript.ejs') %>
+
+
+
+    <script src="/scripts/superadmin/analyticsscript.js"></script>   
+    <script src="/scripts/dashboardscript.js"></script>   
+<script src="/scripts/createblog.js" type="module"></script>
+</body>
+</html>
+
+<script>
+
+    const author = localStorage.getItem('fullName')
+
+    document.getElementById('authorname').innerHTML = author
+    document.getElementById('authorname2').innerHTML = author + "!"
+
+</script>

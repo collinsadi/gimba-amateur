@@ -58,15 +58,18 @@ router.post('/api/create_user', async (req, res)=>{
 
         const hashedpassword = await bcrypt.hash(password, 10)
 
-        const emailBlockCheck = await Blacklist.find({blacklistItem: email})
+        const emailBlockCheck = await Blacklist.findOne({blacklistItem: email})
 
-        const userNameBlockCheck = await Blacklist.find({blacklistItem: useridname})
+     
 
         if(emailBlockCheck){
 
             res.status(401).json({message: "Email Have Been Blacklisted"})
             return;
         }
+
+        const userNameBlockCheck = await Blacklist.findOne({blacklistItem: useridname})
+
         if(userNameBlockCheck){
 
             res.status(401).json({message: "Username Have Been Blacklisted"})
@@ -159,6 +162,10 @@ router.post('/api/get_user', async (req, res)=>{
     res.status(401).send({message: "Account is Temporary Disabled", blockedUser: username});
     return;
    }
+
+   user.logged = true
+
+   await user.save()
     
    
     const token = jwt.sign({userId: user._id}, jwtsecret)
@@ -169,10 +176,28 @@ router.post('/api/get_user', async (req, res)=>{
 
 })
 
-router.get('/logout', (req, res)=>{
+router.post('/logout', async (req, res)=>{
 
-   res.clearCookie('token')
-   res.redirect('/join')
+    const id = req.body.id
+
+    try{
+
+        const user = await User.findById(id)
+
+        user.logged = false
+        await user.save()
+       
+
+        res.clearCookie('token')
+        res.redirect('/join')
+
+
+    } catch(error){
+
+
+    }
+
+   
 
 })
 

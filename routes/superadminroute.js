@@ -178,6 +178,12 @@ router.get('/superadmin/dashboard/blacklist', authMiddleWare, (req, res)=>{
 
 
 })
+router.get('/superadmin/dashboard/analytics', authMiddleWare, (req, res)=>{
+
+    res.status(200).render('superadmin/analytics')
+
+
+})
 
 
 
@@ -473,6 +479,29 @@ router.delete('/api/superadmin/remove_from_blacklist', authMiddleWare,  async(re
     }
 
 
+})
+
+router.get('/api/superadmin/get_analytics', async (req, res)=>{
+
+    try{
+
+        const totalUsers = await User.find()
+        const notificationSent = await Notification.find()
+        const blockedUsers = await User.find({blocked: true})
+        const totalBlogs = await BlogPost.find()
+        const verifiedUsers = await User.find({verified: "verified"})
+        const loggedInUsers = await User.find({logged: true})
+        const verificationRequests = await User.find({verified: "requested"})
+
+        res.status(200).json([{totalUsers, notificationSent, blockedUsers, totalBlogs, verifiedUsers, loggedInUsers, verificationRequests}])
+
+
+
+    } catch(error){
+
+        res.status(500).json({details: "an Error Occured"})
+
+    }
 })
 
 

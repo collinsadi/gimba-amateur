@@ -45,6 +45,11 @@ const userSchema = new Schema({
     blocked: {
         type: Boolean,
         default: false
+    },
+    logged: {
+
+        type: Boolean,
+        default: false
     }
     // socials: [
     //     facebook: {

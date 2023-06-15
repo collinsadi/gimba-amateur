@@ -24,15 +24,20 @@ logoutPanel.addEventListener('mouseleave', ()=>{
 
 logoutPanel.addEventListener('click',async ()=>{
 
+    const userid = localStorage.getItem('id')
+
     try {
 
         const response = await fetch('/logout',  
         {
-        method: "GET",
+        method: "POST",
         headers: {
             "Content-Type":"Application/Json"
-        }
+        },
+        body: JSON.stringify({id: userid})
         })
+
+
         localStorage.clear()
         window.location.href = "/join"
         
