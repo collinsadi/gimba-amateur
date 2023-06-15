@@ -1,0 +1,68 @@
+.all-ads-container{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.all-ads-container-inner{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    width: 98%;
+}
+.single-ad{
+
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 15px;
+    border-bottom: 4px solid blueviolet;
+}
+.ad-title{
+
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.ad-status{
+
+    margin-top: 10px;
+}
+.ad-controls{
+
+    margin-top: 15px;
+
+}
+.ad-controls button{
+    padding: 10px;
+    width: 200px;
+    margin-left: 15px;
+    border: 0;
+    outline: 0;
+    color: white;
+    cursor: pointer;
+}
+.ad-controls button:first-child{
+
+    margin-left: 0;
+}
+.active-ad{
+    color: green;
+    font-weight: bold;
+}
+.inactive-ad{
+
+    color: orange;
+    font-weight: bold;
+}
+.activate-ad{
+    background-color: green;
+}
+.deactivate-ad{
+    background-color: red;
+}

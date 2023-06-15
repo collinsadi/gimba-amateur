@@ -185,6 +185,12 @@ router.get('/superadmin/dashboard/analytics', authMiddleWare, (req, res)=>{
 
 
 })
+router.get('/superadmin/dashboard/Ad', authMiddleWare, (req, res)=>{
+
+    res.status(200).render('superadmin/ad')
+
+
+})
 
 
 
@@ -591,6 +597,24 @@ const {id, action} = req.body
 
        
         console.log(error)
+    }
+
+})
+
+//GET ALL ADVERTS
+
+router.get('/api/superadmin/get_all_ads',  authMiddleWare, async (req, res)=>{
+
+    try{
+
+        const adverts = await Ad.find().sort({createdAt: -1})
+
+        res.status(201).json({adverts})
+
+
+    } catch(error){
+
+        res.status(500).json({details : 'an Error Occured'})
     }
 
 })
