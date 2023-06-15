@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const Blacklist = require('../models/blacklist');
 const jwtsecret = "mysecretblog"
 
 
@@ -56,6 +57,22 @@ router.post('/api/create_user', async (req, res)=>{
     try{
 
         const hashedpassword = await bcrypt.hash(password, 10)
+
+        const emailBlockCheck = await Blacklist.find({blacklistItem: email})
+
+        const userNameBlockCheck = await Blacklist.find({blacklistItem: useridname})
+
+        if(emailBlockCheck){
+
+            res.status(401).json({message: "Email Have Been Blacklisted"})
+            return;
+        }
+        if(userNameBlockCheck){
+
+            res.status(401).json({message: "Username Have Been Blacklisted"})
+            return;
+
+        }
 
         try{
 

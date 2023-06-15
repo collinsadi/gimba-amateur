@@ -70,15 +70,7 @@ const CreateUsers = async () => {
 
         const data = await response.json()
 
-        if(data.message === "Email Already In Use"){
-            errormessage.innerHTML = data.message
-        }
-        if(data.message === "Email and Username Already In Use"){
-            errormessage.innerHTML = data.message
-        }
-        if(data.message === "Username Already In Use"){
-            errormessage.innerHTML = data.message
-        }
+        errormessage.innerHTML = data.message
 
         if(data.message === "Sign Up Sucessful"){
             errormessage.style.color = "green"
@@ -87,10 +79,6 @@ const CreateUsers = async () => {
         }
         
         
-        if(data.message === "Internal Server Error"){
-
-            errormessage.innerHTML = data.message
-        }
         console.log(data.message)
         
     } catch (error) {
