@@ -621,7 +621,7 @@ router.get('/api/superadmin/get_all_ads',  authMiddleWare, async (req, res)=>{
 
 // get the active ad
 
-router.get('/api/superadmin/get_active_ad',  authMiddleWare,  async (req, res)=>{
+router.get('/api/superadmin/get_active_ad', async (req, res)=>{
 
     try{
 

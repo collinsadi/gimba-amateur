@@ -100,7 +100,9 @@ justify-content: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 1000px;
+    max-height: 1000px;
+    margin-bottom: 100px;
+    margin-top: 50px;
 
 }
 
@@ -115,7 +117,7 @@ justify-content: center;
 .featured-inner .main1{
 
     width: 100%;
-    height: 500px;
+    max-height: 500px;
     overflow: hidden;
 }
 
@@ -206,13 +208,14 @@ justify-content: center;
     font-size: 15px;
 }
 
-.tag-btn1, .tag-btn2{
+.tag-btn1{
 
     border: 1px solid rgba(128, 128, 128, 0.705);
     color: rgba(128, 128, 128, 0.705);
     padding: 10px;
     border-radius: 15px;
     font-size: 10px;
+    width: 100%;
     transition: 0.4s;
 }
 
@@ -321,6 +324,7 @@ hr{
 .grid-title{
 
     margin-bottom: 15px;
+    margin-top: 15px;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;

@@ -48,9 +48,9 @@
 
 </section>
 
-<section class="featured-blog">
+<section class="featured-blog" id="ad_container">
 
-    <div class="featured-inner">
+    <!-- <div class="featured-inner">
 
 
         <div class="main1">
@@ -60,25 +60,26 @@
         <div class="blog-contents">
 
             <div class="content-inner">
+                
 
                 
                 <div class="left">
 
                     <div class="category1">
-                        <h4>Latest Blog</h4>
+                        <h4>Advertisement</h4>
                     </div>
 
                     <div class="blog-title">
                         
                         <a href="">
-                        <h1>The Psychology of Color in Marketing and Design</h1>
+                        <h1 id="advert_title">The Psychology of Color in Marketing and Design</h1>
                         </a>
                     
                     </div>
 
                     <div class="blog-snippet">
 
-                        <p>A deep dive into the psychology of color, including how different colors can impact emotions, behavior, and perceptions</p>
+                        <p id="ad_description">A deep dive into the psychology of color, including how different colors can impact emotions, behavior, and perceptions</p>
 
                     </div>
 
@@ -88,25 +89,23 @@
                     <div class="top">
 
                         <div class="tag-btn1">
-                        <h3>Development</h3>
-                    </div>
-                    <div class="tag-btn2">
-                        <h3>Technonoly</h3>
-                    </div>
+                        <a href="" style="text-decoration: none; color: rgba(128, 128, 128, 0.705);"><h3>Learn More</h3></a>
+                        </div>
 
-                    <div class="minutes-read">
-                        <p>5 Mins Read</p>
-                    </div>
                     </div>
 
                     
 
                 </div>
 
+
+
+
+
             </div>
             
         </div>
-    </div>
+    </div> -->
 
 </section>
 
@@ -267,6 +266,7 @@ async function connectWithMetamask() {
 <%- include("./partials/newsletter.ejs") %>
 <%- include("./partials/footer.ejs") %>
 
+<%- include('./partials/changeAd.ejs') %>
 <%- include('./partials/iconscript.ejs') %>
 </body>
 </html>
