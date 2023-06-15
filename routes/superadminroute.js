@@ -4,6 +4,7 @@ const BlogPost = require('../models/blog')
 const Trash = require('../models/Trash')
 const Draft = require('../models/draft')
 const User = require('../models/user');
+const Ad = require('../models/ad');
 const SuperAdmin = require('../models/superadmin');
 const Notification = require('../models/notification');
 const Blacklist = require('../models/blacklist');
@@ -481,7 +482,7 @@ router.delete('/api/superadmin/remove_from_blacklist', authMiddleWare,  async(re
 
 })
 
-router.get('/api/superadmin/get_analytics', async (req, res)=>{
+router.get('/api/superadmin/get_analytics', authMiddleWare,  async (req, res)=>{
 
     try{
 
@@ -502,6 +503,120 @@ router.get('/api/superadmin/get_analytics', async (req, res)=>{
         res.status(500).json({details: "an Error Occured"})
 
     }
+})
+
+
+// creating ads
+
+
+router.post('/api/superadmin/create_ad',  authMiddleWare,  async (req, res)=>{
+
+    const {Ad_image, Ad_title, Ad_description, Ad_link} = req.body
+
+try{
+
+
+    await Ad.create(req.body)
+
+    res.status(200).json({details: "Advertisement Sucesfully Created"})
+
+
+
+} catch(error){
+
+    console.log(error)
+
+    res.status(401).json({details: "an Error Occured"})
+}
+
+})
+
+// updating the add status
+
+router.post('/api/superadmin/change_ad_status',  authMiddleWare,  async (req, res)=>{
+
+const {id, action} = req.body
+
+    try{
+
+        if(action === 'activate'){
+
+            try{
+
+            const activeAdverts = await Ad.find({Ad_status: "active"})
+
+            if(activeAdverts.length > 0){
+
+             return res.status(401).json({details: "an Ad is Running, Deactivate and try again later"});
+            }
+
+            const advert = await Ad.findById(id)
+
+            advert.Ad_status = "active"
+
+            await advert.save()
+
+            res.status(201).json({details: "Ad Activated"})
+
+            } catch(error){
+                
+                res.status(500).json({details: "an Error Occured"})
+                return;
+            }
+
+        }
+
+        if(action === 'deactivate'){
+
+            try{
+
+                const advert = await Ad.findById(id)
+
+                advert.Ad_status = "not active"
+    
+                await advert.save()
+
+                res.status(201).json({details: "Ad Deactivated Sucessfully"})
+            }catch(error){
+
+                return res.status(500).json({details: "an Error Occured"})
+            }
+
+        }
+
+    
+
+    }
+    catch(error) {
+
+       
+        console.log(error)
+    }
+
+})
+
+// get the active ad
+
+router.get('/api/superadmin/get_active_ad',  authMiddleWare,  async (req, res)=>{
+
+    try{
+
+        const activeAd = await Ad.find({Ad_status: "active"})
+
+        if(!activeAd){
+
+            return res.status(401).json({details: "No Active Ad at the Moment"})
+        }
+
+        res.status(201).json({activeAd})
+
+    }
+    catch(error){
+
+        res.status(500).json({details: "An error Ocured"})
+        console.log(error)
+    }
+
 })
 
 

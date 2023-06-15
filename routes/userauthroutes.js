@@ -10,6 +10,23 @@ const jwtsecret = "mysecretblog"
 
 
 
+const redirectToDashBoard = async (req, res, next) =>{
+
+    const token = req.cookies.token;
+
+    if(token) {
+
+        // res.status(401).json({ message: 'Unauthorized'})
+
+        res.redirect('/dashboard')
+    } else{
+
+        next()
+    }
+
+
+
+}
 const authMiddleWare = async (req, res, next) =>{
 
     const token = req.cookies.token;
@@ -41,7 +58,7 @@ const authMiddleWare = async (req, res, next) =>{
 
 
 
-router.get('/join', (req, res)=>{
+router.get('/join', redirectToDashBoard, (req, res)=>{
 
 
     res.status(200).render('signup')
