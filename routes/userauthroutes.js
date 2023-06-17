@@ -193,7 +193,7 @@ router.post('/api/get_user', async (req, res)=>{
 
 })
 
-router.post('/logout', async (req, res)=>{
+router.post('/logout',  authMiddleWare,  async (req, res)=>{
 
     const id = req.body.id
 
@@ -226,7 +226,7 @@ res.render('dashboard')
 
 })
 
-router.put('/api/change_password/:id', async (req, res)=>{
+router.put('/api/change_password/:id',   authMiddleWare,  async (req, res)=>{
 
     const id = req.params.id
 

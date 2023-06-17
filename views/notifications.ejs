@@ -8,7 +8,7 @@
     <%- include("./partials/headerstyle.ejs") %>
     <link rel="stylesheet" href="/styles/dashboard.css">
     <link rel="stylesheet" href="/styles/articles.css">
-    <link rel="stylesheet" href="/styles/viewNotification.css">
+    <link rel="stylesheet" href="/styles/Notifications.css">
     <link rel="stylesheet" href="../styles/createblog.css">
    
     
@@ -52,7 +52,7 @@
 
 
 
-                <div class="single-button   active-sidebar-btn">
+                <div class="single-button ">
                     <i class="fa-solid fa-pen-to-square"></i>
                     <p><a href="/dashboard/drafts">Drafts</a> </p>
                 </div>
@@ -60,6 +60,11 @@
                 <div class="single-button">
                     <i class="fa-solid fa-trash"></i>
                     <p> <a href="/dashboard/trash">Trash</a> </p>
+                </div>
+
+                <div class="single-button  active-sidebar-btn">
+                    <i class="fa-solid fa-bell"></i>
+                    <p><a href="/dashboard/notifications">Notifications</a></p>
                 </div>
 
                 <div class="single-button">
@@ -85,6 +90,61 @@
     <main class="dashboard-main-page">
 
 
+
+        <div class="all-your-blogs">
+
+            <div class="all-your-blogs-inner">
+
+                <div class="all-your-blogs-header">
+                    <h3>All Your Notifications</h3>
+
+                    <input type="text" placeholder="Search Your Notifications" >
+                </div>
+
+
+                <div class="notifications-array">
+                    <div class="notifications-array-inner" id="all-notifications-array">
+
+                        <!-- <div class="single-notification seen">
+
+                            <div class="notification-title">
+                              <a href="">  <p>Your Account Is Blocked</p> </a>
+                            </div>
+                            <div class="sent-date">
+                                <p>Tue, 25 Jun, 2023</p>
+                            </div>
+
+                        </div>
+                        <div class="single-notification unseen">
+
+                            <div class="notification-title">
+                              <a href="">  <p>Your Account Is Blocked</p> </a>
+                            </div>
+                            <div class="sent-date">
+                                <p>Tue, 25 Jun, 2023</p>
+                            </div>
+
+                        </div> -->
+
+
+
+                    </div>
+                </div>
+
+
+              
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
   
 
 
@@ -97,8 +157,7 @@
     <%- include('./partials/iconscript.ejs') %>
 
 
-<script src="../scripts/viewNotification.js"></script>
-<script src="../scripts/editdraft.js"></script>
+<script src="../scripts/Notifications.js"></script>
     <script src="../scripts/dashboardscript.js"></script>  
 </body>
 </html>

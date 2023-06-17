@@ -1,0 +1,36 @@
+.notification-body{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.notification-body-inner{
+
+    width: 98%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+}
+.notification-top{
+
+    width: 100%;
+    font-size: 25px;
+    color: blueviolet;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 4px solid blueviolet;
+    margin-bottom: 10px;
+}
+.notification-message-body{
+
+    margin-top: 10px;
+    font-size: 15px;
+}
+.notification-footer{
+    margin-top: 50px;
+    font-weight: bold;
+    color: blueviolet;
+}

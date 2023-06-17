@@ -7,6 +7,7 @@ const Trash = require('../models/Trash')
 const Draft = require('../models/draft')
 const {authMiddleWare} = require('./userauthroutes');
 const User = require('../models/user');
+const Notification = require('../models/notification');
 
 
 //router.use(authMiddleWare);
@@ -376,11 +377,110 @@ try {
 
    })
 
-   router.get('/dashboard/view-notification',   authMiddleWare, (req, res)=>{
+   router.get('/dashboard/notifications',   authMiddleWare, (req, res)=>{
 
-    res.status(200).render('notification')
+    res.status(200).render('notifications')
 
    })
+
+
+   router.post('/api/get_user_notification/:username',   authMiddleWare, async(req, res)=>{
+
+    const useridname = req.params.username
+    const userId = req.body.id
+
+    try{
+
+        const user = await User.findOne({useridname})
+
+       
+        if(!user){
+
+          return res.status(401).json({details: 'an error Occured'});
+
+        }
+
+        if(!userId){
+
+          return res.status(401).json({details: "an Error Occured"})
+        }
+
+        const verificationId = user._id
+
+        if(verificationId != userId){
+
+
+          // console.log(user._id)
+          // console.log(useridname)
+          // console.log(userId)
+
+          return res.status(401).json({details: "Unauthorized Request"})
+        }
+
+      const notifications = await Notification.find({receiver: useridname}).sort({createdAt: -1})
+
+      res.status(200).json({notifications})
+
+
+    } catch(error){
+      console.log(error)
+    }
+
+
+   })
+
+   router.get('/view-notification',  authMiddleWare, (req, res)=>{
+
+    res.status(200).render('viewNotification')
+   })
+
+   router.post('/api/view_user_notification',  authMiddleWare, async (req, res)=>{
+
+    const notificationid = req.body.notificationid
+    const receiverid = req.body.receiverid
+
+    try{
+
+      if(!receiverid){
+
+        res.status(401).json({details: 'an Error Occured'})
+      }
+
+      const receiver = await User.findById(receiverid)
+
+      if(!receiver){
+
+        return res.status(401).json({details: "an Error Occured"})
+      }
+
+      const notification = await Notification.findById(notificationid)
+
+      if(!notification){
+
+        return res.status(401).json({details: "an Error Occured"})
+      }
+
+      if(notification.receiver !== receiver.useridname){
+
+        return res.status(401).json({details: "an Error Occured"})
+      }
+
+      notification.status = "seen"
+
+      await notification.save()
+
+      res.status(201).json({notification})
+
+
+
+
+    } catch(error){
+
+      console.log(error)
+    }
+
+   })
+
 
 // Profile page
 

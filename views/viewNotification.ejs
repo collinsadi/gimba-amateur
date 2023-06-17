@@ -8,7 +8,7 @@
     <%- include("./partials/headerstyle.ejs") %>
     <link rel="stylesheet" href="/styles/dashboard.css">
     <link rel="stylesheet" href="/styles/articles.css">
-    <link rel="stylesheet" href="../styles/createblog.css">
+    <link rel="stylesheet" href="/styles/viewNotification.css">
    
     
     
@@ -38,7 +38,7 @@
 
 
 
-                <div class="single-button  active-sidebar-btn">
+                <div class="single-button  ">
                     <i class="fa-solid fa-newspaper"></i>
                     <p><a href="/dashboard/articles">My Articles</a> </p>
                 </div>
@@ -51,7 +51,7 @@
 
 
 
-                <div class="single-button">
+                <div class="single-button ">
                     <i class="fa-solid fa-pen-to-square"></i>
                     <p><a href="/dashboard/drafts">Drafts</a> </p>
                 </div>
@@ -61,7 +61,7 @@
                     <p> <a href="/dashboard/trash">Trash</a> </p>
                 </div>
 
-                <div class="single-button">
+                <div class="single-button  active-sidebar-btn">
                     <i class="fa-solid fa-bell"></i>
                     <p><a href="/dashboard/notifications">Notifications</a></p>
                 </div>
@@ -89,85 +89,29 @@
     <main class="dashboard-main-page">
 
 
-        <div class="create-new-blog">
-            <div class="create-new-blog-inner">
+        <div class="notification-body">
 
-                <div class="create-new-blog-title">
+        <div class="notification-body-inner">
 
-                    <h3>Edit Your Blog</h3>
-
-                    <i class="fa-solid fa-angle-down" id="arrow-to-toggle"></i>
-
-                </div>
-
-              
-
-<section class="create-page" style="margin-top: 20px;">
-
-<div class="create-page-inner">
-
-<div class="main-form">
-
-    <div class="form-body">
-
-        <form action="">
-
-            <div class="form-top">
-                <input type="text" placeholder="Blog Title" id="blog_title">
+            <div class="notification-top">
+                <p id="message_title"></p>
             </div>
-            <div class="form-top">
-                <input type="text" placeholder="Blog Snippet" id="blog_snippet">
+            <div class="notification-message-body">
+                <p id="message_body"></p>
             </div>
-            <div class="form-second">
-                <input type="text" placeholder="Category" id="blog_category">
-                <input type="text" placeholder="Related Category" id="blog_related_category">
+
+            <div class="notification-footer">
+                <p>From: Super Admin</p>
             </div>
-            <div class="form-top">
-                <input type="text" placeholder="Blog Image Url" id="blog_image_url">
-            </div>
-         
-                <div id="editor">
-                    <textarea name="" id="blog_body" placeholder="Blog Body Here"></textarea>
-                </div>
 
-
-            <div class="create-blog-btn">
-            <button id="edit-blog-btn">Edit Blog</button>         
-            </div>
-              
-        </form>
-
-        
-
-    </div>
-</div>
-
-
-
-</div>
-
-</div>
-
-
-</section>
-
-
-
-
-<div class="error-message" id="error-message">
-
-    <div class="message-title">
-        <h3 id="msg-title">Invalid Input</h3>
-    </div>
-    <div class="message-body">
-        <p id="msg-body"> one or more field is Invalid </p>
-    </div>
-    
-    </div>
-
-                
-            </div>
         </div>
+
+        </div>
+    
+
+
+
+
 
   
 
@@ -181,7 +125,7 @@
     <%- include('./partials/iconscript.ejs') %>
 
 
-<script src="../scripts/editBlog.js"></script>
+<script src="../scripts/viewNotification.js"></script>
     <script src="../scripts/dashboardscript.js"></script>  
 </body>
 </html>
