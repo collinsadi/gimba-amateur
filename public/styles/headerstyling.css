@@ -97,6 +97,15 @@ header{
     font-size: 15px;
 }
 
+.nav-logo{
+    overflow: hidden;
+    max-width: 200px;
+}
+.nav-logo img{
+
+    max-width: 100%;
+}
+
 .mobile-button{
     font-size: 30px;
     color: #7F56D9;
