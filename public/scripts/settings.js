@@ -27,6 +27,39 @@ const requestVerificationBtn = document.getElementById('request-verification');
 //     })
 // }
 
+
+
+let blogImageUrl = ""
+
+const blogImage = document.getElementById('blog_image')
+
+
+let fr = new FileReader();
+
+
+blogImage.addEventListener("change", ()=>{
+
+    fr.readAsDataURL(blogImage.files[0])
+
+    
+    fr.addEventListener("load", ()=>{
+
+
+        blogImageUrl = fr.result;
+
+       console.log(blogImageUrl)
+
+
+        
+           // selectedimage.src = imageurl;
+    })
+
+})
+
+
+
+
+
 droptoggle.forEach(button =>{
 
     button.addEventListener("click", ()=>{
@@ -100,7 +133,7 @@ const getUserInfo = async ()=>{
             WebsiteUrl.value = currentUser.website
         }
         if(currentUser.profileimage){
-            profileImage.value = currentUser.profileimage
+            blogImageUrl = currentUser.profileimage
         }
 
         localStorage.setItem('fullName',currentUser.full_name )
@@ -170,7 +203,7 @@ saveChanges.addEventListener('click', async ()=>{
         body: JSON.stringify({
             full_name: fullname.value.trim(),
             username: username.value.toLowerCase().trim(),
-            profileimage: profileImage.value.trim(),
+            profileimage: blogImageUrl.trim(),
             bio: bioInfo.value.trim(),
             twitter: TwitterUrl.value.trim(),
             website: WebsiteUrl.value.trim()

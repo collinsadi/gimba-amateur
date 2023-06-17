@@ -1,20 +1,3 @@
-// alert('Article Script')
-
-
-// const searchInput = document.getElementById('searchblogs');
-
-// const SearchItems = document.querySelectorAll('single-blog');
-
-// SearchItems.forEach( searched => {
-
-//     searched.addEventListener('click', alert('Hello'))
-
-// })
-
-  
-  
-
-
 
 
 // Fetch the Blog Posts

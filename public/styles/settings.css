@@ -1,3 +1,25 @@
+
+.upload_button{
+
+    padding: 10px;
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: bold;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+   
+}
+.button-container{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+
+
+
 .showpanel{
 
     animation: showeditor 1s;
@@ -141,7 +163,7 @@ border: 2px solid lightgray;
 .inner-form label{
 
     font-size: 20px;
-    color: var(--white-text);
+    color: black;
     font-weight: bold;
     margin-top: 10px;
 }

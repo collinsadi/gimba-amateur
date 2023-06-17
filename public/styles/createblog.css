@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 .create-page{
 
     width: 100%;
@@ -143,5 +134,23 @@
         opacity: 0;
         display: none;
     }
+
+}
+
+.upload_button{
+
+    padding: 10px;
+    background-color: white;
+    color: blueviolet;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+   
+}
+.button-container{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
 
 }

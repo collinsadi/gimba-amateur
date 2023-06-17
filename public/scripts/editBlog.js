@@ -10,6 +10,35 @@ const imageUrl = document.getElementById('blog_image_url');
 const blogBody = document.getElementById('blog_body');
 
 
+let blogImageUrl = ""
+
+const blogImage = document.getElementById('blog_image')
+
+
+let fr = new FileReader();
+
+
+blogImage.addEventListener("change", ()=>{
+
+    fr.readAsDataURL(blogImage.files[0])
+
+    
+    fr.addEventListener("load", ()=>{
+
+
+        blogImageUrl = fr.result;
+
+       console.log(blogImageUrl)
+
+
+        
+           // selectedimage.src = imageurl;
+    })
+
+})
+
+
+
 const errorMesage = document.getElementById('error-message');
 
 
@@ -48,7 +77,7 @@ try {
     blogTitle.value = oldDetails.blog_title
     category.value = oldDetails.blog_category
     relatedCategory.value = oldDetails.blog_related_category
-    imageUrl.value = oldDetails.blog_body_image_url
+    blogImageUrl = oldDetails.blog_body_image_url
 
 
 
@@ -85,7 +114,7 @@ const editBlog = async ()=>{
       blog_category: category.value,
       blog_related_category: relatedCategory.value,
       blog_body: blogBody.value,
-      blog_body_image_url: imageUrl.value,
+      blog_body_image_url: blogImageUrl,
 
         })
     })

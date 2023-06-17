@@ -23,9 +23,18 @@
                 <input type="text" placeholder="Category" id="blog_category">
                 <input type="text" placeholder="Related Category" id="blog_related_category">
             </div>
-            <div class="form-top">
-                <input type="text" placeholder="Blog Image Url" id="blog_image_url">
+
+            <div class="button-container">
+                <label for="blog_image" class="upload_button">Upload Blog Image</label>
             </div>
+
+            
+            <input type="file" name="blogImage" id="blog_image" style="display: none;">
+
+
+            <!-- <div class="form-top">
+                <input type="text" placeholder="Blog Image Url" id="blog_image_url">
+            </div> -->
          
                 <div id="editor">
                     <textarea name="" id="blog_body" placeholder="Blog Body Here"></textarea>
