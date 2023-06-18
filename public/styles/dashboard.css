@@ -69,8 +69,15 @@ body{
 .dashboard-brandname{
     width: 90%;
     padding: 20px;
+    overflow: hidden;
+    max-width: 90%;
    
     color: white;
+}
+.dashboard-brandname img{
+
+    max-width: 100%;
+    margin-bottom: 0;
 }
 .dashboard-brandname h3{
 
