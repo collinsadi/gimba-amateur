@@ -482,6 +482,42 @@ try {
    })
 
 
+   router.post('/api/get_block_status',   authMiddleWare, async(req, res)=>{
+
+    const userid = req.body.id
+
+    try{
+
+      if(!userid){
+
+        return res.status(401).clearCookie('token')
+      }
+
+      const user = await User.findById(userid)
+
+      if(!user){
+
+        return res.status(401).clearCookie('token')
+      }
+
+      if(user.blocked){
+
+        res.clearCookie('token')
+        res.status(401).json({details: "Your Account Have Been Blocked"})
+        return;
+      }
+
+      res.status(201).json({details: "Check Passed, Acount Active"})
+
+
+    } catch(error){
+
+    }
+
+
+   })
+
+
 // Profile page
 
 // router.get('/u/:username', async(req, res)=>{
