@@ -49,7 +49,7 @@ app.use(Session({
     secret: "mysecretblog",
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl: localurl})
+    store: MongoStore.create({mongoUrl: liveurl})
 }))
 mongoose.set('debug', true)
 
