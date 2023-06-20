@@ -19,7 +19,7 @@ try{
     const data = await response.json()
     const ad = data.activeAd[0]
 
-    console.log(data.activeAd[0])
+    //console.log(data.activeAd[0])
 
     if(ad){
   adContainer.innerHTML = `
@@ -96,12 +96,12 @@ try{
     }
 
   
-    console.log(data)
+    //console.log(data)
 
 
 }catch(error){
 
-console.log(error)
+//console.log(error)
 
 }   
 

@@ -44,7 +44,7 @@ const authMiddleWare = async (req, res, next) =>{
 
         const decoded = await jwt.verify(token, jwtsecret)
         req.userId = decoded.UserId
-        console.log(req.userId)
+        //console.log(req.userId)
         next()
     } catch (error) {
         return res.redirect('/join')
@@ -115,25 +115,25 @@ router.post('/api/create_user', async (req, res)=>{
 
                 
                 res.status(401).json({message: "Email and Username Already In Use"})
-                // console.log(error)
+                // //console.log(error)
                 return;
             }
             if(error.keyPattern.useridname){
 
-                // console.log("na user name cause am")
+                // //console.log("na user name cause am")
 
                 
                 res.status(401).json({message: "Username Already In Use"})
-                // console.log(error)
+                // //console.log(error)
                 return;
             }
             if(error.keyPattern.email){
 
-                // console.log("na email cause am")
+                // //console.log("na email cause am")
 
                 
                 res.status(401).json({message: "Email Already In Use"})
-                console.log(error)
+                //console.log(error)
                 return;
 
             }
@@ -141,19 +141,19 @@ router.post('/api/create_user', async (req, res)=>{
             if(error.code === 11000){
 
                 // res.status(401).send({message: "User Already In Use"})
-                console.log(error)
+                //console.log(error)
                 return;
             }
 
             res.status(500).json({message: "Internal Server Error"})
-            console.log(error)
+            //console.log(error)
             return;
             
         }
 
     } catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
     
 
@@ -265,7 +265,7 @@ router.put('/api/change_password/:id',   authMiddleWare,  async (req, res)=>{
 
     }catch(error){
 
-      console.log(error)
+      //console.log(error)
 
     //   res.status(500).json({details: "Internal Server Error"})
     }

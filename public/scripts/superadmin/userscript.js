@@ -66,7 +66,7 @@ try {
             `
         }).join('')
 
-        console.log(data)
+        //console.log(data)
 
         
         const VerifyBtn = document.querySelectorAll("#verify-user")
@@ -120,7 +120,7 @@ try {
 
 }catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -154,11 +154,11 @@ if(data.details === "User Verified"){
     messageBody.innerHTML = data.details;
     location.reload()
 }
-console.log(data)
+//console.log(data)
 
 } catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -193,11 +193,11 @@ if(data.details === "User Verification Removed"){
     messageBody.innerHTML = data.details;
     location.reload()
 }
-console.log(data)
+//console.log(data)
 
 } catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -232,11 +232,11 @@ if(data.details === "User Blocked"){
     messageBody.innerHTML = data.details;
     location.reload()
 }
-console.log(data)
+//console.log(data)
 
 } catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -271,11 +271,11 @@ if(data.details === "User UnBlocked"){
     messageBody.innerHTML = data.details;
     location.reload()
 }
-console.log(data)
+//console.log(data)
 
 } catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 

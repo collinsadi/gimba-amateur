@@ -7,7 +7,7 @@ function detectDevTools() {
       this.opened = true;
       return ' ';
     };
-    console.log('%c', devtools);
+    //console.log('%c', devtools);
   }
   
   // Check if the developer tools are open
@@ -63,13 +63,13 @@ const getUserStatus = async ()=>{
             window.location.href = '/join'
         }
 
-        console.log(data)
+        //console.log(data)
 
 
 
     }catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 }

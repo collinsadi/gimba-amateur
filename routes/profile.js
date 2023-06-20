@@ -27,7 +27,7 @@ router.get('/u/:username', async(req, res)=>{
     //   res.status(200).json({user})
   
     // }catch(error){
-    //   console.log(error)
+    //   //console.log(error)
     //   res.status(500).json("Internal Server Error")
     // }
   
@@ -59,7 +59,7 @@ router.get('/u/:username', async(req, res)=>{
       res.status(200).json({user, posts: blogs})
   
     }catch(error){
-      console.log(error)
+      //console.log(error)
       res.status(500).json("Internal Server Error")
     }
   
@@ -78,7 +78,7 @@ router.get('/u/:username', async(req, res)=>{
 
 // } catch(error){
 
-//   console.log(error)
+//   //console.log(error)
 // }
 
 //   })

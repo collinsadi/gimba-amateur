@@ -109,7 +109,7 @@ try{
                 const data = await response.json()
 
                 alert(data.details)
-                console.log(data)
+                //console.log(data)
 
 
 
@@ -152,7 +152,7 @@ try{
                 const data = await response.json()
 
                 alert(data.details)
-                console.log(data)
+                //console.log(data)
 
 
 
@@ -166,7 +166,7 @@ try{
 
     })
 
-    console.log(data)
+    //console.log(data)
 
 }
 catch(error){
@@ -209,13 +209,13 @@ const createAd = async ()=>{
         location.reload()
     }
 
-    console.log(data)
+    //console.log(data)
     
 
    } 
    catch(error){
 
-    console.log(error)
+    //console.log(error)
    }
 
 

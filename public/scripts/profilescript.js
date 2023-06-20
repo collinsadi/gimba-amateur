@@ -6,7 +6,7 @@ const getProfileInfo = async ()=>{
     const PostsDisplay = document.getElementById('blog-display')
 
     const username = window.location.href.split('/').pop()
-    console.log(username)
+    //console.log(username)
 
 try{
 
@@ -190,11 +190,11 @@ try{
     }
 
   
-    console.log(data)
+    //console.log(data)
 
 }catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 

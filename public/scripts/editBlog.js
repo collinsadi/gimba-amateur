@@ -20,7 +20,7 @@ var quill = new Quill('#editor', {
 
 
   var text = quill.root.innerHTML; // Get the plain text content
-    console.log(text);
+    //console.log(text);
 
 
 
@@ -51,7 +51,7 @@ blogImage.addEventListener("change", ()=>{
 
         blogImageUrl = fr.result;
 
-       console.log(blogImageUrl)
+       //console.log(blogImageUrl)
 
 
         
@@ -75,7 +75,7 @@ const messageBody = document.getElementById('msg-body');
 const urlparams = new URLSearchParams(location.search)
 const id = urlparams.get('id')
 
-console.log(id)
+//console.log(id)
 
 const getOldData = async ()=>{
 
@@ -109,9 +109,9 @@ try {
 
 
 
-    console.log(oldDetails)
+    //console.log(oldDetails)
 } catch (error) {
-    console.log(error)
+    //console.log(error)
     
 }
 
@@ -145,7 +145,7 @@ const editBlog = async ()=>{
     })
 
     const data = await response.json()
-    console.log(data)
+    //console.log(data)
 
     if(data.details === "Blog Updated Sucessfully"){
 

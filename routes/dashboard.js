@@ -12,12 +12,56 @@ const Notification = require('../models/notification');
 
 //router.use(authMiddleWare);
 
+
+router.post('/api/create_blog',  authMiddleWare, async (req, res)=>{
+
+  const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
+  
+  try {
+  
+      // const AuthorId = authorId;
+  
+  
+      const newblog = await BlogPost.create({
+  
+          blog_title,
+          blog_snippet,
+          blog_body,
+          blog_category,
+          blog_related_category,
+          blog_body,
+          blog_body_image_url,
+          author: authorId
+  
+      })
+     // newblog.save()
+      .then((result) => {
+  
+          //console.log(result)
+          res.status(200).send(result)
+  
+      }).catch((err) => {
+          //console.log(err)
+          res.status(400).send(err)
+      });
+  
+  
+  
+  } catch (error) {
+  
+      //console.log(error)
+      
+  }
+  
+  })
+
+
 router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
     try {
       const authorId = req.body.authorid;
 
       if(!authorId){
-        return console.log('Error Getting Admin')
+        return //console.log('Error Getting Admin')
       }
   
       const blogPosts = await BlogPost.find({ author: authorId });
@@ -25,7 +69,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
   
       res.status(200).send({blogpost: blogPosts});
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       res.status(500).send('Internal server error');
     }
   });
@@ -57,19 +101,88 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
       res.status(200).json({oldDetails: blogtoedit})
       
     } catch (error) {
-      console.log(error)
+      //console.log(error)
     }
 
   })
   
-   // console.log(AuthorId)
+   // //console.log(AuthorId)
 
    router.get('/dashboard/trash', authMiddleWare, (req, res)=>{
 
       res.status(200).render('trash')
    })
 
-    router.post('/api/get_user_trash', async (req, res)=>{
+   router.delete('/api/trash_blog_post/:id',  authMiddleWare, async (req, res)=>{
+
+    const blogId = req.params.id
+    
+    //console.log(blogId)
+    
+    
+    try {
+    
+        
+    
+        const blog = await BlogPost.findById(blogId)
+    
+        //console.log(blog)
+    
+        if(!blog) {
+    
+            return res.status(401).json({details: "Blog Post Not Found"})
+        }
+    
+        //  await Trash.create(blog)
+    
+        const trashBlog = new Trash({
+            blog_title: blog.blog_title,
+            blog_snippet: blog.blog_snippet,
+            blog_category: blog.blog_category,
+            blog_related_category: blog.blog_related_category,
+            blog_body: blog.blog_body,
+            blog_body_image_url: blog.blog_body_image_url,
+            author: blog.author
+        })
+    
+        await trashBlog.save()
+    
+        await BlogPost.findByIdAndDelete(blogId)
+    
+        return res.status(200).json({details: "Blog Moved to Trash"})
+    } catch (error) {
+        //console.log(error)
+    
+        res.status(500).json({details: "Internal Server Error"})
+    }
+    
+    
+    
+    })
+    
+    router.put('/api/edit_blog_post/:id',  authMiddleWare, async (req, res)=>{
+    
+        const id = req.params.id
+    
+        const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url} = req.body
+    try {
+    
+        await BlogPost.findByIdAndUpdate(id, req.body)
+    
+    return res.status(200).json({details: "Blog Updated Sucessfully"})
+    
+    } catch (error) {
+    
+        //console.log(error)
+        
+    }
+       
+    
+    
+    })
+    
+
+    router.post('/api/get_user_trash',  authMiddleWare, async (req, res)=>{
 
       try {
         
@@ -81,7 +194,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
 
       } catch (error) {
 
-        console.log(error)
+        //console.log(error)
         
       }
 
@@ -100,7 +213,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
     //     res.status(200).json({details: "Trash Item Deleted"})
         
     //   } catch (error) {
-    //     console.log(error)
+    //     //console.log(error)
     //   }
 
     // })
@@ -152,7 +265,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
         
         
       } catch (error) {
-        console.log(error)
+        //console.log(error)
       }
 
     })
@@ -163,6 +276,50 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
       res.status(200).render('draft')
 
     })
+
+    router.post('/api/create_draft', authMiddleWare,  async(req, res)=>{
+
+
+      const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
+  
+      try {
+      
+          // const AuthorId = authorId;
+      
+      
+          const newblog = await Draft.create({
+      
+              blog_title,
+              blog_snippet,
+              blog_body,
+              blog_category,
+              blog_related_category,
+              blog_body,
+              blog_body_image_url,
+              author: authorId
+      
+          })
+         // newblog.save()
+          .then((result) => {
+      
+              //console.log(result)
+              res.status(200).send(result)
+      
+          }).catch((err) => {
+              //console.log(err)
+              res.status(400).send(err)
+          });
+      
+      
+      
+      } catch (error) {
+      
+          //console.log(error)
+          
+      }
+      
+  
+  })
 
     router.post('/api/get_user_drafts', async (req, res)=>{
 
@@ -176,7 +333,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
 
       } catch(error){
 
-        console.log(error)
+        //console.log(error)
       }
 
 
@@ -194,7 +351,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
         return;
       } catch(error){
 
-        console.log(error)
+        //console.log(error)
         res.status(401).send({details: "Requested Item not Found in Draft"})
       }
 
@@ -230,7 +387,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
         return
       }catch(error){
 
-        console.log(error)
+        //console.log(error)
       }
 
     })
@@ -256,7 +413,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
 
 
 
-        console.log(error)
+        //console.log(error)
       
         res.status(500).json({details: "Internal Server Error"})
       
@@ -296,7 +453,7 @@ try {
 
 } catch (error) {
 
-    console.log(error)
+    //console.log(error)
     
 }
 
@@ -309,7 +466,7 @@ try {
 
     })
 
-    //console.log(res.session)
+    ////console.log(res.session)
 
     router.post('/api/get_user_information/:id', authMiddleWare, async (req, res)=>{
 
@@ -347,7 +504,7 @@ try {
         res.status(200).json({details: "User Updated Sucessfully"})
         return;
       } catch (error) {
-        console.log(error)
+        //console.log(error)
         res.status(404).json({details: "an Error Occured"})
       }
 
@@ -372,7 +529,7 @@ try {
     res.status(200).json({details: "Verification Request Submitted"})
     } catch(error) {
 
-      console.log(error)
+      //console.log(error)
     }
 
    })
@@ -410,9 +567,9 @@ try {
         if(verificationId != userId){
 
 
-          // console.log(user._id)
-          // console.log(useridname)
-          // console.log(userId)
+          // //console.log(user._id)
+          // //console.log(useridname)
+          // //console.log(userId)
 
           return res.status(401).json({details: "Unauthorized Request"})
         }
@@ -423,7 +580,7 @@ try {
 
 
     } catch(error){
-      console.log(error)
+      //console.log(error)
     }
 
 
@@ -476,7 +633,7 @@ try {
 
     } catch(error){
 
-      console.log(error)
+      //console.log(error)
     }
 
    })
@@ -538,7 +695,7 @@ try {
 //     res.status(200).send(user)
 
 //   }catch(error){
-//     console.log(error)
+//     //console.log(error)
 //     res.status(500).json("Internal Server Error")
 //   }
 

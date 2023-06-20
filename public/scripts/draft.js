@@ -29,7 +29,7 @@ const getDrafts = async ()=>{
         })
 
         const data = await response.json()
-        console.log(data)
+        //console.log(data)
         const gottenDrafts = data.drafts
 
         DraftContainer.innerHTML = gottenDrafts.map(x=>{
@@ -113,7 +113,7 @@ if(gottenDrafts.length === 0){
 
     } catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 
@@ -136,7 +136,7 @@ const deleteDraft = async (button) =>{
 
     const data = await response.json()
 
-    console.log(data)
+    //console.log(data)
 
     if(data.details === 'Item Deleted From Draft'){
         errorMesage.style.display = 'block';

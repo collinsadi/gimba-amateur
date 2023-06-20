@@ -71,11 +71,11 @@ const getSentNotifications = async ()=>{
             `
         }).join('')
 
-        console.log(data)
+        //console.log(data)
 
     } catch(error) {
 
-        console.log(error)
+        //console.log(error)
     }
 
 
@@ -124,10 +124,10 @@ const sendNotification = async ()=>{
             errorTracker.innerHTML = data.details
             errorTracker.style.color ="red"
             
-            console.log(data)
+            //console.log(data)
     }
     catch(error){
-        console.log(error)
+        //console.log(error)
     }
 }
 

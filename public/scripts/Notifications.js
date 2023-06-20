@@ -2,7 +2,7 @@
 const username = localStorage.getItem('receiver')
 const userid = localStorage.getItem('id')
 
-console.log(userid)
+//console.log(userid)
 
 const notificationsContainer = document.getElementById('all-notifications-array')
 
@@ -21,7 +21,7 @@ const getNotifications = async ()=>{
         const data = await response.json()
         const notifications = data.notifications
 
-        console.log(data)
+        //console.log(data)
 
         notificationsContainer.innerHTML = notifications.map(x=>{
 
@@ -44,12 +44,12 @@ const getNotifications = async ()=>{
         }).join('')
 
 
-        console.log(data)
+        //console.log(data)
 
     }
     catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 }

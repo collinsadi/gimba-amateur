@@ -54,7 +54,7 @@ blogImage.addEventListener("change", ()=>{
 
         blogImageUrl = fr.result;
 
-       console.log(blogImageUrl)
+       //console.log(blogImageUrl)
 
 
         
@@ -82,10 +82,10 @@ const craeteBlog = async()=>{
   var htmlContent = quill.root.innerHTML;
 
   var content = quill.getContents(); // Get the Delta content
-    console.log(content);
+    //console.log(content);
     
     var text = quill.root.innerHTML; // Get the plain text content
-    console.log(text);
+    //console.log(text);
 
 
 
@@ -139,7 +139,7 @@ const craeteBlog = async()=>{
 createButton.addEventListener('click', (e) => {
   e.preventDefault();
   e.target.innerHTML = "Creating...";
-  console.log(document.querySelector('#editor').innerHTML)
+  //console.log(document.querySelector('#editor').innerHTML)
 
   setTimeout(() => {
     let isinvalid = false;
@@ -215,7 +215,7 @@ createButton.addEventListener('click', (e) => {
 const createDraft = async()=>{
 
   var text = quill.root.innerHTML; // Get the plain text content
-    console.log(text);
+    //console.log(text);
 
 
   
@@ -268,7 +268,7 @@ draftButton.addEventListener('click', (e)=>{
 
   e.preventDefault();
   e.target.innerHTML = "Creating...";
-  console.log(document.querySelector('#editor').innerHTML)
+  //console.log(document.querySelector('#editor').innerHTML)
 
   setTimeout(() => {
     let isinvalid = false;

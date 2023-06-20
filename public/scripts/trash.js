@@ -106,11 +106,11 @@ if(TrashedItems.length === 0){
 }
 
 
-            console.log(TrashedItems)
+            //console.log(TrashedItems)
 
         } catch (error) {
 
-            console.log(error)
+            //console.log(error)
             
         }
 })
@@ -144,7 +144,7 @@ const permanentlyDeleteBlog = async (button)=>{
         alert('Error Deleting Blog')
     }
 
-    console.log(data)
+    //console.log(data)
 
 
 }
@@ -175,6 +175,6 @@ const restoreBlog = async (button)=>{
         alert('Error Restoring Blog')
     }
 
-    console.log(data)
+    //console.log(data)
 
 }

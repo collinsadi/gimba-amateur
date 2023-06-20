@@ -195,13 +195,13 @@ const getAnalytics = async ()=>{
             //verifiedUsers.innerHTML = data.verifiedUsers.length;
            // loggedUsers.innerHTML = data.loggedInUsers.length;
             // verificationRequests.innerHTML = data.verificationRequests.length;
-            console.log(data)
+            //console.log(data)
 
 
     }
     catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 }

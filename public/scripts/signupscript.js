@@ -79,10 +79,10 @@ const CreateUsers = async () => {
         }
         
         
-        console.log(data.message)
+        //console.log(data.message)
         
     } catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 
 };
@@ -167,9 +167,9 @@ const getUsers = async ()=>{
     })
 
     const data = await response.json()
-    console.log(data)
-    console.log(data.redirectUrl)
-    console.log(data.author)
+    //console.log(data)
+    //console.log(data.redirectUrl)
+    //console.log(data.author)
 
 
     if(data.message === "Invalid Credentials" ){

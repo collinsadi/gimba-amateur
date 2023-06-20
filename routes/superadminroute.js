@@ -29,7 +29,7 @@ const authMiddleWare = async (req, res, next) =>{
 
         const decoded = await jwt.verify(token, jwtsecret)
         req.userId = decoded.UserId
-        console.log(req.userId)
+        //console.log(req.userId)
         next()
     } catch (error) {
         return res.redirect('/404')
@@ -63,25 +63,25 @@ router.post('/api/create_super_admin',  async (req, res)=>{
 
                 
                 res.status(401).json({message: "Email and Username Already In Use"})
-                // console.log(error)
+                // //console.log(error)
                 return;
             }
             if(error.keyPattern.useridname){
 
-                // console.log("na user name cause am")
+                // //console.log("na user name cause am")
 
                 
                 res.status(401).json({message: "Username Already In Use"})
-                // console.log(error)
+                // //console.log(error)
                 return;
             }
             if(error.keyPattern.email){
 
-                // console.log("na email cause am")
+                // //console.log("na email cause am")
 
                 
                 res.status(401).json({message: "Email Already In Use"})
-                console.log(error)
+                //console.log(error)
                 return;
 
             }
@@ -89,19 +89,19 @@ router.post('/api/create_super_admin',  async (req, res)=>{
             if(error.code === 11000){
 
                 // res.status(401).send({message: "User Already In Use"})
-                console.log(error)
+                //console.log(error)
                 return;
             }
 
             res.status(500).json({message: "Internal Server Error"})
-            console.log(error)
+            //console.log(error)
             return;
             
         }
 
     } catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
     
 
@@ -206,7 +206,7 @@ router.post('/api/superadmin/get_all_blogs', authMiddleWare, async (req, res)=>{
     }catch(error){
 
         res.status(401).json({details: "Error Getting Posts"})
-        console.log(error)
+        //console.log(error)
     }
 
 })
@@ -241,7 +241,7 @@ router.delete('/api/superadmin/delete_blog/:id', authMiddleWare, async (req, res
     }catch(error){
 
         res.status(500).json({details: "an Error Occured"})
-        console.log(error)
+        //console.log(error)
     }
 
 })
@@ -272,7 +272,7 @@ router.post('/api/superadmin/send_notification', authMiddleWare,  async (req, re
     } catch(error){
 
         res.status(500).json({details: "an Error Occured"})
-        console.log(error)
+        //console.log(error)
     }
 
 })
@@ -290,7 +290,7 @@ try{
 
     res.status(500).json({details: "an Error Occured"})
 
-    console.log(error)
+    //console.log(error)
 }
  
 })
@@ -308,7 +308,7 @@ router.post('/api/superadmin/get_all_users', authMiddleWare, async (req, res)=>{
 
         res.status(500).json({details: "an Error Occured"})
 
-        console.log(error)
+        //console.log(error)
     }
 
 
@@ -339,7 +339,7 @@ try {
 
 }catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -372,7 +372,7 @@ try {
 
 }catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -395,7 +395,7 @@ try {
 
 }catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -417,7 +417,7 @@ try {
 
 }catch(error){
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -446,7 +446,7 @@ router.post('/api/superadmin/create_new_blacklist',   authMiddleWare,  async (re
             res.status(404).json({details: "Value Already Exists in  Database"})
         }
 
-        console.log(error)
+        //console.log(error)
     }
 
 
@@ -465,7 +465,7 @@ router.post('/api/superadmin/get_blacklist_items', authMiddleWare,  async (req, 
     }
     catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 })
@@ -482,7 +482,7 @@ router.delete('/api/superadmin/remove_from_blacklist', authMiddleWare,  async(re
 
     } catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 
@@ -530,7 +530,7 @@ try{
 
 } catch(error){
 
-    console.log(error)
+    //console.log(error)
 
     res.status(401).json({details: "an Error Occured"})
 }
@@ -567,7 +567,7 @@ const {id, action} = req.body
             } catch(error){
                 
                 res.status(500).json({details: "an Error Occured"})
-                console.log(error)
+                //console.log(error)
                 return;
             }
 
@@ -585,7 +585,7 @@ const {id, action} = req.body
 
                 res.status(201).json({details: "Ad Deactivated Sucessfully"})
             }catch(error){
-                console.log(error)
+                //console.log(error)
 
                 return res.status(500).json({details: "an Error Occured"})
             }
@@ -598,7 +598,7 @@ const {id, action} = req.body
     catch(error) {
 
        
-        console.log(error)
+        //console.log(error)
     }
 
 })
@@ -640,7 +640,7 @@ router.get('/api/superadmin/get_active_ad', async (req, res)=>{
     catch(error){
 
         res.status(500).json({details: "An error Ocured"})
-        console.log(error)
+        //console.log(error)
     }
 
 })

@@ -47,7 +47,7 @@ blogImage.addEventListener("change", ()=>{
 
         blogImageUrl = fr.result;
 
-       console.log(blogImageUrl)
+       //console.log(blogImageUrl)
 
 
         
@@ -116,7 +116,7 @@ const getUserInfo = async ()=>{
         const data = await response.json()
         
         const currentUser = data.currentUser
-        console.log(currentUser)
+        //console.log(currentUser)
         
         // Fill the inputs
 
@@ -212,11 +212,11 @@ saveChanges.addEventListener('click', async ()=>{
     })
 
     const data = await response.json()
-    console.log(data)
+    //console.log(data)
     location.reload()
 
     } catch (error) {
-        console.log(response)
+        //console.log(response)
         alert('An Error Has Occured')
     }
 })
@@ -263,7 +263,7 @@ if(oldPassword.value.trim() === newPassword.value.trim()){
     return;
 }
 
-// return console.log(oldPassword.value)
+// return //console.log(oldPassword.value)
 
 try {
 
@@ -279,7 +279,7 @@ try {
     })
 
     const data = await response.json()
-    console.log(data)
+    //console.log(data)
 
     if(data.details === "Invalid Credentials"){
         passwordChangeStatus.innerHTML = data.details
@@ -305,7 +305,7 @@ try {
             
         } catch (error) {
     
-            console.log(error)
+            //console.log(error)
             
         }
     
@@ -316,7 +316,7 @@ try {
 
     
 } catch (error) {
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -342,7 +342,7 @@ requestVerificationBtn.addEventListener('click', async()=>{
 
     } catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 })

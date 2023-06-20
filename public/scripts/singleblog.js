@@ -1,8 +1,8 @@
-console.log('Connected')
+//console.log('Connected')
 
 const blogId = location.href.split('/').pop()
 
-console.log(blogId)
+//console.log(blogId)
 
 const authorContainer = document.getElementById('the-author')
 
@@ -15,7 +15,7 @@ const getAuthor = async ()=>{
 
     try{
 
-        const response = await fetch('/api/get_post_author/'+blogId, {
+        const response = await fetch('/api/get_post/'+blogId, {
             method: "GET",
             headers: {
                 "Content-Type":"Application/Json"
@@ -49,13 +49,13 @@ const getAuthor = async ()=>{
         
         `
 
-        console.log(author)
+        //console.log(author)
 
 
 
     } catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 

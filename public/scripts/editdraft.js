@@ -22,7 +22,7 @@ var quill = new Quill('#editor', {
 
 
 var text = quill.root.innerHTML; // Get the plain text content
-  console.log(text);
+  //console.log(text);
 
 
 
@@ -54,7 +54,7 @@ blogImage.addEventListener("change", ()=>{
 
         blogImageUrl = fr.result;
 
-       console.log(blogImageUrl)
+       //console.log(blogImageUrl)
 
 
         
@@ -78,7 +78,7 @@ const messageBody = document.getElementById('msg-body');
 const urlparams = new URLSearchParams(location.search)
 const id = urlparams.get('id')
 
-console.log(id)
+//console.log(id)
 
 const getOldData = async ()=>{
 
@@ -110,9 +110,9 @@ try {
 
 
 
-    console.log(oldDetails)
+    //console.log(oldDetails)
 } catch (error) {
-    console.log(error)
+    //console.log(error)
     
 }
 
@@ -146,7 +146,7 @@ const editDraft = async ()=>{
     })
 
     const data = await response.json()
-    console.log(data)
+    //console.log(data)
 
     if(data.details === "Draft Item Updated"){
 
@@ -160,7 +160,7 @@ const editDraft = async ()=>{
 
     } catch (error) {
         
-        console.log(error)
+        //console.log(error)
     }
 
    
@@ -220,7 +220,7 @@ const craeteBlog = async()=>{
   createButton.addEventListener('click', (e) => {
     e.preventDefault();
     e.target.innerHTML = "Creating...";
-    console.log(document.querySelector('#editor').innerHTML)
+    //console.log(document.querySelector('#editor').innerHTML)
   
     setTimeout(() => {
       let isinvalid = false;

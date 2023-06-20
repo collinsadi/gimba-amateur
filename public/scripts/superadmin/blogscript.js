@@ -13,7 +13,7 @@ window.addEventListener('load', async ()=>{
 
     // const AuthorId = localStorage.getItem('id')
 
-    //console.log(AuthorId)
+    ////console.log(AuthorId)
     
     const blogContainer = document.getElementById('all-the-blogs-array');
 
@@ -25,7 +25,7 @@ const response = await fetch(`/api/superadmin/get_all_blogs`, {
 })
 
 const data = await response.json()
-console.log(data)
+//console.log(data)
 const blogs = data.allBlogs
 
 
@@ -121,7 +121,7 @@ deleteButtons.forEach((button) => {
 
     button.disabled = true
     const id = button.dataset.blogid
-    //console.log('Working' + id)
+    ////console.log('Working' + id)
 
     try {
 
@@ -133,7 +133,7 @@ deleteButtons.forEach((button) => {
         })
 
         const data = await response.json()
-        console.log(data)
+        //console.log(data)
 
         if(data.details === "BlogPost Deleted"){
             errorMesage.style.display = 'block';

@@ -8,7 +8,7 @@ const notificationTitle = document.getElementById('message_title');
 
 const notificationBody = document.getElementById('message_body')
 
-console.log(notifiId)
+//console.log(notifiId)
 
 const getNotification = async ()=>{
 
@@ -29,7 +29,7 @@ const getNotification = async ()=>{
     const data = await response.json()
     const notification = data.notification
 
-    console.log(data)
+    //console.log(data)
 
     notificationTitle.innerHTML = notification.notification_title
     notificationBody.innerHTML = notification.notification_body
@@ -37,7 +37,7 @@ const getNotification = async ()=>{
     }
     catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 }

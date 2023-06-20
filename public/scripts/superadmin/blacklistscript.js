@@ -54,14 +54,14 @@ try{
         location.reload()
     }
 
-    console.log(data)
+    //console.log(data)
 
 
 } catch(error){
     
     
 
-    console.log(error)
+    //console.log(error)
 }
 
 
@@ -99,7 +99,7 @@ const displayBlaclistItems = async ()=>{
 
         }).join('')
 
-        console.log(data)
+        //console.log(data)
 
         const removeFromBlacklistBtn = document.querySelectorAll('#remove-from-blacklist')
 
@@ -128,12 +128,12 @@ const displayBlaclistItems = async ()=>{
                         location.reload()
                     }
 
-                    console.log(data)
+                    //console.log(data)
 
 
                 } catch(error){
 
-                    console.log(error)
+                    //console.log(error)
                 }
             })
 
@@ -143,7 +143,7 @@ const displayBlaclistItems = async ()=>{
     }
     catch(error){
 
-        console.log(error)
+        //console.log(error)
     }
 
 }

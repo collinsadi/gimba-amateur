@@ -30,91 +30,91 @@ router.get('/create', (req, res)=>{
 
 })
 
-router.post('/api/create_blog', async (req, res)=>{
+// router.post('/api/create_blog', async (req, res)=>{
 
-const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
+// const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
 
-try {
+// try {
 
-    // const AuthorId = authorId;
-
-
-    const newblog = await BlogPost.create({
-
-        blog_title,
-        blog_snippet,
-        blog_body,
-        blog_category,
-        blog_related_category,
-        blog_body,
-        blog_body_image_url,
-        author: authorId
-
-    })
-   // newblog.save()
-    .then((result) => {
-
-        console.log(result)
-        res.status(200).send(result)
-
-    }).catch((err) => {
-        console.log(err)
-        res.status(400).send(err)
-    });
+//     // const AuthorId = authorId;
 
 
+//     const newblog = await BlogPost.create({
 
-} catch (error) {
+//         blog_title,
+//         blog_snippet,
+//         blog_body,
+//         blog_category,
+//         blog_related_category,
+//         blog_body,
+//         blog_body_image_url,
+//         author: authorId
 
-    console.log(error)
+//     })
+//    // newblog.save()
+//     .then((result) => {
+
+//         //console.log(result)
+//         res.status(200).send(result)
+
+//     }).catch((err) => {
+//         //console.log(err)
+//         res.status(400).send(err)
+//     });
+
+
+
+// } catch (error) {
+
+//     //console.log(error)
     
-}
+// }
 
-})
+// })
 
-router.post('/api/create_draft', async(req, res)=>{
+// router.post('/api/create_draft', async(req, res)=>{
 
 
-    const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
+//     const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
 
-    try {
+//     try {
     
-        // const AuthorId = authorId;
-    
-    
-        const newblog = await Draft.create({
-    
-            blog_title,
-            blog_snippet,
-            blog_body,
-            blog_category,
-            blog_related_category,
-            blog_body,
-            blog_body_image_url,
-            author: authorId
-    
-        })
-       // newblog.save()
-        .then((result) => {
-    
-            console.log(result)
-            res.status(200).send(result)
-    
-        }).catch((err) => {
-            console.log(err)
-            res.status(400).send(err)
-        });
+//         // const AuthorId = authorId;
     
     
+//         const newblog = await Draft.create({
     
-    } catch (error) {
+//             blog_title,
+//             blog_snippet,
+//             blog_body,
+//             blog_category,
+//             blog_related_category,
+//             blog_body,
+//             blog_body_image_url,
+//             author: authorId
     
-        console.log(error)
+//         })
+//        // newblog.save()
+//         .then((result) => {
+    
+//             //console.log(result)
+//             res.status(200).send(result)
+    
+//         }).catch((err) => {
+//             //console.log(err)
+//             res.status(400).send(err)
+//         });
+    
+    
+    
+//     } catch (error) {
+    
+//         //console.log(error)
         
-    }
+//     }
     
 
-})
+// })
 
 
 router.get('/blog-post/:id', (req, res)=>{
@@ -132,7 +132,7 @@ router.get('/blog-post/:id', (req, res)=>{
 
 })
 
-router.get('/api/get_post_author/:blogpostid', async (req, res)=>{
+router.get('/api/get_post/:blogpostid', async (req, res)=>{
 
     const blogpostId = req.params.blogpostid
 
@@ -154,79 +154,79 @@ router.get('/api/get_post_author/:blogpostid', async (req, res)=>{
 
         res.status(401).json({details: "Error Occured"})
 
-        console.log(error)
+        //console.log(error)
     }
 
 })
 
 
-router.delete('/api/trash_blog_post/:id', async (req, res)=>{
+// router.delete('/api/trash_blog_post/:id', async (req, res)=>{
 
-const blogId = req.params.id
+// const blogId = req.params.id
 
-console.log(blogId)
+// //console.log(blogId)
 
 
-try {
+// try {
 
     
 
-    const blog = await BlogPost.findById(blogId)
+//     const blog = await BlogPost.findById(blogId)
 
-    console.log(blog)
+//     //console.log(blog)
 
-    if(!blog) {
+//     if(!blog) {
 
-        return res.status(401).json({details: "Blog Post Not Found"})
-    }
+//         return res.status(401).json({details: "Blog Post Not Found"})
+//     }
 
-    //  await Trash.create(blog)
+//     //  await Trash.create(blog)
 
-    const trashBlog = new Trash({
-        blog_title: blog.blog_title,
-        blog_snippet: blog.blog_snippet,
-        blog_category: blog.blog_category,
-        blog_related_category: blog.blog_related_category,
-        blog_body: blog.blog_body,
-        blog_body_image_url: blog.blog_body_image_url,
-        author: blog.author
-    })
+//     const trashBlog = new Trash({
+//         blog_title: blog.blog_title,
+//         blog_snippet: blog.blog_snippet,
+//         blog_category: blog.blog_category,
+//         blog_related_category: blog.blog_related_category,
+//         blog_body: blog.blog_body,
+//         blog_body_image_url: blog.blog_body_image_url,
+//         author: blog.author
+//     })
 
-    await trashBlog.save()
+//     await trashBlog.save()
 
-    await BlogPost.findByIdAndDelete(blogId)
+//     await BlogPost.findByIdAndDelete(blogId)
 
-    return res.status(200).json({details: "Blog Moved to Trash"})
-} catch (error) {
-    console.log(error)
+//     return res.status(200).json({details: "Blog Moved to Trash"})
+// } catch (error) {
+//     //console.log(error)
 
-    res.status(500).json({details: "Internal Server Error"})
-}
+//     res.status(500).json({details: "Internal Server Error"})
+// }
 
 
 
-})
+// })
 
-router.put('/api/edit_blog_post/:id', async (req, res)=>{
+// router.put('/api/edit_blog_post/:id', async (req, res)=>{
 
-    const id = req.params.id
+//     const id = req.params.id
 
-    const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url} = req.body
-try {
+//     const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url} = req.body
+// try {
 
-    await BlogPost.findByIdAndUpdate(id, req.body)
+//     await BlogPost.findByIdAndUpdate(id, req.body)
 
-return res.status(200).json({details: "Blog Updated Sucessfully"})
+// return res.status(200).json({details: "Blog Updated Sucessfully"})
 
-} catch (error) {
+// } catch (error) {
 
-    console.log(error)
+//     //console.log(error)
     
-}
+// }
    
 
 
-})
+// })
 
 
 // router.get('/show-all', (req, res)=>{
@@ -237,7 +237,7 @@ return res.status(200).json({details: "Blog Updated Sucessfully"})
 //         res.send(result)
 //     })
 //     .catch(err =>{
-//         console.log(err)
+//         //console.log(err)
 //     })
 // })
 

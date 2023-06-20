@@ -5,11 +5,7 @@
 window.addEventListener('load', async ()=>{
 
     const AuthorId = localStorage.getItem('id')
-
-    //console.log(AuthorId)
-    
     const blogContainer = document.getElementById('all-the-blogs-array');
-
 const response = await fetch(`/api/get_user_articles`, {
     method: 'POST',
     headers: {
@@ -17,14 +13,9 @@ const response = await fetch(`/api/get_user_articles`, {
     },
     body: JSON.stringify({authorid: AuthorId})
 })
-
 const data = await response.json()
-console.log(data)
+//console.log(data)
 const blogs = data.blogpost
-
-
-
-
 blogContainer.innerHTML = blogs.map((x) =>{
 
     const {_id} = x
@@ -133,7 +124,7 @@ const trashBlog = async (button)=>{
 
     button.disabled = true
     const id = button.dataset.blogid
-    //console.log('Working' + id)
+    ////console.log('Working' + id)
 
     try {
 
@@ -145,7 +136,7 @@ const trashBlog = async (button)=>{
         })
 
         const data = await response.json()
-        console.log(data)
+        //console.log(data)
 
         if(data.details === "Blog Moved to Trash"){
             errorMesage.style.display = 'block';
@@ -160,7 +151,7 @@ const trashBlog = async (button)=>{
         }
 
     } catch (error) {
-        console.eror(error)
+        //console.eror(error)
     }
 
 }
@@ -169,7 +160,7 @@ const trashBlog = async (button)=>{
 
 //     button.addEventListener('click', ()=>{
 
-//         console.log('Clicked')
+//         //console.log('Clicked')
 //     })
 
 // })
