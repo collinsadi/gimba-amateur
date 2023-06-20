@@ -549,7 +549,7 @@ const {id, action} = req.body
 
             try{
 
-            const activeAdverts = await Ad.find({Ad_status: "active"})
+            const activeAdverts = await Ad.find({ad_status: "active"})
 
             if(activeAdverts.length > 0){
 
@@ -558,7 +558,7 @@ const {id, action} = req.body
 
             const advert = await Ad.findById(id)
 
-            advert.Ad_status = "active"
+            advert.ad_status = "active"
 
             await advert.save()
 
@@ -567,6 +567,7 @@ const {id, action} = req.body
             } catch(error){
                 
                 res.status(500).json({details: "an Error Occured"})
+                console.log(error)
                 return;
             }
 
@@ -578,12 +579,13 @@ const {id, action} = req.body
 
                 const advert = await Ad.findById(id)
 
-                advert.Ad_status = "not active"
+                advert.ad_status = "not active"
     
                 await advert.save()
 
                 res.status(201).json({details: "Ad Deactivated Sucessfully"})
             }catch(error){
+                console.log(error)
 
                 return res.status(500).json({details: "an Error Occured"})
             }
@@ -625,7 +627,7 @@ router.get('/api/superadmin/get_active_ad', async (req, res)=>{
 
     try{
 
-        const activeAd = await Ad.find({Ad_status: "active"})
+        const activeAd = await Ad.find({ad_status: "active"})
 
         if(!activeAd){
 

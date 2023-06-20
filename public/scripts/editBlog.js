@@ -1,6 +1,29 @@
 // alert('Conected ')
 
 
+var quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+      toolbar: [
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        ['blockquote', 'code-block'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image', 'video'],
+        ['clean']
+      ]
+    }
+  });
+
+
+  var text = quill.root.innerHTML; // Get the plain text content
+    console.log(text);
+
+
+
 const editButton = document.getElementById('edit-blog-btn');
 const  blogTitle = document.getElementById('blog_title');
 const blogSnippet = document.getElementById('blog_snippet');
@@ -72,7 +95,9 @@ try {
         return alert('This Is not Your Blog')
     }
 
-    blogBody.value = oldDetails.blog_body
+
+
+    quill.root.innerHTML = oldDetails.blog_body
     blogSnippet.value = oldDetails.blog_snippet
     blogTitle.value = oldDetails.blog_title
     category.value = oldDetails.blog_category
@@ -113,7 +138,7 @@ const editBlog = async ()=>{
       blog_snippet: blogSnippet.value,
       blog_category: category.value,
       blog_related_category: relatedCategory.value,
-      blog_body: blogBody.value,
+      blog_body: quill.root.innerHTML,
       blog_body_image_url: blogImageUrl,
 
         })

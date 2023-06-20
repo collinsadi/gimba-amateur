@@ -3,6 +3,7 @@ const router = express.Router()
 const BlogPost = require('../models/blog')
 const Draft = require('../models/draft')
 const Trash = require('../models/Trash')
+const User = require('../models/user')
 
 
 
@@ -120,6 +121,8 @@ router.get('/blog-post/:id', (req, res)=>{
 
     const id = req.params.id
     BlogPost.findById(id)
+
+    
     .then(result=>{
         res.render('singleblog', {blogpost: result, title: result.blog_title.toUpperCase()})
     })
@@ -128,6 +131,34 @@ router.get('/blog-post/:id', (req, res)=>{
     })
 
 })
+
+router.get('/api/get_post_author/:blogpostid', async (req, res)=>{
+
+    const blogpostId = req.params.blogpostid
+
+    try{
+
+        const blog = await BlogPost.findById(blogpostId)
+        
+        if(!blog){
+
+            return res.status(404).json({details: "Blog Post Not Found"})
+        }
+
+        const blogAuthor = await User.findById(blog.author)
+
+        res.status(201).json({blogAuthor, blog})
+
+    }
+    catch(error){
+
+        res.status(401).json({details: "Error Occured"})
+
+        console.log(error)
+    }
+
+})
+
 
 router.delete('/api/trash_blog_post/:id', async (req, res)=>{
 

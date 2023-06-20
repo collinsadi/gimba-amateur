@@ -1,3 +1,31 @@
+
+
+
+
+  var quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+      toolbar: [
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        ['blockquote', 'code-block'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image', 'video'],
+        ['clean']
+      ]
+    }
+  });
+
+
+
+
+
+
+
+
 const createButton = document.getElementById('create-blog-btn');
 const draftButton = document.getElementById('draft-blog-btn');
 const  blogTitle = document.getElementById('blog_title');
@@ -51,6 +79,16 @@ let isinvalid = false;
 
 const craeteBlog = async()=>{
 
+  var htmlContent = quill.root.innerHTML;
+
+  var content = quill.getContents(); // Get the Delta content
+    console.log(content);
+    
+    var text = quill.root.innerHTML; // Get the plain text content
+    console.log(text);
+
+
+
   const response = await fetch('/api/create_blog',{
 
     method: 'POST', 
@@ -64,7 +102,7 @@ const craeteBlog = async()=>{
       blog_snippet: blogSnippet.value,
       blog_category: category.value,
       blog_related_category: relatedCategory.value,
-      blog_body: blogBody.value,
+      blog_body: text,
       blog_body_image_url: blogImageUrl,
       authorId: localStorage.getItem('id')
 
@@ -146,15 +184,15 @@ createButton.addEventListener('click', (e) => {
 
   // var bloglength = quill.getLength();
 
-    if (blogBody.value.length < 60) {
-      errorMesage.classList.add('show-error');
-      messageBody.innerHTML = "Invalid Blog Content";
-      isinvalid = true;
-      setTimeout(() => {
-        errorMesage.classList.remove('show-error')
-      }, 4000);
+    // if (blogBody.value.length < 60) {
+    //   errorMesage.classList.add('show-error');
+    //   messageBody.innerHTML = "Invalid Blog Content";
+    //   isinvalid = true;
+    //   setTimeout(() => {
+    //     errorMesage.classList.remove('show-error')
+    //   }, 4000);
       
-    }
+    // }
 
 
 
@@ -176,6 +214,10 @@ createButton.addEventListener('click', (e) => {
 
 const createDraft = async()=>{
 
+  var text = quill.root.innerHTML; // Get the plain text content
+    console.log(text);
+
+
   
   const response = await fetch('/api/create_draft',{
 
@@ -190,7 +232,7 @@ const createDraft = async()=>{
       blog_snippet: blogSnippet.value,
       blog_category: category.value,
       blog_related_category: relatedCategory.value,
-      blog_body: blogBody.value,
+      blog_body: text,
       blog_body_image_url: blogImageUrl,
       authorId: localStorage.getItem('id')
 
@@ -248,15 +290,15 @@ draftButton.addEventListener('click', (e)=>{
 
   // var bloglength = quill.getLength();
 
-    if (blogBody.value.length < 10) {
-      errorMesage.classList.add('show-error');
-      messageBody.innerHTML = "Drafts Should have a brief body";
-      isinvalid = true;
-      setTimeout(() => {
-        errorMesage.classList.remove('show-error')
-      }, 4000);
+    // if (blogBody.value.length < 10) {
+    //   errorMesage.classList.add('show-error');
+    //   messageBody.innerHTML = "Drafts Should have a brief body";
+    //   isinvalid = true;
+    //   setTimeout(() => {
+    //     errorMesage.classList.remove('show-error')
+    //   }, 4000);
       
-    }
+    // }
 
 
 

@@ -1,4 +1,4 @@
-const userid = localStorage.getItem('id')
+const userId = localStorage.getItem('id')
 
 // Function to detect whether the developer tools are open
 function detectDevTools() {
@@ -52,7 +52,7 @@ const getUserStatus = async ()=>{
             headers: {
                 "Content-Type":"Application/Json"
             },
-            body: JSON.stringify({id: userid})
+            body: JSON.stringify({id: userId})
         })
 
         const data = await response.json()

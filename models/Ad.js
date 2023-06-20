@@ -18,7 +18,7 @@ const AdSchema = new Schema({
     Ad_link:{
         type: String,
     },
-    Ad_status: {
+    ad_status: {
         type: String,
         default: "not active"
         
