@@ -181,7 +181,6 @@ try{
         PostsDisplay.innerHTML = `
         
         <div class="no-blog" style="margin-top: 10px; text-align: center; width: 100%;">
-        <h1>OOPS!, No Post To See Here...</h1>
         <p> This User hasn't Created Any Post</p>
         </div>
         

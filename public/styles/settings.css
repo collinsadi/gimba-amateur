@@ -200,3 +200,43 @@ border: 2px solid lightgray;
 
     width: 45%;
 }
+
+
+@media all and (max-width: 516px) { /* your content here */ 
+
+    .create-new-blog-inner{
+
+        width: 100%;
+    }
+    .single-blog{
+
+        width: 90%;
+    }
+    .all-your-blogs-header{
+
+            width: 100%;
+
+    }
+    .all-your-blogs-header input{
+        margin-top: 10px;
+    }
+    .all-your-blogs{
+
+        padding: 10px;
+
+    }
+    .all-your-blogs-inner{
+
+        width: 100%;
+
+    }
+
+
+    .social-media-handles {
+        flex-direction: column;
+    }
+    .social-media-handles input {
+        width:100%;
+    }
+
+}

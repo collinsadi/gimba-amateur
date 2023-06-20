@@ -36,7 +36,7 @@
 
     width: 80%;
     height: 200px;
-    background-color: white;
+    background-color: var(--white-color);
     border-radius: 15px;
     overflow: hidden;
     display: flex;
@@ -81,20 +81,22 @@
 .author-details h2{
 
     margin-bottom: 10px;
+    color: var(--black-text);
 }
 .author-details p{
     margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--black-text);
 }
 .website{
     display: flex;
     width: 100%;
     /* align-items: center; */
-
+    color: var(--black-text);
 }
 .website a{
-    color: black;
+    color: var(--black-text);
     /* text-decoration: none; */
     margin-left: 10px;
 }
@@ -127,4 +129,41 @@
 }
 .joined{
     font-size: 10px;
+}
+.no-blog{
+
+    width: 100%;
+   color: var(--black-text);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+
+@media all and (max-width: 723px){
+
+.profile-card-inner{
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    height: 350px;
+    align-items: flex-start;
+}
+.for-profile{
+
+    margin-top: 121px;
+}
+
+.author-details{
+
+    height: 300px;
+    width: 90%;
+    max-width: 90%;
+    margin-top: 10px;
+}
+.author-details p{
+    width: 100%;
+}
+
 }

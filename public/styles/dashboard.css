@@ -1,20 +1,13 @@
 
-:root{
-
-    --primary-color: blueviolet;
-    --white-color: white;
-    --white-text: white;
-}
-
 ::-moz-selection{
 
-    color: white;
-    background-color: #7F56D9;
+    color: var(--white-color);
+    background-color: var(--primary-color-dashboard);
 }
 
 ::selection{
-    color: white;
-    background-color: #7F56D9;
+    color: var(--white-color);
+    background-color: var(--primary-color-dashboard);
 
 }
 
@@ -29,7 +22,7 @@ body{
     position: fixed;
     height: 100%;
     width: 250px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-dashboard);
     overflow-y: scroll;
 }
 .dashboard-sidebar::-webkit-scrollbar{
@@ -58,7 +51,7 @@ body{
     top: 0;
     right: 0;
     z-index: 5;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-dashboard);
 }
 .sidebar-inner{
 
@@ -184,13 +177,13 @@ margin-left: 25px;
 .active-sidebar-btn{
 
     background-color: var(--white-color);
-    color: var(--primary-color);
+    color: var(--primary-color-dashboard);
     padding: 15px;
     border-radius: 15px;
 }
 .active-sidebar-btn a{
 
-    color: var(--primary-color);
+    color: var(--primary-color-dashboard);
 
 }
 
@@ -209,7 +202,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 width: 90%;
-background-color: var(--primary-color);
+background-color: var(--primary-color-dashboard);
 padding: 15px;
 border-radius: 15px;
 
@@ -298,7 +291,7 @@ width: 90%;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-dashboard);
     margin-bottom: 15px;
     border-radius: 15px;
     padding: 15px;
@@ -355,7 +348,7 @@ width: 90%;
     width: 100%;
     color: var(--white-text);
     padding: 15px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-dashboard);
     outline: 0;
     border: 0;
     cursor: pointer;

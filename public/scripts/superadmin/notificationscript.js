@@ -60,7 +60,7 @@ const getSentNotifications = async ()=>{
                 <p>${date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}</p>
             </div>
             <div class="notification-status">
-               ${x.status === "Seen" ? `<p class="seen-status">Seen</p>` :
+               ${x.status === "seen" ? `<p class="seen-status">Seen</p>` :
                 ` <p class="active-status" id="notification-status">Delivered</p>`} 
                 <!--  -->
             </div>

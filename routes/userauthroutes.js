@@ -71,6 +71,8 @@ router.post('/api/create_user', async (req, res)=>{
 
     const {full_name, email, password, useridname, bio, twitter, website} = req.body;
 
+    const sampleusername  = "oooooooooooooo"
+
     try{
 
         const hashedpassword = await bcrypt.hash(password, 10)
@@ -92,6 +94,12 @@ router.post('/api/create_user', async (req, res)=>{
             res.status(401).json({message: "Username Have Been Blacklisted"})
             return;
 
+        }
+
+        if(useridname.length > sampleusername.length){
+
+            res.status(401).json({message: "Username Too Long"})
+            return;
         }
 
         try{

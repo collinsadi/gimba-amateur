@@ -9,7 +9,12 @@
 
     padding: 15px;
     width: 100%;
+    overflow-x: scroll;
     
+}
+.table-inner::-webkit-scrollbar{
+
+    display: none;
 }
 
 .table-inner .all-users{
@@ -17,6 +22,7 @@
     width: 100%;
     border-collapse: collapse;
     text-align: center;
+    color: var(--black-text);
 }
 .all-users td, .all-users th{
 
@@ -26,7 +32,7 @@
 .all-users td a{
 
     text-decoration: none;
-    color: black;
+    color: var(--black-text);
 }
 
 .all-users th{

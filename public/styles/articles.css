@@ -136,6 +136,7 @@
     flex-direction: column;
     display: inline-block;
     vertical-align: bottom;
+    color: var(--black-text);
 }
 .single-blog-image{
 
@@ -213,4 +214,40 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    color: var(--black-text);
+}
+
+
+
+@media all and (max-width: 516px) { /* your content here */ 
+
+    .create-new-blog-inner{
+
+        width: 100%;
+    }
+    .single-blog{
+
+        width: 90%;
+    }
+    .all-your-blogs-header{
+
+            width: 100%;
+            flex-direction: column;
+
+    }
+    .all-your-blogs-header input{
+        margin-top: 10px;
+    }
+    .all-your-blogs{
+
+        padding: 10px;
+
+    }
+    .all-your-blogs-inner{
+
+        width: 100%;
+
+    }
+
+
 }

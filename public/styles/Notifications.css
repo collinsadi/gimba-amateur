@@ -29,12 +29,17 @@
 }
 .notification-title a{
     text-decoration: none;
-    color: black;
+    color: var(--black-text);
 }
 .unseen{
     background-color: rgba(137, 43, 226, 0.342);
-    border-left: 4px solid blueviolet;
+    border-left: 4px solid var(--primary-color);
 }
 .seen{
-    border-left: 4px solid black;
+    border-left: 4px solid var(--black-color);
 }
+.sent-date{
+
+    color: var(--black-text);
+}
+

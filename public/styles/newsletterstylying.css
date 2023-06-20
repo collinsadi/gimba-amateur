@@ -23,18 +23,18 @@
 .news-letter-right{
 
     width: 50%;
-    background-color: #7F56D9;
+    background-color: var(--primary-color);
    
 }
 .news-letter-right h3{
  font-size: 40px;
-    color: white;
+    color: var(--white-text);
 
 }
 
 .news-letter-right p{
 
-    color: white;
+    color: var(--white-text);
     margin-top: 15px;
     font-size: 20px;
 }
@@ -59,24 +59,24 @@
        width: 80%;
        padding: 15px;
        background-color: transparent;
-       color: white;
-       border: 2px solid white;
+       color: var(--white-text);
+       border: 2px solid var(--white-color);
 }
 .letter-email input::placeholder{
 
-    color: white;
+    color: var(--white-text);
 }
 .letter-email input:focus{
 
-    border: 2px solid white;
+    border: 2px solid var(--white-color);
     outline: none;
 }
 
 .letter-email button{
 
    
-        color: #101828;
-        background-color: #fff;
+        color: var(--gray-color);
+        background-color: var(--white-color);
         border-radius: 5px;
         padding: 10px 30px;
         font-family: Inter, sans-serif;
@@ -89,8 +89,8 @@
 }
 
 .letter-email button:hover {
-    color: #fff;
-    background-color: #101828;
+    color: var(--white-text);
+    background-color: var(--black-color);
 }
 @media all and (max-width: 1078px) { /* your content here */ 
 

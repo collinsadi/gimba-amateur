@@ -91,7 +91,7 @@ const CreateUsers = async () => {
 signUpBtn.addEventListener("click", (e)=>{
     e.preventDefault();
 
-    
+    const sampleusername  = "oooooooooooooo"
 
    
 
@@ -106,6 +106,10 @@ signUpBtn.addEventListener("click", (e)=>{
     }
     if(userName.value.length <= 3) {
         errormessage.innerHTML = "username too short"
+        return;
+    }
+    if(userName.value.length > sampleusername.length) {
+        errormessage.innerHTML = "username too long"
         return;
     }
     if(userName.value.trim().indexOf(' ') !== -1) {

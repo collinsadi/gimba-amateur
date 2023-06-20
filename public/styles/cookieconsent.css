@@ -97,8 +97,24 @@
    color: #7F56D9;
  }
  .close-consent-inner span{
+   width: 5%;
    cursor: pointer; 
    font-weight: bold;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    font-size: 25px;
  }
+
+
+ @media all and (max-width: 542px) { /* your content here */ 
+
+
+.cookie-consent{
+
+   width: 80%;
+   font-size: 15px;
+   height: 260px;
+}
+
+
+
+}

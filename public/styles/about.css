@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     background-image: url("../images/team.jpg");
-    height: 700px;
+    height: 500px;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -31,7 +31,7 @@
 
 .teamdescription .title{
 
-    width: 60%;
+    width: 90%;
     border:  3px solid #7F56D9;
     padding: 15px;
     border-radius: 15px;

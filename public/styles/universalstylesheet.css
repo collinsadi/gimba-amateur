@@ -1,0 +1,83 @@
+:root{
+
+    --primary-color:#7F56D9 ;
+    --white-color: white;
+    --white-text: white;
+    --black-color: black;
+    --black-text: black;
+    --gray-color: rgba(128, 128, 128, 0.705);
+    --darker-gray: rgba(128, 128, 128, 0.185) ;
+    --nav-link: #667BA4;
+    --blog-text: rgba(128, 128, 128, 0.705);
+    --latest-white: #E7E2F6;
+
+}
+/* :root{
+
+    --primary-color:#7F56D9 ;
+    --white-color: rgb(0, 0, 0);
+    --white-text: rgb(0, 0, 0);
+    --black-color: rgb(255, 255, 255);
+    --black-text: rgb(255, 255, 255);
+    --gray-color: rgba(128, 128, 128, 0.705);
+    --blog-text: rgba(128, 128, 128, 0.705);
+    --darker-gray: rgba(128, 128, 128, 0.185) ;
+    --nav-link: #667BA4;
+    --latest-white: #E7E2F6;
+
+} */
+:root{
+
+    --primary-color-dashboard:#7F56D9 ;
+
+}
+
+
+
+
+/* The switch - the box around the slider */
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    border: 2px solid #414141;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    left: 0.2em;
+    bottom: 0.2em;
+    background-color: var(--black-color);
+    border-radius: inherit;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .switch input:checked + .slider {
+    box-shadow: 0 0 20px rgba(9, 117, 241, 0.8);
+    border: 2px solid #0974f1;
+  }
+  
+  .switch input:checked + .slider:before {
+    transform: translateX(1.5em);
+  }
