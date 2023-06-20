@@ -141,7 +141,7 @@ router.post('/api/create_user', async (req, res)=>{
             if(error.code === 11000){
 
                 // res.status(401).send({message: "User Already In Use"})
-                //console.log(error)
+                console.log(error)
                 return;
             }
 
@@ -153,7 +153,7 @@ router.post('/api/create_user', async (req, res)=>{
 
     } catch(error){
 
-        //console.log(error)
+        console.log(error)
     }
     
 

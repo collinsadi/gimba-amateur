@@ -7,16 +7,18 @@ const blogroutes = require('./routes/blogRoutes')
 const dashboardroutes = require('./routes/dashboard')
 const superadminroutes = require('./routes/superadminroute')
 const profileroutes = require('./routes/profile')
+const swaggerDocumentations = require('./routes/documentations')
 const {useroutes} = require('./routes/userauthroutes')
 const Session = require('express-session');
 const cookieparser = require('cookie-parser')
 const MongoStore = require('connect-mongo')
+const swaggerDocs = require('swagger-ui-express')
 
-
+require('dotenv').config();
 
 // connect to mongodb
-const liveurl = 'mongodb+srv://netninja:1020304050@cluster0.54vyixp.mongodb.net/node-tuts?retryWrites=true&w=majority'
-const localurl = 'mongodb://127.0.0.1:27017/gimba';
+const liveurl = process.env.LIVE_URI
+const localurl = process.env.MONGODB_URI;
 
 mongoose.connect(liveurl,{useNewUrlParser: true, useUnifiedTopology: true})
 
@@ -47,9 +49,11 @@ app.use(Session({
     secret: "mysecretblog",
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl: liveurl})
+    store: MongoStore.create({mongoUrl: localurl})
 }))
 mongoose.set('debug', true)
+
+
 
 
 
@@ -62,6 +66,9 @@ app.get('/contact', (req, res)=>{
 
     res.render('contact')
 })
+
+app.use('/documentations/api',swaggerDocs.serve)
+app.use('/documentations/api',swaggerDocs.setup(swaggerDocumentations))
 
 app.use(blogroutes)
 app.use(useroutes)
