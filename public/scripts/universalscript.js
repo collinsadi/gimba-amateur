@@ -19,10 +19,10 @@ function detectDevTools() {
   }
   
   // Disable right-click context menu
-  window.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-    displayAlert();
-  });
+  // window.addEventListener('contextmenu', function(event) {
+  //   event.preventDefault();
+  //   displayAlert();
+  // });
   
   // Disable keyboard shortcuts
   window.addEventListener('keydown', function(event) {

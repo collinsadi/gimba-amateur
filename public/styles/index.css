@@ -269,10 +269,11 @@ justify-content: center;
 }
 .blogs-single-item .single-item-top img{
 
+    width: 100%;
     max-width: 100%;
     border-radius: 15px;
     transition: 0.6s;
-    max-height: 300px;
+    max-height: 400px;
 }
 
 .blogs-single-item .single-item-top{

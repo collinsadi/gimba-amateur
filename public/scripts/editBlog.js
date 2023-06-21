@@ -134,7 +134,7 @@ const editBlog = async ()=>{
         },
         body: JSON.stringify({
 
-      blog_title: blogTitle.value,
+      blog_title: blogTitle.value + " [EDITED]",
       blog_snippet: blogSnippet.value,
       blog_category: category.value,
       blog_related_category: relatedCategory.value,

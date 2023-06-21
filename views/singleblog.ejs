@@ -24,7 +24,7 @@
 
                 <div class="title-of-blog">
 
-                    <h1>
+                    <h1 id="blog-title">
                         <%= blogpost.blog_title %>
                     </h1>
 
@@ -42,6 +42,12 @@
     </div>
 
 </div>
+
+
+
+    
+
+
 <div class="the-blog-body" id="the-blog-body">
 
     <!-- <p>
@@ -62,9 +68,68 @@
 
 
 </div>
+<div class="last-edited" >
+    <p id="last-edited"></p>
+</div>
+
+<div class="report-post-share">
+
+        <button class="share-post" id="share-post">
+
+             <p>Share Post</p>
+        <i class="fa-solid fa-copy"></i>
+
+        </button>
+       
+
+    
+    
+
+        <button class="share-post" id="report-post">
+        
+        <p>Report Post</p>
+        <i class="fa-solid fa-warning"></i>
+        </button>
+       
+  
+    
+</div>
+
+
+<div class="report-box" id="report-box">
+
+    <div class="report-box-inner">
+
+        <div class="report-box-top">
+
+            <p> What is wrong with this post</p>
+
+            <select  id="reasonforreport">
+                <option value="sexual-content">Contains Sexual Content</option>
+                <option value="fake-story" selected>Fake story</option>
+                <option value="violence">Inciting Violence</option>
+                <option value="stolen-post">Stolen Post</option>
+            </select>
+
+        </div>
+        <div class="report-box-bottom">
+
+            <div class="report-message">
+
+                <textarea id="" placeholder="Explain in Detail What is wrong with the post"></textarea>
+
+            </div>
+
+           <button class="share-post">
+                Submit Report
+           </button>
+        </div>
 
 
 
+    </div>
+
+</div>
 
 
 

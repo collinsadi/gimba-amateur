@@ -23,6 +23,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
+    padding: 15px;
 }
 .title-of-blog{
 
@@ -62,6 +63,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
+
 .the-blog-body{
 
     width: 100%;
@@ -71,9 +75,9 @@
     font-weight: bold;
     font-size: 15px;
     color: var(--blog-text);
-    margin-bottom: 20px;
+    /* margin-bottom: 20px;
     line-height: 35px;
-    margin-top: 20px;
+    margin-top: 20px; */
 }
 .the-blog-body blockquote{
 
@@ -119,11 +123,17 @@
     color: var(--primary-color);
     font-size: 18px;
 }
+.the-blog-body ol{
+
+    font-size: 18px;
+    color: var(--primary-color);
+}
 
 .the-blog-body img{
 
     max-width: 100%;
     max-height: 500px;
+    border: 2px solid var(--primary-color);
 }
 .the-author{
 
@@ -151,25 +161,98 @@
     
 }
 
-.ql-toolbar {
-    background-color: white;
-    color: black;
+  .last-edited{
+
+    padding: 15px;
+    font-weight: bold;
+    color: var(--black-text);
   }
   
-  .ql-toolbar .ql-picker-label,
-  .ql-toolbar .ql-picker-item {
-    color: black;
+  .report-post-share{
+
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
   }
-  
-  .ql-toolbar .ql-picker-options {
-    background-color: white;
-    color: black;
+
+  .share-post{
+
+    display: flex;
+    align-items: center;
+    color: var(--black-text);
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--white-text);
+    border: 0;
+    outline: 0;
   }
-  
-  .ql-toolbar button {
-    color: black;
+  .share-post p {
+    margin-right: 10px;
   }
-  
+
+
+  .report-box{
+ 
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    display: none;
+  }
+
+
+  .report-box-inner{
+    color: var(--black-text);
+    padding: 15px;
+    width: 100%;
+   
+  }
+
+.report-box-top{
+
+    margin-bottom: 10px;
+    width: 100px;
+    font-weight: bold;
+    width: 100%;
+
+}
+
+
+.report-box-top select{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--primary-color);
+    color: var(--white-text);
+    font-weight: bold;
+}
+
+
+.report-box-bottom{
+
+    width: 100%;
+}
+
+.report-message{
+
+    width: 100%;
+}
+
+.report-message textarea{
+
+    width: 400px;
+    height: 200px;
+    max-width: 100%;
+}
+
+
+
+
+
 
 
 @media all and (max-width: 770px) { 

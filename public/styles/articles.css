@@ -217,6 +217,36 @@
     color: var(--black-text);
 }
 
+/* .ql-toolbar {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    padding: 8px;
+    color: white;
+    background-color: white;
+    border-radius: 15px;
+} */
+
+
+.ql-toolbar {
+    background-color: white;
+    color: black;
+  }
+  
+  .ql-toolbar .ql-picker-label,
+  .ql-toolbar .ql-picker-item {
+    color: black;
+  }
+  
+  .ql-toolbar .ql-picker-options {
+    background-color: white;
+    color: black;
+  }
+  
+  .ql-toolbar button {
+    color: black;
+  }
+  
 
 
 @media all and (max-width: 516px) { /* your content here */ 

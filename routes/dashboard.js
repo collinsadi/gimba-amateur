@@ -64,7 +64,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
         return //console.log('Error Getting Admin')
       }
   
-      const blogPosts = await BlogPost.find({ author: authorId });
+      const blogPosts = await BlogPost.find({ author: authorId }).sort({createdAt: -1});
       
   
       res.status(200).send({blogpost: blogPosts});
@@ -188,7 +188,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
         
         const authorId = req.body.author
 
-        const TrashItems = await Trash.find({author: authorId})
+        const TrashItems = await Trash.find({author: authorId}).sort({createdAt: -1})
 
         res.status(200).json({TrashItems})
 
@@ -327,7 +327,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
 
       try{
 
-        const draftItems = await Draft.find({author: authorId})
+        const draftItems = await Draft.find({author: authorId}).sort({createdAt: -1})
 
         res.status(200).json({drafts: draftItems})
 

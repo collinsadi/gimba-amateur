@@ -22,15 +22,16 @@
     width: 100%;
     padding: 15px;
     border-radius: 10px;
-    color: black;
+    color: var(--black-color);
+    background-color: var(--white-color);
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
-    border: 2px solid white;
+    border: 2px solid var(--white-color);
 }
 .form-top input:focus{
 
-    border: 2px solid white;
+    border: 2px solid var(--primary-color);
     outline: 0;
 }
 .form-second{
@@ -45,7 +46,8 @@
     width: 50%;
     padding: 15px;
     border-radius: 10px;
-    color: black;
+    color: var(--black-color);
+    background-color: var(--white-color);
     font-size: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
@@ -58,7 +60,8 @@
 #editor{
 
     width: 100%;
-    background-color: white;
+    background-color: var(--white-color);
+    color: var(--black-color);
     height: 300px;
     border-radius: 10px;
     margin-top: 10px;
@@ -140,8 +143,8 @@
 .upload_button{
 
     padding: 10px;
-    background-color: white;
-    color: blueviolet;
+    background-color: var(--white-color);
+    color: var(--primary-color);
     font-weight: bold;
     display: flex;
     align-items: flex-start;
