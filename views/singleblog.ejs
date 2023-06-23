@@ -30,7 +30,14 @@
 
                 </div>
                 <div class="snippet-of-blog">
+
+                    <% if(!blogpost.tooManyReports) {%>
+
                     <p><%= blogpost.blog_snippet %></p>
+
+
+                   <% } %> 
+                    
                 </div>
 
                 <div class="different-categories">
