@@ -63,7 +63,9 @@ router.get('/api/get_post/:blogpostid', async (req, res)=>{
 
         if(blog.tooManyReports){
 
-            return res.status(401).json({blogAuthor, details: "This Post Has Been Hidden as it has been having too many Reports of Violation"})
+            // I am adding h2 tags because i am tired and i am having some error on the frontend
+
+            return res.status(401).json({blogAuthor, details: "<h2>This Post Has Been Hidden as it has been having too many Reports of Violation</h2>"});
         }
 
         res.status(201).json({blogAuthor, blog})

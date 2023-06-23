@@ -2,6 +2,107 @@
 
 const blogId = location.href.split('/').pop()
 
+
+
+const getAuthor = async ()=>{
+
+    let blogbody = "";
+
+    try{
+
+        const response = await fetch('/api/get_post/'+blogId, {
+            method: "GET",
+            headers: {
+                "Content-Type":"Application/Json"
+            }
+        })
+
+        const data = await response.json()
+
+        const author = data.blogAuthor
+
+        if (data.details){
+
+            blogbody =data.details
+
+        } else{
+
+            blogbody = data.blog.blog_body
+        }
+
+       
+   
+       
+
+        
+        // Was receiving too many error so i did som shitty ci=oding herer
+        // if my response is not sentding a detail object the function inside the if statement would run
+        // and i am not sending a details object because iam sending the blog details which was necessary
+
+        if(!data.details){
+
+         if(data.blog.createdAt !== data.blog.updatedAt){
+
+            const date = new Date(data.blog.updatedAt)
+
+            lastUpdate.innerHTML = `Last Edited on  ${date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' , hour: '2-digit', minute: "2-digit", second: "2-digit"})}`
+
+            // blogTitle.innerHTML += " [EDITED]"
+        }
+        }
+
+        
+
+
+        authorContainer.innerHTML = `
+        
+        <div class="name-badge-single">
+        <p>Written By <span><a href="/u/${author.useridname}">${author.useridname}</a></span></p>
+
+        ${author.verified === 'verified' ? `<i class="fa-solid fa-circle-check" title="Verified Author"></i>` : ''}
+
+        
+    </div>
+        
+        
+        `
+
+        if(blogbody){
+
+     theBlogBody.innerHTML = `
+        
+        ${blogbody}
+        
+        
+        
+        `
+
+        } 
+
+      
+        //console.log(author)
+
+
+
+    } catch(error){
+
+        console.log(error)
+    }
+
+
+}
+
+getAuthor()
+
+
+
+
+
+
+
+
+
+
 //console.log(blogId)
 
 const authorContainer = document.getElementById('the-author')
@@ -51,7 +152,7 @@ sendReport.addEventListener('click', async (e)=>{
 
 
 
- const blogid = window.location.href.split('/').pop()
+//  const blogid = window.location.href.split('/').pop()
 
 
 if(reportDetails.value.length < 30){
@@ -66,7 +167,7 @@ e.target.disabled = true
 
 try{
 
-    const response = await fetch('/api/report_post/'+blogid, {
+    const response = await fetch('/api/report_post/'+blogId, {
         method: "POST",
         headers:{
             "Content-Type":"Application/Json"
@@ -103,65 +204,3 @@ try{
 // })
 
 
-const getAuthor = async ()=>{
-
-    try{
-
-        const response = await fetch('/api/get_post/'+blogId, {
-            method: "GET",
-            headers: {
-                "Content-Type":"Application/Json"
-            }
-        })
-
-        const data = await response.json()
-
-        const author = data.blogAuthor
-        const blogbody =data.blog.blog_body
-
-        if(data.blog.createdAt !== data.blog.updatedAt){
-
-            const date = new Date(data.blog.updatedAt)
-
-            lastUpdate.innerHTML = `Last Edited on  ${date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' , hour: '2-digit', minute: "2-digit", second: "2-digit"})}`
-
-            // blogTitle.innerHTML += " [EDITED]"
-        }
-
-
-        authorContainer.innerHTML = `
-        
-        <div class="name-badge-single">
-        <p>Written By <span><a href="/u/${author.useridname}">${author.useridname}</a></span></p>
-
-        ${author.verified === 'verified' ? `<i class="fa-solid fa-circle-check" title="Verified Author"></i>` : ''}
-
-        
-    </div>
-        
-        
-        `
-
-        theBlogBody.innerHTML = `
-        
-        
-        
-        ${blogbody}
-        
-        
-        
-        `
-
-        //console.log(author)
-
-
-
-    } catch(error){
-
-        //console.log(error)
-    }
-
-
-}
-
-getAuthor()
