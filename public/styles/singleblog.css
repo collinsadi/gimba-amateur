@@ -191,6 +191,11 @@
     border: 0;
     outline: 0;
   }
+  .share-post:disabled{
+
+    cursor: progress;
+
+  }
   .share-post p {
     margin-right: 10px;
   }

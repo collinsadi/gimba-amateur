@@ -34,6 +34,17 @@ const blogschema = new schema({
     author:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+    },
+    reports: [
+        {
+            issue: String,
+            details: String
+        }
+    ],
+    tooManyReports: {
+
+        type: Boolean,
+        default: false
     }
 
 }, {timestamps: true})

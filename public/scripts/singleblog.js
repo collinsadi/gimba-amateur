@@ -19,6 +19,12 @@ const reportBox = document.querySelector("#report-box")
 
 const issues = document.querySelector("#reasonforreport")
 
+const reportDetails = document.querySelector("#reportDetails")
+
+const reportstatus = document.getElementById('reportError')
+
+const sendReport = document.querySelector("#send-report")
+
 sharePost.addEventListener('click', ()=>{
 
     navigator.clipboard.writeText(window.location.href)
@@ -31,18 +37,70 @@ sharePost.addEventListener('click', ()=>{
 
 })
 
-reportPost.addEventListener('click', ()=>{
+reportPost.addEventListener('click', async ()=>{
 
     reportBox.style.display = "flex"
 
-    console.error("There is a Problem with this post")
 
 })
 
 
-issues.addEventListener('change', ()=>{
-    console.log(issues.value)
+
+
+sendReport.addEventListener('click', async (e)=>{
+
+
+
+ const blogid = window.location.href.split('/').pop()
+
+
+if(reportDetails.value.length < 30){
+
+  reportstatus.innerHTML = "Please add a More Detailed Report"
+
+  return;
+
+}
+e.target.innerHTML = "Sending"
+e.target.disabled = true
+
+try{
+
+    const response = await fetch('/api/report_post/'+blogid, {
+        method: "POST",
+        headers:{
+            "Content-Type":"Application/Json"
+        },
+        body: JSON.stringify({
+            issue: issues.value,
+            details: reportDetails.value
+        })
+    })
+
+    const data = await response.json()
+
+    if(response.ok){
+        reportstatus.innerHTML = data.details
+        reportstatus.style.color = "green"
+    }
+
+
+
+} catch(error){
+
+    alert(error)
+}
+
+
+// alert(blogid)
+
+
+
 })
+
+// issues.addEventListener('change', ()=>{
+//     console.log(issues.value)
+// })
 
 
 const getAuthor = async ()=>{

@@ -64,7 +64,7 @@ router.post('/api/get_user_articles', authMiddleWare, async (req, res) => {
         return //console.log('Error Getting Admin')
       }
   
-      const blogPosts = await BlogPost.find({ author: authorId }).sort({createdAt: -1});
+      const blogPosts = await BlogPost.find({ author: authorId }).or({tooManyReports: {$ne: true}}).sort({createdAt: -1});
       
   
       res.status(200).send({blogpost: blogPosts});

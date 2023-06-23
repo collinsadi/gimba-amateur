@@ -55,7 +55,7 @@ router.get('/u/:username', async(req, res)=>{
       }
   
       // res.status(200).render('profile')
-      const blogs = await BlogPost.find({author: user._id}).sort({createdAt: -1})
+      const blogs = await BlogPost.find({author: user._id}).or({tooManyReports: {$ne: true}}).sort({createdAt: -1})
       res.status(200).json({user, posts: blogs})
   
     }catch(error){

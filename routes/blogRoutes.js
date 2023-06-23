@@ -10,7 +10,7 @@ const User = require('../models/user')
 
 router.get('/', (req, res) =>{
 
-    BlogPost.find().sort({createdAt: -1})
+    BlogPost.find({tooManyReports: {$ne: true}}).sort({createdAt: -1})
 
     .then(result =>{
 
@@ -29,92 +29,6 @@ router.get('/create', (req, res)=>{
     res.redirect('/dashboard')
 
 })
-
-// router.post('/api/create_blog', async (req, res)=>{
-
-// const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
-
-// try {
-
-//     // const AuthorId = authorId;
-
-
-//     const newblog = await BlogPost.create({
-
-//         blog_title,
-//         blog_snippet,
-//         blog_body,
-//         blog_category,
-//         blog_related_category,
-//         blog_body,
-//         blog_body_image_url,
-//         author: authorId
-
-//     })
-//    // newblog.save()
-//     .then((result) => {
-
-//         //console.log(result)
-//         res.status(200).send(result)
-
-//     }).catch((err) => {
-//         //console.log(err)
-//         res.status(400).send(err)
-//     });
-
-
-
-// } catch (error) {
-
-//     //console.log(error)
-    
-// }
-
-// })
-
-// router.post('/api/create_draft', async(req, res)=>{
-
-
-//     const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url,authorId } = req.body
-
-//     try {
-    
-//         // const AuthorId = authorId;
-    
-    
-//         const newblog = await Draft.create({
-    
-//             blog_title,
-//             blog_snippet,
-//             blog_body,
-//             blog_category,
-//             blog_related_category,
-//             blog_body,
-//             blog_body_image_url,
-//             author: authorId
-    
-//         })
-//        // newblog.save()
-//         .then((result) => {
-    
-//             //console.log(result)
-//             res.status(200).send(result)
-    
-//         }).catch((err) => {
-//             //console.log(err)
-//             res.status(400).send(err)
-//         });
-    
-    
-    
-//     } catch (error) {
-    
-//         //console.log(error)
-        
-//     }
-    
-
-// })
 
 
 router.get('/blog-post/:id', (req, res)=>{
@@ -147,6 +61,11 @@ router.get('/api/get_post/:blogpostid', async (req, res)=>{
 
         const blogAuthor = await User.findById(blog.author)
 
+        if(blog.tooManyReports){
+
+            return res.status(401).json({blogAuthor, details: "This Post Has Been Hidden as it has been having too many Reports of Violation"})
+        }
+
         res.status(201).json({blogAuthor, blog})
 
     }
@@ -160,90 +79,45 @@ router.get('/api/get_post/:blogpostid', async (req, res)=>{
 })
 
 
-// router.delete('/api/trash_blog_post/:id', async (req, res)=>{
+router.post('/api/report_post/:id', async (req, res)=>{
 
-// const blogId = req.params.id
+    const id = req.params.id
 
-// //console.log(blogId)
+    const {issue, details} = req.body
 
+    try{
 
-// try {
+    const blogToReport = await BlogPost.findById(id)
 
-    
+    if(!blogToReport){
 
-//     const blog = await BlogPost.findById(blogId)
+        return res.status(404).json({details: "The Blog Post Was Not Found"})
+    }
 
-//     //console.log(blog)
+    const report = {issue, details}
 
-//     if(!blog) {
+    blogToReport.reports.push(report)
 
-//         return res.status(401).json({details: "Blog Post Not Found"})
-//     }
+    await blogToReport.save()
 
-//     //  await Trash.create(blog)
+    if(blogToReport.reports.length === 20){
 
-//     const trashBlog = new Trash({
-//         blog_title: blog.blog_title,
-//         blog_snippet: blog.blog_snippet,
-//         blog_category: blog.blog_category,
-//         blog_related_category: blog.blog_related_category,
-//         blog_body: blog.blog_body,
-//         blog_body_image_url: blog.blog_body_image_url,
-//         author: blog.author
-//     })
+        blogToReport.tooManyReports = true
 
-//     await trashBlog.save()
+        await blogToReport.save()
 
-//     await BlogPost.findByIdAndDelete(blogId)
+    }
 
-//     return res.status(200).json({details: "Blog Moved to Trash"})
-// } catch (error) {
-//     //console.log(error)
+    res.status(201).json({details: "Report Submitted Sucessfully"})
 
-//     res.status(500).json({details: "Internal Server Error"})
-// }
+    } catch(error){
 
+        console.log(error)
 
+        res.status(500).json({details: "An Error occured on the server side"})
+    }
 
-// })
-
-// router.put('/api/edit_blog_post/:id', async (req, res)=>{
-
-//     const id = req.params.id
-
-//     const  {blog_title,blog_snippet,blog_category,blog_related_category,blog_body,blog_body_image_url} = req.body
-// try {
-
-//     await BlogPost.findByIdAndUpdate(id, req.body)
-
-// return res.status(200).json({details: "Blog Updated Sucessfully"})
-
-// } catch (error) {
-
-//     //console.log(error)
-    
-// }
-   
-
-
-// })
-
-
-// router.get('/show-all', (req, res)=>{
-
-//     BlogPost.find()
-
-//     .then(result =>{
-//         res.send(result)
-//     })
-//     .catch(err =>{
-//         //console.log(err)
-//     })
-// })
-
-
-
-
+})
 
 
 
