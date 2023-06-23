@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Developer</title>
+    <%- include("./partials/headerstyle.ejs") %>
+    <link rel="stylesheet" href="styles/developer.css">
+</head>
+<body>
+
+    
+    <!-- Including the page header -->
+
+    <%- include("./partials/header.ejs") %>
+
+    
+
+
+
+    <main class="main">
+
+
+        <div class="main-inner">
+
+
+            <div class="main-top">
+
+
+                <div class="main-top-left">
+
+                    <div class="image-container">
+                        <img src="/images/developer.jpg" alt="">
+                    </div>
+
+                </div>
+
+                <div class="main-top-right">
+
+                    <div class="name-job-title">
+                        <h3> Collins Sonny Oribo</h3>
+                        <p> Front-End Developer </p>
+                        <div class="location">
+                             <i class="fa-solid fa-location"></i>
+                             <span>Port Harcourt, Nigeria</span>
+                        </div>
+                       
+                    </div>
+
+                    <div class="send-message">
+
+                        <i class="fa-solid fa-message"></i>
+                        <p>Send Message</p>
+
+                    </div>
+
+                    <div class="message">
+
+                        <blockquote>
+                           I Built Gimba Lite as a test to my soon to be released Content Platform, and also Test out my Backend JavaScript Skills as this is my First Full Stack Project, Thanks For Being Part of the people that took out time to check out this project and give me a feedback on my Project. <br>
+
+                            I really do appreciate ):, <br>
+
+                            I am often referred to as <b>Collins Adi</b> because that's my nickname and <b>TeckHardy</b> is the brand name. <br>
+
+                            <b>Gimba</b> is a random Unique name without an Inspiration, nothing, checked the internet i saw few places where the name was mention, but not much, I am just trying to make my own stuff.
+
+                            --- Collins Adi
+                        </blockquote>
+
+                    </div>
+
+                    <div class="navigation-tabs">
+                        
+                        <button class="active-developer-tab">
+                            <i class="fa-solid fa-user"></i>
+                            About
+                        </button>
+                      
+                        <button class="tab">
+                           <a href="https://github.com/collinsadi?tab=repositories" target="_blank" style="text-decoration: none;
+                           color: var(--black-text);"> Projects</a>
+                        </button>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="main-bottom">
+
+                <div class="main-bottom-inner">
+
+                    <div class="about">
+
+                        <%- include("./aboutDeveloper.ejs") %>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+
+
+<%- include("./partials/newsletter.ejs") %>
+<%- include("./partials/footer.ejs") %>
+<%- include('./partials/iconscript.ejs') %>
+</body>
+</html>
