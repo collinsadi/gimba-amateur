@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:image" content="<%= blogpost.blog_body_image_url %>">
+    <meta property="og:image:secure_url" content="<%= blogpost.blog_body_image_url %>">
+    <meta property="og:image:alt" content="<%= blogpost.blog_title %>">
+    <meta property="twitter:image" content="<%= blogpost.blog_body_image_url %>">
+    <meta property="og:description" content="Blog Post">
+    <meta name="twitter:title" content="<%= blogpost.blog_title %>">
+    <meta name="twitter:description" content="<%= blogpost.blog_snippet %>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIMBA | <%= title %></title>
     <%- include("./partials/headerstyle.ejs") %>
@@ -83,8 +90,14 @@
 
         <button class="share-post" id="share-post">
 
-             <p>Share Post</p>
+             <p>Copy Post Url</p>
         <i class="fa-solid fa-copy"></i>
+
+        </button>
+        <button class="share-post" id="share-outside">
+
+             <p>Share</p>
+             <i class="fa-solid fa-square-share-nodes"></i>
 
         </button>
        

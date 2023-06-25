@@ -1,12 +1,14 @@
 //console.log('Connected')
 
 const blogId = location.href.split('/').pop()
-
+let blogbody = "";
+let blogTitle = "";
+let blogSnippet = ""
 
 
 const getAuthor = async ()=>{
 
-    let blogbody = "";
+    
 
     try{
 
@@ -28,6 +30,8 @@ const getAuthor = async ()=>{
         } else{
 
             blogbody = data.blog.blog_body
+            blogTitle = data.blog.blog_title
+            blogSnippet = data.blog_snippet
         }
 
        
@@ -126,6 +130,8 @@ const reportstatus = document.getElementById('reportError')
 
 const sendReport = document.querySelector("#send-report")
 
+const mainShare = document.getElementById("share-outside");
+
 sharePost.addEventListener('click', ()=>{
 
     navigator.clipboard.writeText(window.location.href)
@@ -146,6 +152,28 @@ reportPost.addEventListener('click', async ()=>{
 })
 
 
+mainShare.addEventListener("click", ()=>{
+
+    if(navigator.share){
+
+    navigator.share({
+        title: blogTitle,
+        text: blogSnippet,
+        url: window.location.href
+    })
+
+    .then(()=>{
+        console.log("shared sucessfully")
+    })
+    .catch(()=>{
+        console.log("an Error Occured")
+    })
+
+
+    }
+
+   
+})
 
 
 sendReport.addEventListener('click', async (e)=>{

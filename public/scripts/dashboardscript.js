@@ -73,8 +73,9 @@ bringSidebar.addEventListener('click', ()=>{
 const expandEditor = document.querySelector('#create-new-blog')
 const editor = document.querySelector('#the-main-editor');
 
+if(expandEditor){
 
-expandEditor.addEventListener('click', ()=>{
+   expandEditor.addEventListener('click', ()=>{
 
     if(editor.classList.contains('removeeditor')){
         editor.classList.remove('removeeditor')
@@ -88,6 +89,35 @@ expandEditor.addEventListener('click', ()=>{
 
     document.getElementById('arrow-to-toggle').classList.toggle('fa-angle-up', ' fa-angle-down')
 
-})
+}) 
+}
 
+
+
+
+const getProfileUrl = ()=>{
+
+    const username = localStorage.getItem('receiver')
+
+    const takeALook = document.getElementById("take-a-look")
+
+    if(username){
+
+        if(takeALook){
+
+              takeALook.innerHTML = `
+    
+    Take a Look at Your Profile<a href="/u/${username}" style="color: var(--white-text); text-decoration: none; margin-left: 10px; font-weight: bold;">Visit Profile</a>
+    
+    `
+        }
+
+      
+    }
+
+    
+
+}
+
+getProfileUrl()
 
