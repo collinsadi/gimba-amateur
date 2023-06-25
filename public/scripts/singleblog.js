@@ -92,7 +92,7 @@ const getAuthor = async ()=>{
 
     } catch(error){
 
-        console.log(error)
+        // console.log(error)
     }
 
 
@@ -159,23 +159,16 @@ mainShare.addEventListener("click", ()=>{
     if(navigator.share){
 
     navigator.share({
-        files: [
-            {
-            data: blogImage,
-            type: blogImage.includes('data:image/png') ? 'img/png' : "img/jpeg",
-        }
-
-        ],
         title: blogTitle,
         text: blogSnippet,
         url: window.location.href
     })
 
-    .then(()=>{
-        console.log("shared sucessfully")
+    .then((response)=>{
+        // console.log("shared sucessfully", response)
     })
-    .catch(()=>{
-        console.log("an Error Occured")
+    .catch((error)=>{
+        // console.log("an Error Occured", error)
     })
 
 
