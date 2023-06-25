@@ -4,6 +4,7 @@ const blogId = location.href.split('/').pop()
 let blogbody = "";
 let blogTitle = "";
 let blogSnippet = ""
+let blogImage = ""
 
 
 const getAuthor = async ()=>{
@@ -31,7 +32,8 @@ const getAuthor = async ()=>{
 
             blogbody = data.blog.blog_body
             blogTitle = data.blog.blog_title
-            blogSnippet = data.blog_snippet
+            blogSnippet = data.blog.blog_snippet
+            blogImage = data.blog.blog_body_image_url
         }
 
        
@@ -157,6 +159,13 @@ mainShare.addEventListener("click", ()=>{
     if(navigator.share){
 
     navigator.share({
+        files: [
+            {
+            data: blogImage,
+            type: blogImage.includes('data:image/png') ? 'img/png' : "img/jpeg",
+        }
+
+        ],
         title: blogTitle,
         text: blogSnippet,
         url: window.location.href
