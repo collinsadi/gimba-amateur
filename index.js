@@ -17,7 +17,7 @@ const swaggerDocs = require('swagger-ui-express')
 require('dotenv').config();
 
 // connect to mongodb
-const liveurl = 'mongodb+srv://netninja:1020304050@cluster0.54vyixp.mongodb.net/node-tuts?retryWrites=true&w=majority'
+const liveurl = 'mongodb+srv://netninja:1020304050@cluster0.54vyixp.mongodb.net/Gimba?retryWrites=true&w=majority'
 const localurl = process.env.MONGODB_URI;
 
 mongoose.connect(liveurl,{useNewUrlParser: true, useUnifiedTopology: true})
